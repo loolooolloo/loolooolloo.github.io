@@ -9,7 +9,7 @@
     "doi": "https://doi.org/10.0000/example",
     "pdf": "",
     "code": "",
-    "showOnHome": true
+    "showOnHome": false
   },
   {
     "id": "conference-2026-01",
