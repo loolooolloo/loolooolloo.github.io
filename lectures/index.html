@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lectures · Wireless Communications Laboratory</title>
+  <link rel="stylesheet" href="../assets/css/style.css" />
+</head>
+<body>
+  <main class="page-shell">
+    <a class="back-link" href="../index.html#lectures">← Back to Home</a>
+    <div class="section-heading">
+      <h1>Lectures</h1>
+      <p>Complete list of courses and lecture materials.</p>
+    </div>
+    <div id="all-lecture-grid" class="lecture-grid"></div>
+  </main>
+
+  <script>
+    async function loadLectures() {
+      const response = await fetch("../data/lectures.json");
+      const lectures = await response.json();
+      const container = document.getElementById("all-lecture-grid");
+
+      container.innerHTML = lectures.map(lecture => `
+        <a class="lecture-card clickable-card" href="../${lecture.detailPage}">
+          <h3>${lecture.name}</h3>
+          <p>${lecture.description}</p>
+        </a>
+      `).join("");
+    }
+
+    document.addEventListener("DOMContentLoaded", loadLectures);
+  </script>
+</body>
+</html>
