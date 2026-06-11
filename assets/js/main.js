@@ -102,23 +102,102 @@ function publicationMarkup(item) {
   `;
 }
 
+const HOME_RECENT_PUBLICATION_LIMIT = 5;
+
 function renderPublications(publications) {
-  const selected = publications
-    .filter(item => item.showOnHome === true)
-    .sort((a, b) => b.year - a.year);
+  const selectedPublications = publications.filter(
+    item => item.showOnHome === true
+  );
+
+  const hasSelectedPublications = selectedPublications.length > 0;
+
+  /*
+   * showOnHome: true인 항목이 있으면 selected publication 표시
+   * 하나도 없으면 전체 publication 중 최근 N개 표시
+   */
+  const homePublications = (
+    hasSelectedPublications
+      ? selectedPublications
+      : [...publications]
+          .sort(comparePublicationsByDate)
+          .slice(0, HOME_RECENT_PUBLICATION_LIMIT)
+  );
+
+  /*
+   * selected publication도 연도 및 날짜 기준으로 정렬
+   */
+  homePublications.sort(comparePublicationsByDate);
 
   const groups = {
-    journal: document.getElementById("journal-list"),
-    conference: document.getElementById("conference-list"),
-    patent: document.getElementById("patent-list")
+    journal: {
+      group: document.getElementById("journal-group"),
+      list: document.getElementById("journal-list")
+    },
+    conference: {
+      group: document.getElementById("conference-group"),
+      list: document.getElementById("conference-list")
+    },
+    patent: {
+      group: document.getElementById("patent-group"),
+      list: document.getElementById("patent-list")
+    }
   };
 
-  Object.entries(groups).forEach(([type, container]) => {
-    const items = selected.filter(item => item.type === type);
-    container.innerHTML = items.length
-      ? items.map(publicationMarkup).join("")
-      : `<li class="empty-message">No selected items.</li>`;
+  Object.entries(groups).forEach(([type, elements]) => {
+    const items = homePublications.filter(item => item.type === type);
+
+    if (items.length === 0) {
+      /*
+       * 해당 category에 표시할 항목이 없으면
+       * heading과 list를 포함한 group 전체를 숨김
+       */
+      elements.group.hidden = true;
+      elements.list.innerHTML = "";
+      return;
+    }
+
+    elements.group.hidden = false;
+    elements.list.innerHTML = items
+      .map(publicationMarkup)
+      .join("");
   });
+
+  /*
+   * 현재 표시 방식에 따라 제목과 설명 변경
+   */
+  const heading = document.getElementById("publications-heading");
+  const description = document.getElementById(
+    "publications-description"
+  );
+
+  if (hasSelectedPublications) {
+    heading.textContent = "Selected Publications";
+    description.textContent =
+      "Selected journal papers, conference papers, and patents.";
+  } else {
+    heading.textContent = "Recent Publications";
+    description.textContent =
+      `The ${HOME_RECENT_PUBLICATION_LIMIT} most recent publications.`;
+  }
+}
+
+function comparePublicationsByDate(a, b) {
+  /*
+   * date가 있으면 date를 우선 사용
+   * date가 없으면 year를 사용
+   */
+  const dateA = getPublicationDate(a);
+  const dateB = getPublicationDate(b);
+
+  return dateB - dateA;
+}
+
+function getPublicationDate(publication) {
+  if (publication.date) {
+    return new Date(publication.date).getTime();
+  }
+
+  return new Date(`${publication.year}-01-01`).getTime();
 }
 
 function renderLectures(lectures) {
