@@ -1,0 +1,50 @@
+[
+  {
+    "id": "journal-2026-01",
+    "type": "journal",
+    "year": 2026,
+    "authors": "Author 1, Author 2, and Professor Name",
+    "title": "Journal Paper Title",
+    "venue": "IEEE Transactions on Wireless Communications",
+    "doi": "https://doi.org/10.0000/example",
+    "pdf": "",
+    "code": "",
+    "showOnHome": true
+  },
+  {
+    "id": "conference-2026-01",
+    "type": "conference",
+    "year": 2026,
+    "authors": "Author 1, Author 2, and Professor Name",
+    "title": "Conference Paper Title",
+    "venue": "IEEE International Conference on Communications",
+    "doi": "",
+    "pdf": "",
+    "code": "",
+    "showOnHome": true
+  },
+  {
+    "id": "patent-2026-01",
+    "type": "patent",
+    "year": 2026,
+    "authors": "Inventor 1, Inventor 2, and Professor Name",
+    "title": "Patent Title",
+    "venue": "Korean Patent No. 00-0000000",
+    "doi": "",
+    "pdf": "",
+    "code": "",
+    "showOnHome": true
+  },
+  {
+    "id": "journal-2025-01",
+    "type": "journal",
+    "year": 2025,
+    "authors": "Author 1 and Professor Name",
+    "title": "Hidden publication example",
+    "venue": "Example Journal",
+    "doi": "",
+    "pdf": "",
+    "code": "",
+    "showOnHome": false
+  }
+]
