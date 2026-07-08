@@ -20,8 +20,6 @@
     });
   }
 
-
-
   function escapeSiteHtml(value = "") {
     return String(value)
       .replaceAll("&", "&amp;")
@@ -65,6 +63,25 @@
     }
   }
 
+  function updateSidebarSubtitleVisibility(site) {
+    const subtitle = document.getElementById("lab-subtitle");
+    const university = document.getElementById("site-university-name");
+    const department = document.getElementById("site-department-name");
+    const separator = document.getElementById("site-subtitle-separator");
+
+    if (!subtitle || !university || !department || !separator) return;
+
+    const universityName = String(site.universityName || "").trim();
+    const departmentName = String(site.departmentName || "").trim();
+
+    university.textContent = universityName;
+    department.textContent = departmentName;
+    university.hidden = !universityName;
+    department.hidden = !departmentName;
+    separator.hidden = !(universityName && departmentName);
+    subtitle.hidden = !(universityName || departmentName);
+  }
+
   async function updateSiteMetadata() {
     try {
       const response = await fetch("{{ '/data/site.json' | relative_url }}");
@@ -79,6 +96,7 @@
         }
       });
 
+      updateSidebarSubtitleVisibility(site);
       renderContactInfo(site);
     } catch (error) {
       console.error(error);
