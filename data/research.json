@@ -3,21 +3,55 @@
     "id": "next-generation-wireless",
     "name": "Next-Generation Wireless Communications",
     "description": "5G-Advanced, 6G, satellite communications, and integrated terrestrial–non-terrestrial networks.",
+    "image": "assets/images/research-next-generation-wireless.jpg",
+    "detailImage": "assets/images/research-next-generation-wireless.jpg",
+    "imageAlt": "Next-generation wireless communications research",
+    "content": [
+      "This research area focuses on next-generation wireless systems, including 5G-Advanced, 6G, satellite communications, and integrated terrestrial and non-terrestrial networks.",
+      "Detailed descriptions of research goals, methodologies, projects, and collaborations can be maintained here."
+    ],
+    "relatedPublicationIds": [
+      "journal-int-2026-01"
+    ],
     "detailPage": "research/next-generation-wireless.html",
-    "showOnHome": true
+    "showOnHome": false,
+    "showOnResearchPage": true
   },
   {
     "id": "mimo-beamforming",
     "name": "MIMO and Beamforming",
     "description": "Massive MIMO, hybrid beamforming, precoding, detection, and multi-user transmission.",
+    "image": "assets/images/research-mimo-beamforming.jpg",
+    "detailImage": "assets/images/research-mimo-beamforming.jpg",
+    "imageAlt": "MIMO and beamforming research",
+    "content": [
+      "This research area covers massive MIMO, hybrid beamforming, precoding, detection, and multi-user transmission.",
+      "Detailed descriptions of algorithms, system models, experiments, and representative results can be maintained here."
+    ],
+    "relatedPublicationIds": [
+      "journal-int-2026-01",
+      "conference-int-2026-01"
+    ],
     "detailPage": "research/mimo-beamforming.html",
-    "showOnHome": true
+    "showOnHome": false,
+    "showOnResearchPage": true
   },
   {
     "id": "ai-communications",
     "name": "AI for Communications",
-    "description": "Machine learning for channel prediction, resource allocation, receiver design, and network optimization.",
+    "description": "Machine learning for channel prediction, receiver design, resource allocation, and network optimization.",
+    "image": "assets/images/research-ai-communications.jpg",
+    "detailImage": "assets/images/research-ai-communications.jpg",
+    "imageAlt": "AI for communications research",
+    "content": [
+      "This research area studies machine learning methods for channel prediction, receiver design, resource allocation, and network optimization.",
+      "Detailed descriptions of learning models, datasets, evaluation settings, and deployment scenarios can be maintained here."
+    ],
+    "relatedPublicationIds": [
+      "conference-int-2026-01"
+    ],
     "detailPage": "research/ai-communications.html",
-    "showOnHome": true
+    "showOnHome": false,
+    "showOnResearchPage": true
   }
 ]

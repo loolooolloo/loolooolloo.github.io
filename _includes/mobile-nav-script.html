@@ -1,0 +1,66 @@
+<script>
+  function initializeMobileNavigation() {
+    const menuToggle = document.querySelector(".menu-toggle");
+    const navigation = document.querySelector(".navigation");
+
+    if (!menuToggle || !navigation) return;
+
+    menuToggle.addEventListener("click", () => {
+      const isOpen = navigation.classList.toggle("is-open");
+      menuToggle.setAttribute("aria-expanded", String(isOpen));
+    });
+
+    document.querySelectorAll(".nav-link").forEach(link => {
+      link.addEventListener("click", () => {
+        if (window.innerWidth <= 920) {
+          navigation.classList.remove("is-open");
+          menuToggle.setAttribute("aria-expanded", "false");
+        }
+      });
+    });
+  }
+
+  async function updatePeopleNavigation() {
+    const studentsNavItem = document.getElementById("students-nav-item");
+
+    if (!studentsNavItem) return;
+
+    try {
+      const response = await fetch("{{ '/data/people.json' | relative_url }}");
+      if (!response.ok) return;
+
+      const people = await response.json();
+      const hasVisibleStudents = people.some(person => {
+        return person.category === "student" && person.showOnHome !== false;
+      });
+
+      studentsNavItem.hidden = !hasVisibleStudents;
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+  async function updateResearchNavigation() {
+    const researchNavItem = document.getElementById("research-nav-item");
+
+    if (!researchNavItem) return;
+
+    try {
+      const response = await fetch("{{ '/data/research.json' | relative_url }}");
+      if (!response.ok) return;
+
+      const research = await response.json();
+      const hasVisibleResearch = research.some(item => {
+        return item.showOnHome !== false;
+      });
+
+      researchNavItem.hidden = !hasVisibleResearch;
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+  document.addEventListener("DOMContentLoaded", initializeMobileNavigation);
+  document.addEventListener("DOMContentLoaded", updatePeopleNavigation);
+  document.addEventListener("DOMContentLoaded", updateResearchNavigation);
+</script>

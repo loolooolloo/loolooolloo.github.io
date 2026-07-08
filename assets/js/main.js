@@ -1,10 +1,9 @@
-const HOME_NEWS_LIMIT = 5;
+const HOME_NEWS_LIMIT = 3;
+const HOME_RECENT_PUBLICATION_LIMIT = 5;
 
 async function loadJson(path) {
   const response = await fetch(path);
-  if (!response.ok) {
-    throw new Error(`Failed to load ${path}: ${response.status}`);
-  }
+  if (!response.ok) throw new Error(`Failed to load ${path}: ${response.status}`);
   return response.json();
 }
 
@@ -17,116 +16,237 @@ function escapeHtml(value = "") {
     .replaceAll("'", "&#039;");
 }
 
+function parseOptionalInteger(value) {
+  if (
+    value === undefined ||
+    value === null ||
+    String(value).trim() === ""
+  ) {
+    return null;
+  }
+
+  const parsed = Number.parseInt(value, 10);
+
+  return Number.isNaN(parsed)
+    ? null
+    : parsed;
+}
+
+function getPublicationTimestamp(publication) {
+  const year = parseOptionalInteger(publication.year);
+  const month = parseOptionalInteger(publication.month);
+  const day = parseOptionalInteger(publication.day);
+
+  if (year === null) return 0;
+
+  return new Date(
+    year,
+    month === null ? 0 : month - 1,
+    day === null ? 1 : day
+  ).getTime();
+}
+
+function comparePublicationsByDate(a, b) {
+  return getPublicationTimestamp(b) - getPublicationTimestamp(a);
+}
+
+function getNewsSummary(item) {
+  if (Array.isArray(item.content) && item.content.length > 0) {
+    return item.content[0];
+  }
+
+  if (typeof item.content === "string") {
+    return item.content;
+  }
+
+  return item.description || "";
+}
+
+function getNewsTimestamp(item) {
+  const year = parseOptionalInteger(item.year);
+  const month = parseOptionalInteger(item.month);
+  const day = parseOptionalInteger(item.day);
+
+  if (year === null) {
+    return 0;
+  }
+
+  return new Date(
+    year,
+    month === null ? 0 : month - 1,
+    day === null ? 1 : day
+  ).getTime();
+}
+
+function getNewsDateLabel(item) {
+  const year = parseOptionalInteger(item.year);
+  const month = parseOptionalInteger(item.month);
+  const day = parseOptionalInteger(item.day);
+
+  if (year === null) {
+    return "";
+  }
+
+  const parts = [String(year)];
+
+  if (month !== null) {
+    parts.push(String(month).padStart(2, "0"));
+  }
+
+  if (day !== null) {
+    parts.push(String(day).padStart(2, "0"));
+  }
+
+  return parts.join(".");
+}
+
+
 function renderNews(news) {
   const container = document.getElementById("news-list");
-  const items = [...news]
-    .sort((a, b) => new Date(b.date) - new Date(a.date))
+
+  const recentNews = [...news]
+    .sort((a, b) => {
+      return getNewsTimestamp(b) - getNewsTimestamp(a);
+    })
     .slice(0, HOME_NEWS_LIMIT);
 
-  container.innerHTML = items.map(item => `
-    <li class="news-item">
-      <div class="item-date">${escapeHtml(item.dateLabel || item.date)}</div>
-      <div>
-        <p class="item-title">${escapeHtml(item.title)}</p>
-        <p class="item-description">${escapeHtml(item.description || "")}</p>
-      </div>
-    </li>
-  `).join("");
+  container.innerHTML = recentNews
+    .map(item => `
+      <li class="news-item">
+        <div class="item-date">
+          ${escapeHtml(getNewsDateLabel(item))}
+        </div>
+
+        <div>
+          <p class="item-title">
+            ${escapeHtml(item.title)}
+          </p>
+
+          <p class="item-description">
+            ${escapeHtml(getNewsSummary(item))}
+          </p>
+        </div>
+      </li>
+    `)
+    .join("");
 }
 
 function personCard(person) {
+  const researchItems = getResearchItems(person.research);
+
   return `
     <a class="person-card clickable-card" href="${escapeHtml(person.detailPage)}">
-      <img
-        class="person-photo"
-        src="${escapeHtml(person.photo)}"
-        alt="${escapeHtml(person.name)} portrait"
-      />
+      <div class="person-photo-frame">
+        <img class="person-photo" src="${escapeHtml(person.photo)}"
+             alt="${escapeHtml(person.name)} portrait" />
+      </div>
       <div class="person-info">
         <h3>${escapeHtml(person.name)}</h3>
         <p class="person-role">${escapeHtml(person.role)}</p>
-        <p>${escapeHtml(person.research || "")}</p>
+        ${researchItems.length ? `
+          <div class="research-interest">
+            <p class="research-interest-title">Research interest</p>
+            <ul>
+              ${researchItems.map(item => `<li>${escapeHtml(item)}</li>`).join("")}
+            </ul>
+          </div>
+        ` : ""}
       </div>
     </a>
   `;
 }
 
-function renderPeople(people) {
-  document.getElementById("professor-grid").innerHTML = people
-    .filter(person => person.category === "professor" && person.showOnHome !== false)
-    .map(personCard)
-    .join("");
+function getResearchItems(research) {
+  if (Array.isArray(research)) {
+    return research
+      .map(item => String(item).trim())
+      .filter(Boolean);
+  }
 
-  document.getElementById("student-grid").innerHTML = people
-    .filter(person => person.category === "student" && person.showOnHome !== false)
-    .map(personCard)
-    .join("");
+  return String(research || "")
+    .replace(/^research interests?:\s*/i, "")
+    .replace(/\.$/, "")
+    .split(/\s*,\s*|\s+and\s+/i)
+    .map(item => item.trim())
+    .filter(Boolean);
+}
+
+function renderPeople(people) {
+  const visibleProfessors = people
+    .filter(p => p.category === "professor" && p.showOnHome !== false);
+
+  const visibleStudents = people
+    .filter(p => p.category === "student" && p.showOnHome !== false);
+
+  const professorSection = document.getElementById("professor");
+  const studentSection = document.getElementById("students");
+  const professorGrid = document.getElementById("professor-grid");
+  const studentGrid = document.getElementById("student-grid");
+  const studentsNavItem = document.getElementById("students-nav-item");
+
+  professorSection.hidden = visibleProfessors.length === 0;
+  studentSection.hidden = visibleStudents.length === 0;
+
+  if (studentsNavItem) {
+    studentsNavItem.hidden = visibleStudents.length === 0;
+  }
+
+  professorGrid.innerHTML = visibleProfessors
+    .map(personCard).join("");
+
+  studentGrid.innerHTML = visibleStudents
+    .map(personCard).join("");
 }
 
 function renderResearch(areas) {
-  document.getElementById("research-grid").innerHTML = areas
-    .filter(area => area.showOnHome !== false)
-    .map(area => `
-      <a class="card clickable-card" href="${escapeHtml(area.detailPage)}">
-        <h3>${escapeHtml(area.name)}</h3>
-        <p>${escapeHtml(area.description)}</p>
+  const visibleResearch = areas
+    .filter(a => a.showOnHome !== false);
+
+  const researchSection = document.getElementById("research");
+  const researchGrid = document.getElementById("research-grid");
+  const researchNavItem = document.getElementById("research-nav-item");
+
+  researchSection.hidden = visibleResearch.length === 0;
+
+  if (researchNavItem) {
+    researchNavItem.hidden = visibleResearch.length === 0;
+  }
+
+  researchGrid.innerHTML = visibleResearch
+    .map(a => `
+      <a class="card clickable-card" href="${escapeHtml(a.detailPage)}">
+        <h3>${escapeHtml(a.name)}</h3>
+        <p>${escapeHtml(a.description)}</p>
       </a>
-    `)
-    .join("");
+    `).join("");
 }
 
 function publicationMarkup(item) {
   const links = [
-    item.doi
-      ? `<a href="${escapeHtml(item.doi)}" target="_blank" rel="noopener noreferrer">DOI</a>`
-      : "",
-    item.pdf
-      ? `<a href="${escapeHtml(item.pdf)}" target="_blank" rel="noopener noreferrer">PDF</a>`
-      : "",
-    item.code
-      ? `<a href="${escapeHtml(item.code)}" target="_blank" rel="noopener noreferrer">Code</a>`
-      : ""
+    item.doi ? `<a href="${escapeHtml(item.doi)}" target="_blank" rel="noopener noreferrer">DOI</a>` : "",
+    item.pdf ? `<a href="${escapeHtml(item.pdf)}" target="_blank" rel="noopener noreferrer">PDF</a>` : "",
+    item.code ? `<a href="${escapeHtml(item.code)}" target="_blank" rel="noopener noreferrer">Code</a>` : ""
   ].filter(Boolean).join("");
 
   return `
     <li class="publication-item">
-      <div class="publication-type">${escapeHtml(item.year)}</div>
+      <div class="publication-type">${escapeHtml(item.year || "")}</div>
       <div>
-        <p class="item-title">
-          “${escapeHtml(item.title)},” ${escapeHtml(item.venue || "")}
-        </p>
-        <p class="item-description">${escapeHtml(item.authors)}</p>
+        <p class="item-title">“${escapeHtml(item.title)},” ${escapeHtml(item.venue || "")}</p>
+        <p class="item-description">${escapeHtml(item.authors || "")}</p>
         ${links ? `<div class="publication-links">${links}</div>` : ""}
       </div>
     </li>
   `;
 }
 
-const HOME_RECENT_PUBLICATION_LIMIT = 5;
-
 function renderPublications(publications) {
-  const selectedPublications = publications.filter(
-    item => item.showOnHome === true
-  );
+  const selected = publications.filter(item => item.showOnHome === true);
+  const hasSelected = selected.length > 0;
 
-  const hasSelectedPublications = selectedPublications.length > 0;
-
-  /*
-   * showOnHome: true인 항목이 있으면 selected publication 표시
-   * 하나도 없으면 전체 publication 중 최근 N개 표시
-   */
-  const homePublications = (
-    hasSelectedPublications
-      ? selectedPublications
-      : [...publications]
-          .sort(comparePublicationsByDate)
-          .slice(0, HOME_RECENT_PUBLICATION_LIMIT)
-  );
-
-  /*
-   * selected publication도 연도 및 날짜 기준으로 정렬
-   */
-  homePublications.sort(comparePublicationsByDate);
+  const homeItems = (hasSelected ? [...selected] : [...publications])
+    .sort(comparePublicationsByDate)
+    .slice(0, hasSelected ? selected.length : HOME_RECENT_PUBLICATION_LIMIT);
 
   const groups = {
     journal: {
@@ -144,72 +264,36 @@ function renderPublications(publications) {
   };
 
   Object.entries(groups).forEach(([type, elements]) => {
-    const items = homePublications.filter(item => item.type === type);
+    const items = homeItems.filter(item => item.type === type);
 
-    if (items.length === 0) {
-      /*
-       * 해당 category에 표시할 항목이 없으면
-       * heading과 list를 포함한 group 전체를 숨김
-       */
+    if (!items.length) {
       elements.group.hidden = true;
       elements.list.innerHTML = "";
       return;
     }
 
     elements.group.hidden = false;
-    elements.list.innerHTML = items
-      .map(publicationMarkup)
-      .join("");
+    elements.list.innerHTML = items.map(publicationMarkup).join("");
   });
 
-  /*
-   * 현재 표시 방식에 따라 제목과 설명 변경
-   */
-  const heading = document.getElementById("publications-heading");
-  const description = document.getElementById(
-    "publications-description"
-  );
+  document.getElementById("publications-heading").textContent =
+    "Publications";
 
-  if (hasSelectedPublications) {
-    heading.textContent = "Selected Publications";
-    description.textContent =
-      "Selected journal papers, conference papers, and patents.";
-  } else {
-    heading.textContent = "Recent Publications";
-    description.textContent =
-      `The ${HOME_RECENT_PUBLICATION_LIMIT} most recent publications.`;
-  }
-}
-
-function comparePublicationsByDate(a, b) {
-  /*
-   * date가 있으면 date를 우선 사용
-   * date가 없으면 year를 사용
-   */
-  const dateA = getPublicationDate(a);
-  const dateB = getPublicationDate(b);
-
-  return dateB - dateA;
-}
-
-function getPublicationDate(publication) {
-  if (publication.date) {
-    return new Date(publication.date).getTime();
-  }
-
-  return new Date(`${publication.year}-01-01`).getTime();
+  document.getElementById("publications-description").textContent =
+    hasSelected
+      ? "Selected journal papers, conference papers, and patents."
+      : `The ${Math.min(HOME_RECENT_PUBLICATION_LIMIT, publications.length)} most recent publications.`;
 }
 
 function renderLectures(lectures) {
   document.getElementById("lecture-grid").innerHTML = lectures
-    .filter(lecture => lecture.showOnHome !== false)
-    .map(lecture => `
-      <a class="card clickable-card" href="${escapeHtml(lecture.detailPage)}">
-        <h3>${escapeHtml(lecture.name)}</h3>
-        <p>${escapeHtml(lecture.description)}</p>
+    .filter(l => l.showOnHome !== false)
+    .map(l => `
+      <a class="card clickable-card" href="${escapeHtml(l.detailPage)}">
+        <h3>${escapeHtml(l.name)}</h3>
+        <p>${escapeHtml(l.description)}</p>
       </a>
-    `)
-    .join("");
+    `).join("");
 }
 
 async function initializeHome() {
@@ -230,25 +314,6 @@ async function initializeHome() {
   } catch (error) {
     console.error(error);
   }
-}
-
-const menuToggle = document.querySelector(".menu-toggle");
-const navigation = document.querySelector(".navigation");
-
-if (menuToggle && navigation) {
-  menuToggle.addEventListener("click", () => {
-    const isOpen = navigation.classList.toggle("is-open");
-    menuToggle.setAttribute("aria-expanded", String(isOpen));
-  });
-
-  document.querySelectorAll(".nav-link").forEach(link => {
-    link.addEventListener("click", () => {
-      if (window.innerWidth <= 920) {
-        navigation.classList.remove("is-open");
-        menuToggle.setAttribute("aria-expanded", "false");
-      }
-    });
-  });
 }
 
 document.addEventListener("DOMContentLoaded", initializeHome);

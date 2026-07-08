@@ -1,87 +1,36 @@
+---
+layout: null
+title: Home
+---
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-  <title>Wireless Communications Laboratory</title>
-  <meta
-    name="description"
-    content="Official website of the Wireless Communications Laboratory."
-  />
-
-  <link rel="stylesheet" href="assets/css/style.css" />
+  <title>{{ site.title }}</title>
+  <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}" />
 </head>
-
 <body>
   <div class="site-layout">
-    <aside class="sidebar">
-      <div class="sidebar-header">
-        <div>
-          <h1 class="lab-name">Wireless Communications Laboratory</h1>
-          <p class="lab-subtitle">University Name · Department Name</p>
-        </div>
-
-        <button
-          class="menu-toggle"
-          type="button"
-          aria-label="Toggle navigation"
-          aria-expanded="false"
-          aria-controls="main-navigation"
-        >
-          ☰
-        </button>
-      </div>
-
-      <nav id="main-navigation" class="navigation" aria-label="Main navigation">
-        <ul class="nav-list">
-          <li>
-            <span class="nav-group-title">Home</span>
-            <ul class="subnav">
-              <li><a class="nav-link" href="#welcome">Welcome</a></li>
-            </ul>
-          </li>
-
-          <li><a class="nav-link" href="#news">News</a></li>
-
-          <li>
-            <span class="nav-group-title">People</span>
-            <ul class="subnav">
-              <li><a class="nav-link" href="#professor">Professor</a></li>
-              <li><a class="nav-link" href="#students">Students</a></li>
-            </ul>
-          </li>
-
-          <li><a class="nav-link" href="#research">Research Areas</a></li>
-          <li><a class="nav-link" href="#publications">Publications</a></li>
-          <li><a class="nav-link" href="#lectures">Lectures</a></li>
-          <li><a class="nav-link" href="#contact">Contact</a></li>
-        </ul>
-      </nav>
-
-      <div class="sidebar-footer">
-        © 2026 Wireless Communications Laboratory
-      </div>
-    </aside>
-
+    {% include sidebar.html %}
     <main class="main-content">
       <div class="content-wrapper">
         <section id="welcome" class="hero">
           <div class="hero-content">
             <p class="eyebrow">Wireless Communications Laboratory</p>
             <h2>Advancing intelligent and reliable wireless systems</h2>
-            <p>
-              Our laboratory conducts research on next-generation wireless
-              communications, MIMO systems, signal processing, machine learning,
-              and intelligent network optimization.
-            </p>
+            <p>Our laboratory conducts research on next-generation wireless communications, MIMO systems, signal processing, machine learning, and intelligent network optimization.</p>
           </div>
         </section>
 
         <section id="news">
-          <div class="section-heading">
-            <h2>News</h2>
-            <p>Recent activities, publications, awards, and laboratory announcements.</p>
+          <div class="section-heading section-heading-with-action">
+            <div>
+              <h2>News</h2>
+              <p>Recent activities, publications, awards, and laboratory announcements.</p>
+            </div>
+            <a class="more-link" href="{{ '/news/' | relative_url }}">More <span aria-hidden="true">＋</span></a>
           </div>
           <ul id="news-list" class="news-list"></ul>
         </section>
@@ -89,7 +38,6 @@
         <section id="professor">
           <div class="section-heading">
             <h2>Professor</h2>
-            <p>Principal investigator and laboratory director.</p>
           </div>
           <div id="professor-grid" class="people-grid"></div>
         </section>
@@ -97,25 +45,28 @@
         <section id="students">
           <div class="section-heading">
             <h2>Students</h2>
-            <p>Graduate students and undergraduate researchers.</p>
           </div>
           <div id="student-grid" class="people-grid"></div>
         </section>
 
         <section id="research">
-          <div class="section-heading">
-            <h2>Research Areas</h2>
-            <p>Core research themes of the laboratory.</p>
+          <div class="section-heading section-heading-with-action">
+            <div>
+              <h2>Research Areas</h2>
+              <p>Core research themes of the laboratory.</p>
+            </div>
+            <a class="more-link" href="{{ '/research/' | relative_url }}">More <span aria-hidden="true">＋</span></a>
           </div>
           <div id="research-grid" class="card-grid"></div>
         </section>
 
         <section id="publications">
-          <div class="section-heading">
-            <h2 id="publications-heading">Publications</h2>
-            <p id="publications-description">
-              Selected journal papers, conference papers, and patents.
-            </p>
+          <div class="section-heading section-heading-with-action">
+            <div>
+              <h2 id="publications-heading">Publications</h2>
+              <p id="publications-description">Selected journal papers, conference papers, and patents.</p>
+            </div>
+            <a class="more-link" href="{{ '/publications/' | relative_url }}">More <span aria-hidden="true">＋</span></a>
           </div>
 
           <div id="journal-group" class="publication-group">
@@ -140,9 +91,7 @@
               <h2>Lectures</h2>
               <p>Courses, lecture materials, and academic resources.</p>
             </div>
-            <a class="more-link" href="lectures/index.html">
-              More <span aria-hidden="true">＋</span>
-            </a>
+            <a class="more-link" href="{{ '/lectures/' | relative_url }}">More <span aria-hidden="true">＋</span></a>
           </div>
           <div id="lecture-grid" class="lecture-grid"></div>
         </section>
@@ -152,27 +101,14 @@
             <h2>Contact</h2>
             <p>Laboratory address and contact information.</p>
           </div>
-
           <div class="contact-box">
             <div>
               <h3>Office</h3>
-              <p>
-                Room 205, Bldg. 86, <br />
-                20 Changwondaehak-ro Uichang-gu Changwon-si, <br />
-                Gyeongsangnam-do, South Korea (51140) 
-              </p>
+              <p>Room 000, Engineering Building<br />University Name<br />City, Republic of Korea</p>
             </div>
-
             <div>
               <h3>Contact Information</h3>
-              <p>
-                Email:
-                <a class="text-link" href="mailto:sanggeun@changwon.ac.kr">
-                  sanggeun@changwon.ac.kr
-                </a>
-                <br />
-                Tel: +82-55-213-3963
-              </p>
+              <p>Email: <a class="text-link" href="mailto:professor@university.ac.kr">professor@university.ac.kr</a><br />Tel: +82-00-000-0000</p>
             </div>
           </div>
         </section>
@@ -180,6 +116,7 @@
     </main>
   </div>
 
-  <script src="assets/js/main.js"></script>
+  <script src="{{ '/assets/js/main.js' | relative_url }}"></script>
+  {% include mobile-nav-script.html %}
 </body>
 </html>

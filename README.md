@@ -1,8 +1,37 @@
-# Laboratory Website
+# Wireless Communications Laboratory Website
 
-The visual design is preserved from the original single-file HTML.
+## Windows local setup
 
-## Content management
+1. Install Ruby+Devkit from RubyInstaller.
+2. Close and reopen PowerShell.
+3. Check:
+
+```powershell
+ruby -v
+gem -v
+```
+
+4. Install Bundler:
+
+```powershell
+gem install bundler
+bundle -v
+```
+
+5. In the project folder:
+
+```powershell
+bundle install
+bundle exec jekyll serve --livereload
+```
+
+6. Open:
+
+```text
+http://127.0.0.1:4000
+```
+
+## Main content files
 
 - `data/news.json`
 - `data/people.json`
@@ -10,22 +39,16 @@ The visual design is preserved from the original single-file HTML.
 - `data/publications.json`
 - `data/lectures.json`
 
-Only publication items with `"showOnHome": true` are shown on the home page.
+## Shared sidebar
 
-The number of news items shown on the home page is controlled by:
+Edit only:
 
-```javascript
-const HOME_NEWS_LIMIT = 5;
+```text
+_includes/sidebar.html
 ```
 
-in `assets/js/main.js`.
+All pages reuse it through:
 
-## Local preview
-
-Run this command in the project root:
-
-```bash
-python -m http.server 8000
+```liquid
+{% include sidebar.html %}
 ```
-
-Then open `http://localhost:8000`.

@@ -1,0 +1,11 @@
+title: Wireless Communications Laboratory
+description: Official website of the Wireless Communications Laboratory.
+url: "https://loolooolloo.github.io"
+baseurl: ""
+
+markdown: kramdown
+permalink: pretty
+
+exclude:
+  - README.md
+  - vendor

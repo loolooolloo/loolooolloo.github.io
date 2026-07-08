@@ -1,132 +1,65 @@
+---
+layout: null
+title: Publications
+permalink: /publications/
+---
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-  <title>Publications · Wireless Communications Laboratory</title>
-  <meta
-    name="description"
-    content="Journal papers, conference papers, and patents of the Wireless Communications Laboratory."
-  />
-
-  <!-- Existing website stylesheet -->
-  <link rel="stylesheet" href="assets/css/style.css" />
+  <title>Publications · {{ site.title }}</title>
+  <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}" />
 </head>
-
 <body>
   <div class="site-layout">
-    <aside class="sidebar">
-      <div class="sidebar-header">
-        <div>
-          <h1 class="lab-name">Wireless Communications Laboratory</h1>
-          <p class="lab-subtitle">University Name · Department Name</p>
-        </div>
-
-        <button
-          class="menu-toggle"
-          type="button"
-          aria-label="Toggle navigation"
-          aria-expanded="false"
-          aria-controls="main-navigation"
-        >
-          ☰
-        </button>
-      </div>
-
-      <nav id="main-navigation" class="navigation" aria-label="Main navigation">
-        <ul class="nav-list">
-          <li><a class="nav-link" href="index.html#welcome">Home</a></li>
-          <li><a class="nav-link" href="index.html#news">News</a></li>
-
-          <li>
-            <span class="nav-group-title">People</span>
-            <ul class="subnav">
-              <li><a class="nav-link" href="index.html#professor">Professor</a></li>
-              <li><a class="nav-link" href="index.html#students">Students</a></li>
-            </ul>
-          </li>
-
-          <li><a class="nav-link" href="index.html#research">Research Areas</a></li>
-          <li><a class="nav-link" href="publications.html">Publications</a></li>
-          <li><a class="nav-link" href="index.html#lectures">Lectures</a></li>
-          <li><a class="nav-link" href="index.html#contact">Contact</a></li>
-        </ul>
-      </nav>
-
-      <div class="sidebar-footer">
-        © 2026 Wireless Communications Laboratory
-      </div>
-    </aside>
-
+    {% include sidebar.html %}
     <main class="main-content">
       <div class="content-wrapper">
         <header class="publications-page-header">
           <p class="eyebrow">Research Outputs</p>
           <h2>Publications</h2>
-          <p>
-            Journal papers, conference papers, and patents published by
-            members of the laboratory.
-          </p>
+          <p>Journal papers, conference papers, and patents published by members of the laboratory.</p>
         </header>
 
         <section id="journals">
           <div class="section-heading">
             <h2>Journal Papers</h2>
-            <p>
-              International journal papers are listed first, followed by
-              domestic journal papers. Each group is ordered from newest to oldest.
-            </p>
+            <p>International journals are listed first, followed by domestic journals.</p>
           </div>
-
           <div class="publication-subsection">
             <h3>International Journals</h3>
-            <ul
-              id="international-journal-list"
-              class="publication-list"
-              aria-live="polite"
-            ></ul>
+            <ul id="international-journal-list" class="publication-list"></ul>
           </div>
-
           <div class="publication-subsection">
             <h3>Domestic Journals</h3>
-            <ul
-              id="domestic-journal-list"
-              class="publication-list"
-              aria-live="polite"
-            ></ul>
+            <ul id="domestic-journal-list" class="publication-list"></ul>
           </div>
         </section>
 
         <section id="conference-papers">
-          <div class="section-heading">
-            <h2>Conference Papers</h2>
-            <p>Conference papers are ordered from newest to oldest.</p>
+          <div class="section-heading"><h2>Conference Papers</h2></div>
+          <div class="publication-subsection">
+            <h3>International Conferences</h3>
+            <ul id="international-conference-list" class="publication-list"></ul>
           </div>
-
-          <ul
-            id="conference-list"
-            class="publication-list"
-            aria-live="polite"
-          ></ul>
+          <div class="publication-subsection">
+            <h3>Domestic Conferences</h3>
+            <ul id="domestic-conference-list" class="publication-list"></ul>
+          </div>
         </section>
 
         <section id="patents">
-          <div class="section-heading">
-            <h2>Patents</h2>
-            <p>Patent applications and registrations are ordered from newest to oldest.</p>
-          </div>
-
-          <ul
-            id="patent-list"
-            class="publication-list"
-            aria-live="polite"
-          ></ul>
+          <div class="section-heading"><h2>Patents</h2></div>
+          <ul id="patent-list" class="publication-list"></ul>
         </section>
       </div>
     </main>
   </div>
 
-  <script src="assets/js/publications-page.js"></script>
+  <script src="{{ '/assets/js/publications-page.js' | relative_url }}"></script>
+  {% include mobile-nav-script.html %}
+  
 </body>
 </html>

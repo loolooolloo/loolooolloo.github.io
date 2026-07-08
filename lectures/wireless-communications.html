@@ -1,20 +1,35 @@
+---
+layout: null
+title: Wireless Communications
+permalink: /lectures/wireless-communications.html
+---
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Wireless Communications · Wireless Communications Laboratory</title>
-  <link rel="stylesheet" href="../assets/css/style.css" />
+  <title>Wireless Communications · {{ site.title }}</title>
+  <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}" />
 </head>
 <body>
-  <main class="detail-page">
-    <a class="back-link" href="../index.html">← Back to Home</a>
-    <article class="detail-content">
-      <p class="eyebrow">Wireless Communications Laboratory</p>
-      <h1>Wireless Communications</h1>
-      <p>Fundamentals of wireless channels, MIMO, and modern networks.</p>
-      <p>This detail page is a placeholder and can be expanded later.</p>
-    </article>
-  </main>
+  <div class="site-layout">
+    {% include sidebar.html %}
+    <main class="main-content">
+      <div class="content-wrapper">
+        <section id="lecture-detail">
+          <a class="back-link" href="{{ '/lectures/' | relative_url }}">← Back to Lectures</a>
+          <article class="detail-content">
+            <p class="eyebrow">Wireless Communications Laboratory</p>
+            <h1>Wireless Communications</h1>
+            <p>Fundamentals of wireless channels, MIMO, and modern networks.</p>
+            <p>This detail page is a placeholder and can be expanded later.</p>
+          </article>
+        </section>
+      </div>
+    </main>
+  </div>
+
+  {% include mobile-nav-script.html %}
 </body>
 </html>

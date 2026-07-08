@@ -1,36 +1,55 @@
+---
+layout: null
+title: Lectures
+permalink: /lectures/
+---
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Lectures · Wireless Communications Laboratory</title>
-  <link rel="stylesheet" href="../assets/css/style.css" />
+  <title>Lectures · {{ site.title }}</title>
+  <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}" />
 </head>
 <body>
-  <main class="detail-page">
-    <a class="back-link" href="../index.html#lectures">← Back to Home</a>
-    <div class="section-heading">
-      <h1>Lectures</h1>
-      <p>Complete list of courses and lecture materials.</p>
-    </div>
-    <div id="all-lecture-grid" class="lecture-grid"></div>
-  </main>
+  <div class="site-layout">
+    {% include sidebar.html %}
+    <main class="main-content">
+      <div class="content-wrapper">
+        <section id="all-lectures">
+          <div class="section-heading">
+            <h2>Lectures</h2>
+            <p>Complete list of courses and lecture materials.</p>
+          </div>
+          <div id="all-lecture-grid" class="lecture-grid"></div>
+        </section>
+      </div>
+    </main>
+  </div>
 
   <script>
-    async function loadLectures() {
-      const response = await fetch("../data/lectures.json");
-      const lectures = await response.json();
-      const container = document.getElementById("all-lecture-grid");
-
-      container.innerHTML = lectures.map(lecture => `
-        <a class="card clickable-card" href="../${lecture.detailPage}">
-          <h3>${lecture.name}</h3>
-          <p>${lecture.description}</p>
-        </a>
-      `).join("");
+    function escapeHtml(value = "") {
+      return String(value)
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#039;");
     }
 
-    document.addEventListener("DOMContentLoaded", loadLectures);
+    document.addEventListener("DOMContentLoaded", async () => {
+      const response = await fetch("{{ '/data/lectures.json' | relative_url }}");
+      const lectures = await response.json();
+      document.getElementById("all-lecture-grid").innerHTML = lectures.map(lecture => `
+        <a class="card clickable-card" href="{{ '/' | relative_url }}${escapeHtml(lecture.detailPage)}">
+          <h3>${escapeHtml(lecture.name)}</h3>
+          <p>${escapeHtml(lecture.description || "")}</p>
+        </a>
+      `).join("");
+    });
   </script>
+
+  {% include mobile-nav-script.html %}
 </body>
 </html>

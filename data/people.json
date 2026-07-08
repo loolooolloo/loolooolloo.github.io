@@ -1,11 +1,35 @@
 [
   {
-    "id": "professor-name",
+    "id": "Sanggeun Lee",
     "category": "professor",
-    "name": "Professor Name",
-    "role": "Associate Professor · Department Name",
+    "name": "Sanggeun Lee",
+    "role": "Principal Investigator",
     "research": "Research interests: wireless communications, MIMO, machine learning, and signal processing.",
-    "photo": "assets/images/professor.jpg",
+    "photo": "assets/images/people/SanggeunLee.jpg",
+    "email": "",
+    "homepage": "",
+    "content": [
+      "Professor profile, research vision, and laboratory leadership description can be maintained here.",
+      "This page is designed so that biography, career history, education, and selected publications can be edited from people.json."
+    ],
+    "education": [
+      {
+        "period": "Year-Year",
+        "title": "Ph.D. in Electrical and Computer Engineering",
+        "institution": "University Name"
+      }
+    ],
+    "experience": [
+      {
+        "period": "Year-Present",
+        "title": "Principal Investigator",
+        "institution": "Wireless Communications Laboratory"
+      }
+    ],
+    "selectedPublicationIds": [
+      "journal-int-2026-01",
+      "conference-int-2026-01"
+    ],
     "detailPage": "people/professor-name.html",
     "showOnHome": true
   },
@@ -17,7 +41,7 @@
     "research": "Hybrid beamforming and massive MIMO",
     "photo": "assets/images/student-1.jpg",
     "detailPage": "people/student-1.html",
-    "showOnHome": true
+    "showOnHome": false
   },
   {
     "id": "student-2",
@@ -27,6 +51,6 @@
     "research": "AI-based channel prediction",
     "photo": "assets/images/student-2.jpg",
     "detailPage": "people/student-2.html",
-    "showOnHome": true
+    "showOnHome": false
   }
 ]

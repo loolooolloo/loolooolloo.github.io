@@ -1,0 +1,66 @@
+<aside class="sidebar">
+  <div class="sidebar-header">
+    <div>
+      <h1 class="lab-name">
+        <a href="{{ '/' | relative_url }}">
+          Wireless Communications Laboratory
+        </a>
+      </h1>
+      <p class="lab-subtitle">University Name · Department Name</p>
+    </div>
+
+    <button
+      class="menu-toggle"
+      type="button"
+      aria-label="Toggle navigation"
+      aria-expanded="false"
+      aria-controls="main-navigation"
+    >
+      ☰
+    </button>
+  </div>
+
+  <nav id="main-navigation" class="navigation" aria-label="Main navigation">
+    <ul class="nav-list">
+      <li>
+        <a class="nav-link" href="{{ '/' | relative_url }}#welcome">Home</a>
+      </li>
+
+      <li>
+        <a class="nav-link" href="{{ '/' | relative_url }}#news">News</a>
+      </li>
+
+      <li>
+        <span class="nav-group-title">People</span>
+        <ul class="subnav">
+          <li>
+            <a class="nav-link" href="{{ '/' | relative_url }}#professor">Professor</a>
+          </li>
+          <li id="students-nav-item">
+            <a class="nav-link" href="{{ '/' | relative_url }}#students">Students</a>
+          </li>
+        </ul>
+      </li>
+
+      <li id="research-nav-item">
+        <a class="nav-link" href="{{ '/' | relative_url }}#research">Research Areas</a>
+      </li>
+
+      <li>
+        <a class="nav-link" href="{{ '/' | relative_url }}#publications">Publications</a>
+      </li>
+
+      <li>
+        <a class="nav-link" href="{{ '/' | relative_url }}#lectures">Lectures</a>
+      </li>
+
+      <li>
+        <a class="nav-link" href="{{ '/' | relative_url }}#contact">Contact</a>
+      </li>
+    </ul>
+  </nav>
+
+  <div class="sidebar-footer">
+    © {{ 'now' | date: "%Y" }} Wireless Communications Laboratory
+  </div>
+</aside>

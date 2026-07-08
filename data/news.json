@@ -1,20 +1,41 @@
 [
   {
-    "date": "2026-06-12",
-    "dateLabel": "June 2026",
-    "title": "New laboratory website launched",
-    "description": "The official website of the laboratory is now available."
+    "id": "news-2026-06-12",
+    "year": "2026",
+    "month": "6",
+    "day": "12",
+    "title": "New Laboratory Website Launched",
+    "image": "assets/images/news/lab-website-launch.jpg",
+    "imageAlt": "Laboratory website displayed on a monitor",
+    "content": [
+      "The official website of the laboratory is now available.",
+      "The website provides information on research areas, laboratory members, publications, lectures, and recent activities."
+    ]
   },
   {
-    "date": "2026-05-20",
-    "dateLabel": "May 2026",
-    "title": "Paper accepted for publication",
-    "description": "Add the journal or conference title and publication details here."
+    "id": "news-2026-06-03",
+    "year": "2026",
+    "month": "6",
+    "day": "3",
+    "title": "Paper Accepted for Publication",
+    "image": "",
+    "imageAlt": "",
+    "content": [
+      "A new paper has been accepted for publication.",
+      "Bibliographic information and related links can be added to this news item."
+    ]
   },
   {
-    "date": "2026-04-03",
-    "dateLabel": "April 2026",
-    "title": "New research project started",
-    "description": "Add a brief description of the project here."
+    "id": "news-2026-05-20",
+    "year": "2026",
+    "month": "5",
+    "day": "20",
+    "title": "New Research Project Started",
+    "image": "assets/images/news/new-project.jpg",
+    "imageAlt": "Research project meeting",
+    "content": [
+      "The laboratory has started a new research project.",
+      "Project objectives, participating institutions, and expected outcomes can be described here."
+    ]
   }
 ]

@@ -1,0 +1,62 @@
+---
+layout: null
+title: Research Areas
+permalink: /research/
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Research Areas · {{ site.title }}</title>
+  <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}" />
+</head>
+
+<body>
+  <div class="site-layout">
+    {% include sidebar.html %}
+
+    <main class="main-content">
+      <div class="content-wrapper">
+        <header class="research-page-header">
+          <p class="eyebrow">Research</p>
+          <h2>Research Areas</h2>
+          <p>Core research themes of the Wireless Communications Laboratory.</p>
+        </header>
+
+        <div class="research-cover">
+          <img
+            src="{{ '/assets/images/research-cover-dummy.jpg' | relative_url }}"
+            alt="Research overview placeholder"
+          />
+        </div>
+
+        <div class="research-divider" aria-hidden="true"></div>
+
+        <section id="research-items">
+          <div class="section-heading">
+            <h2>Research Topics</h2>
+            <p>
+              Select a research area to view its detailed description,
+              related projects, and representative publications.
+            </p>
+          </div>
+
+          <div id="all-research-grid" class="research-card-grid"></div>
+        </section>
+      </div>
+    </main>
+  </div>
+
+  <script>
+    window.RESEARCH_DATA_PATH =
+      "{{ '/data/research.json' | relative_url }}";
+    window.SITE_BASE_URL =
+      "{{ '/' | relative_url }}";
+  </script>
+
+  <script src="{{ '/assets/js/research-page.js' | relative_url }}"></script>
+  {% include mobile-nav-script.html %}
+</body>
+</html>

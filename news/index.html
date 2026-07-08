@@ -1,0 +1,61 @@
+---
+layout: null
+title: News
+permalink: /news/
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>News · {{ site.title }}</title>
+
+  <link
+    rel="stylesheet"
+    href="{{ '/assets/css/style.css' | relative_url }}"
+  />
+</head>
+
+<body>
+  <div class="site-layout">
+    {% include sidebar.html %}
+
+    <main class="main-content">
+      <div class="content-wrapper">
+        <header class="news-page-header">
+          <p class="eyebrow">Laboratory Updates</p>
+          <h2>News</h2>
+          <p>
+            Recent activities, publications, awards, projects,
+            and laboratory announcements.
+          </p>
+        </header>
+
+        <section id="all-news">
+          <div
+            id="news-month-groups"
+            class="news-month-groups"
+            aria-live="polite"
+          ></div>
+        </section>
+      </div>
+    </main>
+  </div>
+
+  <script>
+    window.NEWS_DATA_PATH =
+      "{{ '/data/news.json' | relative_url }}";
+
+    window.SITE_BASE_URL =
+      "{{ '/' | relative_url }}";
+  </script>
+
+  <script
+    src="{{ '/assets/js/news-page.js' | relative_url }}"
+  ></script>
+
+  {% include mobile-nav-script.html %}
+</body>
+</html>
