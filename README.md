@@ -38,6 +38,7 @@ http://127.0.0.1:4000
 - `data/research.json`
 - `data/publications.json`
 - `data/lectures.json`
+- `data/site.json`
 
 ## Shared sidebar
 
@@ -52,3 +53,14 @@ All pages reuse it through:
 ```liquid
 {% include sidebar.html %}
 ```
+
+
+## Data validation
+
+Run the JSON consistency checker before publishing content changes:
+
+```sh
+node scripts/validate-data.js
+```
+
+The checker fails on broken JSON, duplicate IDs, invalid categories/types, missing detail pages, and broken publication references. Missing image assets are reported as warnings so placeholder content can still be staged while the site remains buildable.

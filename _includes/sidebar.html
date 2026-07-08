@@ -2,11 +2,15 @@
   <div class="sidebar-header">
     <div>
       <h1 class="lab-name">
-        <a href="{{ '/' | relative_url }}">
+        <a href="{{ '/' | relative_url }}" data-site-field="labName">
           Wireless Communications Laboratory
         </a>
       </h1>
-      <p class="lab-subtitle">University Name · Department Name</p>
+      <p class="lab-subtitle" id="lab-subtitle">
+        <span data-site-field="universityName" id="site-university-name">University Name</span>
+        <span class="site-subtitle-separator" id="site-subtitle-separator" hidden>·</span>
+        <span data-site-field="departmentName" id="site-department-name">Department Name</span>
+      </p>
     </div>
 
     <button
@@ -61,6 +65,6 @@
   </nav>
 
   <div class="sidebar-footer">
-    © {{ 'now' | date: "%Y" }} Wireless Communications Laboratory
+    © {{ 'now' | date: "%Y" }} <span data-site-field="labName">Wireless Communications Laboratory</span>
   </div>
 </aside>
