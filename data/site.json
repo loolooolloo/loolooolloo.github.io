@@ -1,17 +1,17 @@
 {
-  "labName": "Wireless Communications Laboratory",
-  "universityName": "University Name",
-  "departmentName": "Department Name",
+  "labName": "Advanced Wireless Communications Lab.",
+  "universityName": "",
+  "departmentName": "",
   "description": "Official website of the Wireless Communications Laboratory.",
   "contact": {
     "officeTitle": "Office",
     "officeLines": [
-      "Room 000, Engineering Building",
-      "University Name",
-      "City, Republic of Korea"
+      "Room 205, Bldg. 86,",
+      "Changwon National University",
+      "Changwon-si, Republic of Korea"
     ],
     "contactTitle": "Contact Information",
-    "email": "professor@university.ac.kr",
-    "telephone": "+82-00-000-0000"
+    "email": "sanggeun.lee@changwon.ac.kr",
+    "telephone": "+82-55-213-3963"
   }
 }
