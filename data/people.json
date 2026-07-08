@@ -14,23 +14,36 @@
     ],
     "education": [
       {
-        "period": "Year-Year",
-        "title": "Ph.D. in Electrical and Computer Engineering",
-        "institution": "University Name"
+        "period": "2009-2013",
+        "title": "B.S. in Electrical and Electronic Engineering",
+        "institution": "Yonsei University"
+      },
+      {
+        "period": "2013-2019",
+        "title": "Ph.D. in Electrical and Electronic Engineering",
+        "institution": "Yonsei University"
       }
     ],
     "experience": [
       {
-        "period": "Year-Present",
-        "title": "Principal Investigator",
-        "institution": "Wireless Communications Laboratory"
+        "period": "2019.09-2025.06",
+        "title": "Staff Engineer",
+        "institution": "Samsung Electronics"
+      },
+      {
+        "period": "2025.07-Present",
+        "title": "Assistant Professor",
+        "institution": "Changwon National University"
       }
     ],
     "selectedPublicationIds": [
-      "journal-int-2026-01",
-      "conference-int-2026-01"
+      "journal-int-2025-02",
+      "journal-int-2025-01",
+      "journal-int-2024-01",
+      "journal-int-2019-02",
+      "journal-int-2019-01"
     ],
-    "detailPage": "people/professor-name.html",
+    "detailPage": "people/SanggeunLee.html",
     "showOnHome": true
   },
   {
