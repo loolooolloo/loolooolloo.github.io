@@ -41,7 +41,14 @@
     "research": "Hybrid beamforming and massive MIMO",
     "photo": "assets/images/student-1.jpg",
     "detailPage": "people/student-1.html",
-    "showOnHome": false
+    "showOnHome": false,
+    "email": "",
+    "homepage": "",
+    "content": [
+      "Student Name 1 profile details can be maintained from people.json."
+    ],
+    "education": [],
+    "experience": []
   },
   {
     "id": "student-2",
@@ -51,6 +58,13 @@
     "research": "AI-based channel prediction",
     "photo": "assets/images/student-2.jpg",
     "detailPage": "people/student-2.html",
-    "showOnHome": false
+    "showOnHome": false,
+    "email": "",
+    "homepage": "",
+    "content": [
+      "Student Name 2 profile details can be maintained from people.json."
+    ],
+    "education": [],
+    "experience": []
   }
 ]

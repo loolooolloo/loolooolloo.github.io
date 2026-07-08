@@ -19,16 +19,49 @@ permalink: /people/student-1.html
       <div class="content-wrapper">
         <section>
           <a class="back-link" href="{{ '/' | relative_url }}#students">← Back to People</a>
-          <article class="detail-content">
-            <p class="eyebrow">Wireless Communications Laboratory</p>
-            <h1>Student Name 1</h1>
-            <p>Ph.D. Student. Hybrid beamforming and massive MIMO</p>
-            <p>This detail page is a placeholder and can be expanded later.</p>
+          <article class="detail-content person-detail-content">
+            <div class="person-detail-header">
+              <div id="person-detail-photo-frame" class="person-detail-photo-frame" hidden>
+                <img id="person-detail-photo" class="person-detail-photo" src="" alt="" />
+              </div>
+
+              <div>
+                <p class="eyebrow">Laboratory Member</p>
+                <h1 id="person-detail-name">Student Name 1</h1>
+                <p id="person-detail-role" class="person-detail-role"></p>
+                <p id="person-detail-research"></p>
+                <div id="person-detail-links" class="person-detail-links" hidden></div>
+              </div>
+            </div>
+
+            <div id="person-detail-content" class="person-detail-body"></div>
+
+            <section id="person-experience-section" class="person-detail-section" hidden>
+              <h2>Experience</h2>
+              <ul id="person-experience-list" class="timeline-list"></ul>
+            </section>
+
+            <section id="person-education-section" class="person-detail-section" hidden>
+              <h2>Education</h2>
+              <ul id="person-education-list" class="timeline-list"></ul>
+            </section>
+
+            <section id="person-publications-section" class="person-detail-section" hidden>
+              <h2>Selected Publications</h2>
+              <ul id="person-publications-list" class="publication-list"></ul>
+            </section>
           </article>
         </section>
       </div>
     </main>
   </div>
+  <script>
+    window.PERSON_ID = "student-1";
+    window.PERSON_DATA_PATH = "{{ '/data/people.json' | relative_url }}";
+    window.PERSON_PUBLICATIONS_DATA_PATH = "{{ '/data/publications.json' | relative_url }}";
+    window.PERSON_SITE_BASE_URL = "{{ '/' | relative_url }}";
+  </script>
+  <script src="{{ '/assets/js/person-detail-page.js' | relative_url }}"></script>
   {% include mobile-nav-script.html %}
 </body>
 </html>
