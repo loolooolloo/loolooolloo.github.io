@@ -20,6 +20,71 @@
     });
   }
 
+
+
+  function escapeSiteHtml(value = "") {
+    return String(value)
+      .replaceAll("&", "&amp;")
+      .replaceAll("<", "&lt;")
+      .replaceAll(">", "&gt;")
+      .replaceAll('"', "&quot;")
+      .replaceAll("'", "&#039;");
+  }
+
+  function getNestedValue(object, path) {
+    return path.split(".").reduce((current, key) => {
+      return current && current[key] !== undefined ? current[key] : undefined;
+    }, object);
+  }
+
+  function renderContactInfo(site) {
+    const contact = site.contact || {};
+    const officeTitle = document.getElementById("contact-office-title");
+    const officeLines = document.getElementById("contact-office-lines");
+    const contactTitle = document.getElementById("contact-info-title");
+    const contactDetails = document.getElementById("contact-info-details");
+
+    if (officeTitle) officeTitle.textContent = contact.officeTitle || "Office";
+
+    if (officeLines) {
+      officeLines.innerHTML = Array.isArray(contact.officeLines)
+        ? contact.officeLines.map(line => `<span>${escapeSiteHtml(line)}</span>`).join("<br />")
+        : "";
+    }
+
+    if (contactTitle) {
+      contactTitle.textContent = contact.contactTitle || "Contact Information";
+    }
+
+    if (contactDetails) {
+      const email = contact.email
+        ? `Email: <a class="text-link" href="mailto:${escapeSiteHtml(contact.email)}">${escapeSiteHtml(contact.email)}</a>`
+        : "";
+      const telephone = contact.telephone ? `Tel: ${escapeSiteHtml(contact.telephone)}` : "";
+      contactDetails.innerHTML = [email, telephone].filter(Boolean).join("<br />");
+    }
+  }
+
+  async function updateSiteMetadata() {
+    try {
+      const response = await fetch("{{ '/data/site.json' | relative_url }}");
+      if (!response.ok) return;
+
+      const site = await response.json();
+
+      document.querySelectorAll("[data-site-field]").forEach(element => {
+        const value = getNestedValue(site, element.dataset.siteField);
+        if (value !== undefined && value !== null) {
+          element.textContent = value;
+        }
+      });
+
+      renderContactInfo(site);
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
   async function updatePeopleNavigation() {
     const studentsNavItem = document.getElementById("students-nav-item");
 
@@ -61,6 +126,7 @@
   }
 
   document.addEventListener("DOMContentLoaded", initializeMobileNavigation);
+  document.addEventListener("DOMContentLoaded", updateSiteMetadata);
   document.addEventListener("DOMContentLoaded", updatePeopleNavigation);
   document.addEventListener("DOMContentLoaded", updateResearchNavigation);
 </script>

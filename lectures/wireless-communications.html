@@ -21,15 +21,25 @@ permalink: /lectures/wireless-communications.html
           <a class="back-link" href="{{ '/lectures/' | relative_url }}">← Back to Lectures</a>
           <article class="detail-content">
             <p class="eyebrow">Wireless Communications Laboratory</p>
-            <h1>Wireless Communications</h1>
-            <p>Fundamentals of wireless channels, MIMO, and modern networks.</p>
-            <p>This detail page is a placeholder and can be expanded later.</p>
+            <h1 id="lecture-detail-title">Wireless Communications</h1>
+            <p id="lecture-detail-description"></p>
+            <div id="lecture-detail-content" class="person-detail-body"></div>
+            <section id="lecture-materials-section" class="person-detail-section" hidden>
+              <h2>Lecture Materials</h2>
+              <ul id="lecture-materials-list" class="publication-list"></ul>
+            </section>
           </article>
         </section>
       </div>
     </main>
   </div>
 
+  <script>
+    window.LECTURE_ID = "wireless-communications";
+    window.LECTURE_DATA_PATH = "{{ '/data/lectures.json' | relative_url }}";
+    window.LECTURE_SITE_BASE_URL = "{{ '/' | relative_url }}";
+  </script>
+  <script src="{{ '/assets/js/lecture-detail-page.js' | relative_url }}"></script>
   {% include mobile-nav-script.html %}
 </body>
 </html>
