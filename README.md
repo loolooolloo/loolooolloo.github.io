@@ -1,4 +1,4 @@
-# Wireless Communications Laboratory Website
+# Wireless Intelligence and Optimization Lab. Website
 
 ## Windows local setup
 
