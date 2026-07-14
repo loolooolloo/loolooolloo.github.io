@@ -4,20 +4,32 @@
     "name": "Machine Learning",
     "description": "Graduate-level course on probabilistic machine learning.",
     "detailPage": "lectures/machine-learning.html",
-    "showOnHome": true
+    "showOnHome": true,
+    "content": [
+      "Machine Learning lecture details can be maintained from lectures.json."
+    ],
+    "materials": []
   },
   {
     "id": "wireless-communications",
     "name": "Wireless Communications",
     "description": "Fundamentals of wireless channels, MIMO, and modern networks.",
     "detailPage": "lectures/wireless-communications.html",
-    "showOnHome": true
+    "showOnHome": true,
+    "content": [
+      "Wireless Communications lecture details can be maintained from lectures.json."
+    ],
+    "materials": []
   },
   {
     "id": "ai-aerospace-networks",
     "name": "AI for Aerospace Networks",
     "description": "AI applications in satellite, aerial, and integrated communication networks.",
     "detailPage": "lectures/ai-aerospace-networks.html",
-    "showOnHome": true
+    "showOnHome": true,
+    "content": [
+      "AI for Aerospace Networks lecture details can be maintained from lectures.json."
+    ],
+    "materials": []
   }
 ]

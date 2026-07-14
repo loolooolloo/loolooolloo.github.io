@@ -1,0 +1,17 @@
+{
+  "labName": "Wireless Intelligence\nand Optimization Lab.",
+  "universityName": "University Name",
+  "departmentName": "Department Name",
+  "description": "Official website of the Wireless Communications Laboratory.",
+  "contact": {
+    "officeTitle": "Office",
+    "officeLines": [
+      "Room 000, Engineering Building",
+      "University Name",
+      "City, Republic of Korea"
+    ],
+    "contactTitle": "Contact Information",
+    "email": "professor@university.ac.kr",
+    "telephone": "+82-00-000-0000"
+  }
+}
