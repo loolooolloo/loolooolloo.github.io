@@ -153,42 +153,76 @@
     }
 
     .hero {
-      min-height: 72vh;
-      display: flex;
-      align-items: center;
-      padding: 72px;
-      border-radius: 20px;
-      background:
-        linear-gradient(rgba(18, 31, 48, 0.78), rgba(18, 31, 48, 0.78)),
-        url("assets/images/lab-cover.jpg") center / cover no-repeat;
-      color: #ffffff;
+      padding: 0;
+    }
+
+    .hero-visual {
+      max-width: 1040px;
+      margin: 0 auto;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      background: #ffffff;
+      box-shadow: 0 16px 44px rgba(24, 36, 52, 0.07);
+    }
+
+    .hero-visual img {
+      width: 100%;
+      aspect-ratio: 1840 / 858;
+      object-fit: contain;
     }
 
     .hero-content {
-      max-width: 760px;
+      max-width: 900px;
+      margin-top: 34px;
     }
 
     .eyebrow {
       margin: 0 0 16px;
-      color: #b7d9ed;
-      font-size: 0.85rem;
+      color: #326f8f;
+      font-size: 0.98rem;
       font-weight: 700;
-      letter-spacing: 0.13em;
-      text-transform: uppercase;
+      letter-spacing: -0.01em;
+      word-break: keep-all;
     }
 
     .hero h2 {
       margin: 0;
-      font-size: clamp(2.4rem, 5vw, 4.8rem);
-      line-height: 1.08;
-      letter-spacing: -0.045em;
+      font-size: clamp(1.75rem, 2.45vw, 2.55rem);
+      line-height: 1.2;
+      letter-spacing: -0.035em;
+      word-break: keep-all;
+    }
+
+    .hero-title {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      column-gap: 0.28em;
+      row-gap: 0.06em;
+      max-width: 1120px;
+    }
+
+    .hero-title-ko,
+    .hero-title-separator {
+      flex: 0 0 auto;
+      white-space: nowrap;
+    }
+
+    .hero-title-en {
+      flex: 1 1 520px;
+      min-width: min(100%, 520px);
     }
 
     .hero p {
-      max-width: 690px;
-      margin: 24px 0 0;
-      color: #dce7ef;
-      font-size: 1.08rem;
+      max-width: 880px;
+      margin: 18px 0 0;
+      color: var(--muted);
+      font-size: 1.04rem;
+    }
+
+    .hero-description-ko {
+      word-break: keep-all;
     }
 
     section {
@@ -428,8 +462,7 @@
       }
 
       .hero {
-        min-height: 62vh;
-        padding: 42px 28px;
+        padding: 0;
       }
 
       .card-grid,
@@ -452,7 +485,36 @@
       }
 
       .hero {
+        padding: 0;
+      }
+
+      .hero-visual {
         border-radius: 14px;
+      }
+
+      .hero-content {
+        margin-top: 24px;
+      }
+
+      .hero h2 {
+        font-size: clamp(1.85rem, 8vw, 2.45rem);
+      }
+
+      .hero-title {
+        display: block;
+      }
+
+      .hero-title-ko,
+      .hero-title-en {
+        display: block;
+      }
+
+      .hero-title-separator {
+        display: none;
+      }
+
+      .hero-title-en {
+        margin-top: 4px;
       }
 
       section {
