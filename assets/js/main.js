@@ -109,7 +109,6 @@ function renderNews(news) {
           <p class="item-title">
             ${escapeHtml(item.title)}
           </p>
-
         </div>
       </li>
     `)
