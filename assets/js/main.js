@@ -50,18 +50,6 @@ function comparePublicationsByDate(a, b) {
   return getPublicationTimestamp(b) - getPublicationTimestamp(a);
 }
 
-function getNewsSummary(item) {
-  if (Array.isArray(item.content) && item.content.length > 0) {
-    return item.content[0];
-  }
-
-  if (typeof item.content === "string") {
-    return item.content;
-  }
-
-  return item.description || "";
-}
-
 function getNewsTimestamp(item) {
   const year = parseOptionalInteger(item.year);
   const month = parseOptionalInteger(item.month);
@@ -122,9 +110,6 @@ function renderNews(news) {
             ${escapeHtml(item.title)}
           </p>
 
-          <p class="item-description">
-            ${escapeHtml(getNewsSummary(item))}
-          </p>
         </div>
       </li>
     `)
