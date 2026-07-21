@@ -1,57 +1,113 @@
 [
   {
-    "id": "next-generation-wireless",
-    "name": "Next-Generation Wireless Communications",
-    "description": "5G-Advanced, 6G, satellite communications, and integrated terrestrial–non-terrestrial networks.",
-    "image": "assets/images/research-next-generation-wireless.jpg",
-    "detailImage": "assets/images/research-next-generation-wireless.jpg",
-    "imageAlt": "Next-generation wireless communications research",
+    "id": "ai-wireless",
+    "titleKo": "무선통신을 위한 인공지능",
+    "titleEn": "AI for Wireless Communications",
+    "name": "AI for Wireless Communications",
+    "description": "통신 도메인 지식과 데이터 기반 학습을 결합한 채널 예측, 수신기 선택 및 물리계층 적응 기술.",
+    "summary": "무선통신 시스템의 채널 추정, 채널 예측, 수신기 선택, 물리계층 적응을 위한 인공지능 기술을 연구합니다. 기존 통신 알고리즘을 단순히 신경망으로 대체하는 것이 아니라, 통신 도메인 지식과 데이터 기반 학습을 결합하여 실제 채널 및 시스템 제약 하에서 신뢰도, 효율성, 적응성을 높이는 방향을 지향합니다.",
     "content": [
-      "This research area focuses on next-generation wireless systems, including 5G-Advanced, 6G, satellite communications, and integrated terrestrial and non-terrestrial networks.",
-      "Detailed descriptions of research goals, methodologies, projects, and collaborations can be maintained here."
+      "무선통신 시스템의 채널 추정, 채널 예측, 수신기 선택, 물리계층 적응을 위한 인공지능 기술을 연구합니다.",
+      "기존 통신 알고리즘을 단순히 신경망으로 대체하는 것이 아니라, 통신 도메인 지식과 데이터 기반 학습을 결합하여 실제 채널 및 시스템 제약 하에서 신뢰도, 효율성, 적응성을 높이는 방향을 지향합니다.",
+      "최근에는 시변 MIMO 채널 예측, 저복잡도 AI 기반 수신기 선택, pilot 및 물리계층 파라미터 적응과 같이 동적인 무선 환경에서 AI가 예측·선택·보정 역할을 수행하는 문제에 관심을 두고 있습니다."
+    ],
+    "topics": [
+      "AI-aided channel estimation: spatially correlated MIMO 채널 추정 및 channel reconstruction",
+      "Time-varying channel prediction: DNN/LSTM 기반 시변 채널 예측 및 잡음에 강인한 학습",
+      "Learning-assisted receiver selection: 채널 및 SNR 조건에 따른 MIMO 수신기 선택",
+      "Hybrid MIMO receivers: ZF/ML receiver의 성능-복잡도 trade-off를 고려한 적응형 검출",
+      "Pilot and PHY-layer adaptation: 채널 상태에 따른 pilot spacing 및 물리계층 동작 적응",
+      "Lightweight and explainable wireless AI: 실제 무선 시스템 적용을 고려한 저복잡도·해석 가능한 AI"
+    ],
+    "keywords": [
+      "wireless AI",
+      "channel intelligence",
+      "intelligent receivers",
+      "model-aware learning",
+      "reliable AI"
     ],
     "relatedPublicationIds": [
-      "journal-int-2026-01"
+      "journal-int-2025-01",
+      "journal-int-2024-01",
+      "journal-dom-2026-01",
+      "journal-dom-2024-01",
+      "conference-int-2024-01"
     ],
-    "detailPage": "research/next-generation-wireless.html",
-    "showOnHome": false,
+    "detailPage": "research/ai-communications.html",
+    "showOnHome": true,
     "showOnResearchPage": true
   },
   {
     "id": "mimo-beamforming",
-    "name": "MIMO and Beamforming",
-    "description": "Massive MIMO, hybrid beamforming, precoding, detection, and multi-user transmission.",
-    "image": "assets/images/research-mimo-beamforming.jpg",
-    "detailImage": "assets/images/research-mimo-beamforming.jpg",
-    "imageAlt": "MIMO and beamforming research",
+    "titleKo": "MIMO 신호처리 및 빔포밍",
+    "titleEn": "MIMO Signal Processing and Beamforming",
+    "name": "MIMO Signal Processing and Beamforming",
+    "description": "MIMO detection, pilot 설계, CSI feedback, spatial signaling, precoding 및 hybrid beamforming 연구.",
+    "summary": "다중 안테나 무선 시스템을 위한 MIMO detection, pilot 설계, CSI feedback, 공간 도메인 신호 설계, precoding, hybrid beamforming 기술을 연구합니다. 실제 채널 환경, feedback overhead, 하드웨어 제약을 고려한 통신 알고리즘을 설계하여 주파수 효율, 링크 신뢰도, 계산 효율을 개선하는 것을 목표로 합니다.",
     "content": [
-      "This research area covers massive MIMO, hybrid beamforming, precoding, detection, and multi-user transmission.",
-      "Detailed descriptions of algorithms, system models, experiments, and representative results can be maintained here."
+      "다중 안테나 무선 시스템을 위한 MIMO detection, pilot 설계, CSI feedback, 공간 도메인 신호 설계, precoding, hybrid beamforming 기술을 연구합니다.",
+      "실제 채널 환경, feedback overhead, 하드웨어 제약을 고려한 통신 알고리즘을 설계하여 주파수 효율, 링크 신뢰도, 계산 효율을 개선하는 것을 목표로 합니다.",
+      "특히 MIMO-OFDM pilot spacing, 저복잡도 MIMO 수신기, generalized spatial modulation, partial CSI 기반 multi-user hybrid beamforming과 같이 다중 안테나 시스템의 성능과 구현 복잡도를 함께 고려하는 연구를 수행합니다."
+    ],
+    "topics": [
+      "MIMO detection and receiver design: ZF, ML, MMSE 기반 수신기 및 저복잡도 검출",
+      "MIMO-OFDM pilot design: pilot spacing, pilot overhead 및 throughput trade-off 분석",
+      "CSI feedback and channel acquisition: limited feedback, covariance feedback 및 explicit CSI feedback",
+      "Precoding and beamforming: coded MIMO-OFDM precoding, cyclic delay diversity 및 multi-user beamforming",
+      "Hybrid beamforming under partial CSI: mmWave massive MU-MIMO를 위한 RF/baseband beamforming",
+      "Spatial-domain signaling: generalized spatial modulation 및 transmit antenna combination"
+    ],
+    "keywords": [
+      "MIMO",
+      "massive MIMO",
+      "MIMO-OFDM",
+      "hybrid beamforming",
+      "precoding"
     ],
     "relatedPublicationIds": [
-      "journal-int-2026-01",
-      "conference-int-2026-01"
+      "journal-int-2025-02",
+      "journal-int-2019-01",
+      "conference-int-2024-01"
     ],
     "detailPage": "research/mimo-beamforming.html",
-    "showOnHome": false,
+    "showOnHome": true,
     "showOnResearchPage": true
   },
   {
-    "id": "ai-communications",
-    "name": "AI for Communications",
-    "description": "Machine learning for channel prediction, receiver design, resource allocation, and network optimization.",
-    "image": "assets/images/research-ai-communications.jpg",
-    "detailImage": "assets/images/research-ai-communications.jpg",
-    "imageAlt": "AI for communications research",
+    "id": "next-generation-wireless-systems",
+    "titleKo": "차세대 무선 시스템 설계 및 운용",
+    "titleEn": "Design and Operation of Next-Generation Wireless Systems",
+    "name": "Design and Operation of Next-Generation Wireless Systems",
+    "description": "표준 구조와 실제 셀룰러 운용 제약을 고려한 기준신호, 피드백, 스케줄링 및 자원 관리 연구.",
+    "summary": "차세대 무선 시스템의 실제 셀룰러 운용 제약을 고려한 설계 및 운용 기술을 연구합니다. 기준신호 설계, CSI feedback, scheduling, HARQ operation, flexible duplexing, resource management 등을 중심으로 신뢰성 있고 효율적인 무선 네트워크 운용 방안을 다룹니다.",
     "content": [
-      "This research area studies machine learning methods for channel prediction, receiver design, resource allocation, and network optimization.",
-      "Detailed descriptions of learning models, datasets, evaluation settings, and deployment scenarios can be maintained here."
+      "차세대 무선 시스템의 실제 셀룰러 운용 제약을 고려한 설계 및 운용 기술을 연구합니다.",
+      "기준신호 설계, CSI feedback, scheduling, HARQ operation, flexible duplexing, resource management 등을 중심으로 신뢰성 있고 효율적인 무선 네트워크 운용 방안을 다룹니다.",
+      "특히 표준 구조와 signaling/resource 제약을 고려한 standards-aware system design에 관심을 두며, 알고리즘 설계가 실제 기지국·단말 동작 및 자원 배치와 어떻게 연결되는지를 함께 고려합니다."
+    ],
+    "topics": [
+      "Standards-aware wireless operation: 표준 구조와 signaling 제약을 고려한 시스템 설계",
+      "Reference signal design: CSI-RS, SRS 및 채널 측정용 기준신호 운용",
+      "Feedback procedures: CSI/CQI/PMI/RI feedback 및 채널 정보 획득 절차",
+      "Scheduling and resource management: PDSCH/SRS scheduling, 자원 배치 및 링크 적응",
+      "HARQ and flexible duplex operation: 재전송, duplexing mode selection 및 간섭 관리",
+      "NR-MIMO and vertical services: FD-MIMO, NR-MIMO, grant-free access 및 mMTC 지원"
+    ],
+    "keywords": [
+      "next-generation wireless systems",
+      "reference signals",
+      "channel feedback",
+      "HARQ",
+      "beam management"
     ],
     "relatedPublicationIds": [
-      "conference-int-2026-01"
+      "journal-int-2019-02",
+      "patent-us-2025-01",
+      "patent-kr-2025-01",
+      "patent-us-2019-01"
     ],
-    "detailPage": "research/ai-communications.html",
-    "showOnHome": false,
+    "detailPage": "research/next-generation-wireless.html",
+    "showOnHome": true,
     "showOnResearchPage": true
   }
 ]

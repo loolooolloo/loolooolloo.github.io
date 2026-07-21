@@ -69,7 +69,7 @@
     "doi": "https://doi.org/10.1109/LWC.2019.2918515",
     "pdf": "",
     "code": "",
-    "showOnHome": true
+    "showOnHome": false
   },
   {
     "id": "journal-int-2019-01",
@@ -87,7 +87,7 @@
     "doi": "https://doi.org/10.1109/TVT.2019.2909527",
     "pdf": "",
     "code": "",
-    "showOnHome": true
+    "showOnHome": false
   },
   {
     "id": "journal-dom-2026-01",
@@ -175,7 +175,7 @@
     "doi": "",
     "pdf": "",
     "code": "",
-    "showOnHome": true
+    "showOnHome": false
   },
   {
     "id": "patent-us-2023-01",
@@ -191,7 +191,7 @@
     "doi": "",
     "pdf": "",
     "code": "",
-    "showOnHome": true
+    "showOnHome": false
   },
   {
     "id": "patent-us-2022-02",
@@ -207,7 +207,7 @@
     "doi": "",
     "pdf": "",
     "code": "",
-    "showOnHome": true
+    "showOnHome": false
   },
   {
     "id": "patent-us-2022-01",
@@ -223,7 +223,7 @@
     "doi": "",
     "pdf": "",
     "code": "",
-    "showOnHome": true
+    "showOnHome": false
   },
   {
     "id": "patent-us-2019-01",
@@ -239,7 +239,7 @@
     "doi": "",
     "pdf": "",
     "code": "",
-    "showOnHome": true
+    "showOnHome": false
   },
   {
     "id": "patent-us-2018-01",
@@ -255,7 +255,7 @@
     "doi": "",
     "pdf": "",
     "code": "",
-    "showOnHome": true
+    "showOnHome": false
   },
   {
     "id": "patent-kr-2026-04",
@@ -271,7 +271,7 @@
     "doi": "",
     "pdf": "",
     "code": "",
-    "showOnHome": true
+    "showOnHome": false
   },
   {
     "id": "patent-kr-2026-03",
@@ -287,7 +287,7 @@
     "doi": "",
     "pdf": "",
     "code": "",
-    "showOnHome": true
+    "showOnHome": false
   },
   {
     "id": "patent-kr-2026-02",
@@ -303,7 +303,7 @@
     "doi": "",
     "pdf": "",
     "code": "",
-    "showOnHome": true
+    "showOnHome": false
   },
   {
     "id": "patent-kr-2026-01",
@@ -319,7 +319,7 @@
     "doi": "https://doi.org/10.8080/1020200126152",
     "pdf": "",
     "code": "",
-    "showOnHome": true
+    "showOnHome": false
   },
   {
     "id": "patent-kr-2025-01",
@@ -335,7 +335,7 @@
     "doi": "https://doi.org/10.8080/1020200176551",
     "pdf": "",
     "code": "",
-    "showOnHome": true
+    "showOnHome": false
   },
   {
     "id": "patent-kr-2024-01",
@@ -351,7 +351,7 @@
     "doi": "https://doi.org/10.8080/1020190078854",
     "pdf": "",
     "code": "",
-    "showOnHome": true
+    "showOnHome": false
   },
   {
     "id": "patent-kr-2022-03",
@@ -367,7 +367,7 @@
     "doi": "https://doi.org/10.8080/1020150066461",
     "pdf": "",
     "code": "",
-    "showOnHome": true
+    "showOnHome": false
   },
   {
     "id": "patent-kr-2022-02",
@@ -383,7 +383,7 @@
     "doi": "https://doi.org/10.8080/1020170126359",
     "pdf": "",
     "code": "",
-    "showOnHome": true
+    "showOnHome": false
   },
   {
     "id": "patent-kr-2022-01",
@@ -399,7 +399,7 @@
     "doi": "https://doi.org/10.8080/1020220188332",
     "pdf": "",
     "code": "",
-    "showOnHome": true
+    "showOnHome": false
   },
   {
     "id": "patent-kr-2021-02",
@@ -415,7 +415,7 @@
     "doi": "https://doi.org/10.8080/1020150045467",
     "pdf": "",
     "code": "",
-    "showOnHome": true
+    "showOnHome": false
   },
   {
     "id": "patent-kr-2021-01",
@@ -431,7 +431,7 @@
     "doi": "https://doi.org/10.8080/1020210137594",
     "pdf": "",
     "code": "",
-    "showOnHome": true
+    "showOnHome": false
   },
   {
     "id": "patent-kr-2020-01",
@@ -447,6 +447,6 @@
     "doi": "https://doi.org/10.8080/1020200129412",
     "pdf": "",
     "code": "",
-    "showOnHome": true
+    "showOnHome": false
   }
 ]

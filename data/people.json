@@ -4,36 +4,64 @@
     "category": "professor",
     "name": "Sanggeun Lee",
     "role": "Principal Investigator",
-    "research": "Research interests: wireless communications, MIMO, machine learning, and signal processing.",
-    "photo": "assets/images/people/SanggeunLee.jpg",
-    "email": "",
-    "homepage": "",
-    "content": [
-      "Professor profile, research vision, and laboratory leadership description can be maintained here.",
-      "This page is designed so that biography, career history, education, and selected publications can be edited from people.json."
+    "research": [
+      "AI for wireless communications",
+      "MIMO signal processing and beamforming",
+      "Next-generation wireless systems"
     ],
+    "researchDetail": [
+      "AI-assisted physical-layer signal processing",
+      "MIMO detection, precoding, and beamforming",
+      "Receiver design and link adaptation",
+      "Standards-aware wireless system operation"
+    ],
+    "profileLines": [
+      "Assistant Professor",
+      "Department of Artificial Intelligence Engineering (인공지능공학과)",
+      "Changwon National University (국립창원대학교)",
+      "_blank",
+      "E-mail: sanggeun.lee@changwon.ac.kr",
+      "Tel: +82-55-213-3963"
+    ],
+    "photo": "assets/images/people/SanggeunLee.jpg",
     "education": [
       {
-        "period": "2009-2013",
-        "title": "B.S. in Electrical and Electronic Engineering",
-        "institution": "Yonsei University"
+        "period": "2013 - 2019",
+        "title": "Ph.D. in Electrical and Electronic Engineering",
+        "description": [
+          "Yonsei University",
+          "Supervisor: Chungyong Lee"
+        ]
       },
       {
-        "period": "2013-2019",
-        "title": "Ph.D. in Electrical and Electronic Engineering",
-        "institution": "Yonsei University"
-      }
+        "period": "2009 - 2013",
+        "title": "B.S. in Electrical and Electronic Engineering",
+        "description": [
+          "Yonsei University"
+        ]
+      }      
     ],
     "experience": [
       {
-        "period": "2019.09-2025.06",
-        "title": "Staff Engineer",
-        "institution": "Samsung Electronics"
+        "period": "2025. 07 - Present",
+        "title": "Assistant Professor",
+        "description": [
+          "Changwon National University"
+        ]
       },
       {
-        "period": "2025.07-Present",
-        "title": "Assistant Professor",
-        "institution": "Changwon National University"
+        "period": "2020. 03 - 2025. 06",
+        "title": "Staff Engineer",
+        "description": [
+          "Samsung Electronics"
+        ]
+      },
+      {
+        "period": "2019. 09 - 2020. 02",
+        "title": "Engineer",
+        "description": [
+          "Samsung Electronics"
+        ]
       }
     ],
     "selectedPublicationIds": [
@@ -55,11 +83,6 @@
     "photo": "assets/images/student-1.jpg",
     "detailPage": "people/student-1.html",
     "showOnHome": false,
-    "email": "",
-    "homepage": "",
-    "content": [
-      "Student Name 1 profile details can be maintained from people.json."
-    ],
     "education": [],
     "experience": []
   },
@@ -72,11 +95,6 @@
     "photo": "assets/images/student-2.jpg",
     "detailPage": "people/student-2.html",
     "showOnHome": false,
-    "email": "",
-    "homepage": "",
-    "content": [
-      "Student Name 2 profile details can be maintained from people.json."
-    ],
     "education": [],
     "experience": []
   }

@@ -52,6 +52,12 @@ function validateDateParts(item, label) {
   });
 }
 
+function validateIsoDate(value, label) {
+  assert(isNonEmptyString(value), `${label}: date is required`);
+  if (!isNonEmptyString(value)) return;
+  assert(/^\d{4}-\d{2}-\d{2}$/.test(value), `${label}: date must be YYYY-MM-DD`);
+}
+
 function validateDetailPage(item, label) {
   if (!isNonEmptyString(item.detailPage)) return;
   assert(fileExists(item.detailPage), `${label}: detailPage does not exist (${item.detailPage})`);
@@ -90,12 +96,12 @@ const newsIds = ensureUniqueIds(news, "news");
 const peopleIds = ensureUniqueIds(people, "people");
 const researchIds = ensureUniqueIds(research, "research");
 const publicationIds = ensureUniqueIds(publications, "publications");
-const lectureIds = ensureUniqueIds(lectures, "lectures");
+const lectureIds = new Set();
 
 news.forEach((item, index) => {
   const label = `news[${index}] (${item.id || "missing id"})`;
-  validateRequiredStrings(item, ["title"], label);
-  validateDateParts(item, label);
+  validateRequiredStrings(item, ["title", "date"], label);
+  validateIsoDate(item.date, label);
   validateAssetPath(item.image, `${label}.image`);
 });
 
@@ -132,9 +138,16 @@ publications.forEach((item, index) => {
 });
 
 lectures.forEach((lecture, index) => {
-  const label = `lectures[${index}] (${lecture.id || "missing id"})`;
-  validateRequiredStrings(lecture, ["name", "description", "detailPage"], label);
-  validateDetailPage(lecture, label);
+  const label = `lectures[${index}] (${lecture.name || "missing name"})`;
+  validateRequiredStrings(lecture, ["name"], label);
+  assert(
+    lecture.period === undefined || typeof lecture.period === "string",
+    `${label}: period must be a string when provided`
+  );
+  assert(
+    ["undergraduate", "graduate"].includes(lecture.level),
+    `${label}: level must be undergraduate or graduate`
+  );
 });
 
 if (errors.length) {
@@ -148,4 +161,4 @@ if (warnings.length) {
   warnings.forEach(warning => console.log(`- ${warning}`));
 }
 
-console.log(`Data validation passed (${newsIds.size} news, ${peopleIds.size} people, ${researchIds.size} research areas, ${publicationIds.size} publications, ${lectureIds.size} lectures).`);
+console.log(`Data validation passed (${newsIds.size} news, ${peopleIds.size} people, ${researchIds.size} research areas, ${publicationIds.size} publications, ${lectures.length} lectures).`);

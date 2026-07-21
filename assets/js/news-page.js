@@ -23,86 +23,26 @@ function escapeHtml(value = "") {
     .replaceAll("'", "&#039;");
 }
 
-function parseOptionalInteger(value) {
-  if (
-    value === undefined ||
-    value === null ||
-    String(value).trim() === ""
-  ) {
-    return null;
-  }
-
-  const parsed = Number.parseInt(value, 10);
-  return Number.isNaN(parsed) ? null : parsed;
-}
-
 function getNewsTimestamp(item) {
-  const year = parseOptionalInteger(item.year);
-  const month = parseOptionalInteger(item.month);
-  const day = parseOptionalInteger(item.day);
+  const parsed = Date.parse(`${item.date || ""}T00:00:00`);
 
-  if (year === null) {
+  if (Number.isNaN(parsed)) {
     return 0;
   }
 
-  return new Date(
-    year,
-    month === null ? 0 : month - 1,
-    day === null ? 1 : day
-  ).getTime();
+  return parsed;
 }
 
 function compareNewsByDateDescending(a, b) {
   return getNewsTimestamp(b) - getNewsTimestamp(a);
 }
 
-function getMonthKey(item) {
-  const year = parseOptionalInteger(item.year);
-  const month = parseOptionalInteger(item.month);
-
-  if (year === null) {
-    return "undated";
-  }
-
-  return `${year}-${String(month === null ? 1 : month).padStart(2, "0")}`;
-}
-
-function getMonthLabel(item) {
-  const year = parseOptionalInteger(item.year);
-  const month = parseOptionalInteger(item.month);
-
-  if (year === null) {
-    return "Undated";
-  }
-
-  return new Intl.DateTimeFormat("en-US", {
-    year: "numeric",
-    month: "long"
-  }).format(
-    new Date(year, month === null ? 0 : month - 1, 1)
-  );
-}
-
 function getDateLabel(item) {
-  const year = parseOptionalInteger(item.year);
-  const month = parseOptionalInteger(item.month);
-  const day = parseOptionalInteger(item.day);
-
-  if (year === null) {
+  if (!item.date) {
     return "";
   }
 
-  const parts = [String(year)];
-
-  if (month !== null) {
-    parts.push(String(month).padStart(2, "0"));
-  }
-
-  if (day !== null) {
-    parts.push(String(day).padStart(2, "0"));
-  }
-
-  return parts.join(".");
+  return String(item.date).replaceAll("-", ".");
 }
 
 function resolveSiteUrl(path = "") {
@@ -235,7 +175,7 @@ function initializeAccordionEvents() {
 
 document.addEventListener("DOMContentLoaded", async () => {
   const container =
-    document.getElementById("news-month-groups");
+    document.getElementById("news-list-page");
 
   try {
     const news = await loadJson(NEWS_DATA_PATH);
@@ -243,48 +183,8 @@ document.addEventListener("DOMContentLoaded", async () => {
     const sorted = [...news]
       .sort(compareNewsByDateDescending);
 
-    const groups = new Map();
-
-    sorted.forEach(item => {
-      const key = getMonthKey(item);
-
-      if (!groups.has(key)) {
-        groups.set(key, {
-          label: getMonthLabel(item),
-          items: []
-        });
-      }
-
-      groups.get(key).items.push(item);
-    });
-
-    let itemIndex = 0;
-
-    container.innerHTML = Array
-      .from(groups.values())
-      .map(group => {
-        const itemsMarkup = group.items
-          .map(item => {
-            const markup =
-              createNewsAccordion(item, itemIndex);
-
-            itemIndex += 1;
-            return markup;
-          })
-          .join("");
-
-        return `
-          <section class="news-month-group">
-            <div class="news-month-heading">
-              <h2>${escapeHtml(group.label)}</h2>
-            </div>
-
-            <div class="news-month-list">
-              ${itemsMarkup}
-            </div>
-          </section>
-        `;
-      })
+    container.innerHTML = sorted
+      .map((item, index) => createNewsAccordion(item, index))
       .join("");
 
     initializeAccordionEvents();

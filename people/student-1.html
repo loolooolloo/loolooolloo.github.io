@@ -10,7 +10,7 @@ permalink: /people/student-1.html
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Student Name 1 · {{ site.title }}</title>
-  <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}" />
+  <link rel="stylesheet" href="{{ '/assets/css/wio.css' | relative_url }}" />
 </head>
 <body>
   <div class="site-layout">
@@ -25,15 +25,25 @@ permalink: /people/student-1.html
                 <img id="person-detail-photo" class="person-detail-photo" src="" alt="" />
               </div>
 
-              <div>
+              <div class="person-detail-summary">
                 <h1 id="person-detail-name">Student Name 1</h1>
                 <p id="person-detail-role" class="person-detail-role"></p>
                 <p id="person-detail-research"></p>
+                <div id="person-profile-lines" class="person-profile-lines"></div>
                 <div id="person-detail-links" class="person-detail-links" hidden></div>
+
+                <section
+                  id="person-research-interests-section"
+                  class="person-research-interests person-detail-section-inline"
+                  hidden
+                >
+                  <h2>Research Interests</h2>
+                  <ul id="person-research-interests-list" class="person-detail-list"></ul>
+                </section>
               </div>
             </div>
 
-            <div id="person-detail-content" class="person-detail-body"></div>
+            <div id="person-detail-content" class="person-detail-body" hidden></div>
 
             <section id="person-experience-section" class="person-detail-section" hidden>
               <h2>Experience</h2>

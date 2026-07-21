@@ -1,6 +1,10 @@
 <aside class="sidebar">
   <div class="sidebar-header">
-    <div>
+    <div class="sidebar-brand">
+      <a class="lab-logo-link" href="{{ '/' | relative_url }}" aria-label="Wireless Intelligence and Optimization Lab. home">
+        <img class="lab-logo" src="{{ '/assets/images/logo/logo_wio_260716_bright.png' | relative_url }}" alt="WIO logo" />
+      </a>
+      <div class="lab-logo-divider" aria-hidden="true"></div>
       <h1 class="lab-name">
         <a href="{{ '/' | relative_url }}" data-site-field="labName">
           Wireless Communications Laboratory
@@ -26,9 +30,9 @@
 
   <nav id="main-navigation" class="navigation" aria-label="Main navigation">
     <ul class="nav-list">
-      <li>
+      <!-- <li>
         <a class="nav-link" href="{{ '/' | relative_url }}#welcome">Home</a>
-      </li>
+      </li> -->
 
       <li>
         <a class="nav-link" href="{{ '/' | relative_url }}#news">News</a>

@@ -5,12 +5,12 @@ permalink: /research/
 ---
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Research Areas · {{ site.title }}</title>
-  <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}" />
+  <link rel="stylesheet" href="{{ '/assets/css/wio.css' | relative_url }}" />
 </head>
 
 <body>
@@ -20,30 +20,25 @@ permalink: /research/
     <main class="main-content">
       <div class="content-wrapper">
         <header class="research-page-header">
-          <p class="eyebrow">Research</p>
           <h2>Research Areas</h2>
-          <p>Core research themes of the Wireless Communications Laboratory.</p>
         </header>
 
-        <div class="research-cover">
-          <img
-            src="{{ '/assets/images/research-cover-dummy.jpg' | relative_url }}"
-            alt="Research overview placeholder"
-          />
-        </div>
-
-        <div class="research-divider" aria-hidden="true"></div>
-
-        <section id="research-items">
-          <div class="section-heading">
-            <h2>Research Topics</h2>
-            <p>
-              Select a research area to view its detailed description,
-              related projects, and representative publications.
-            </p>
+        <section class="research-overview" aria-labelledby="research-overview-title">
+          <div class="research-visual research-visual-image research-overview-image">
+            <img
+              src="{{ '/assets/images/research/research-overview-260722.png' | relative_url }}"
+              alt="Overview of AI for wireless communications, MIMO signal processing and beamforming, and next-generation wireless system operation"
+            />
           </div>
 
-          <div id="all-research-grid" class="research-card-grid"></div>
+          <h2 id="research-overview-title">연구 개요</h2>
+          <p>
+            Wireless Intelligence and Optimization Lab.은 MIMO 신호처리, 표준 구조를 고려한 시스템 설계, 그리고 AI 기반 적응 기술을 바탕으로 지능형 무선통신 시스템을 연구합니다. 채널 추정 및 예측, 수신기 선택, 빔포밍 설계, 기준신호·피드백·스케줄링·자원 오버헤드와 같은 실제 셀룰러 시스템 제약을 함께 고려하여 신뢰성 있고 효율적인 차세대 무선통신 기술을 개발합니다.
+          </p>
+        </section>
+
+        <section id="research-items" class="research-area-sections" aria-label="Research area details">
+          <div id="research-area-list"></div>
         </section>
       </div>
     </main>
@@ -52,6 +47,8 @@ permalink: /research/
   <script>
     window.RESEARCH_DATA_PATH =
       "{{ '/data/research.json' | relative_url }}";
+    window.PUBLICATIONS_DATA_PATH =
+      "{{ '/data/publications.json' | relative_url }}";
     window.SITE_BASE_URL =
       "{{ '/' | relative_url }}";
   </script>

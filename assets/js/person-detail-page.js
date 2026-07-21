@@ -78,6 +78,62 @@ function createParagraphs(content) {
     .join("");
 }
 
+function createResearchInterestList(person) {
+  const interests = Array.isArray(person.researchDetail)
+    ? person.researchDetail
+    : Array.isArray(person.research)
+      ? person.research
+      : String(person.research || "")
+        .replace(/^research interests?:\s*/i, "")
+        .replace(/\.$/, "")
+        .split(/\s*,\s*|\s+and\s+/i);
+
+  const items = interests
+    .map(item => String(item).trim())
+    .filter(Boolean);
+
+  return items
+    .map(item => `<li>${escapeHtml(item)}</li>`)
+    .join("");
+}
+
+function createProfileLinesMarkup(person) {
+  const lines = Array.isArray(person.profileLines)
+    ? person.profileLines
+    : [];
+
+  return lines
+    .map(line => String(line).trim())
+    .map(line => {
+      if (line === "_blank" || line.toLowerCase() === "blank") {
+        return `<span class="person-profile-line-spacer" aria-hidden="true"></span>`;
+      }
+
+      return line ? `<p>${escapeHtml(line)}</p>` : "";
+    })
+    .join("");
+}
+
+function createTimelineDescription(item) {
+  const description = item.description !== undefined
+    ? item.description
+    : item.institution;
+
+  const lines = Array.isArray(description)
+    ? description
+    : String(description || "").split(/\r?\n+/);
+
+  const paragraphs = lines
+    .map(line => String(line).trim())
+    .filter(Boolean)
+    .map(line => `<p>${escapeHtml(line)}</p>`)
+    .join("");
+
+  return paragraphs
+    ? `<div class="item-description timeline-description">${paragraphs}</div>`
+    : "";
+}
+
 function createTimeline(items = []) {
   return items
     .map(item => `
@@ -85,7 +141,7 @@ function createTimeline(items = []) {
         <div class="timeline-period">${escapeHtml(item.period || "")}</div>
         <div>
           <p class="item-title">${escapeHtml(item.title || "")}</p>
-          <p class="item-description">${escapeHtml(item.institution || "")}</p>
+          ${createTimelineDescription(item)}
         </div>
       </li>
     `)
@@ -126,7 +182,7 @@ function renderPerson(person, publications) {
 
   document.getElementById("person-detail-name").textContent = person.name;
   document.getElementById("person-detail-role").textContent = person.role || "";
-  document.getElementById("person-detail-research").textContent = person.research || "";
+  document.getElementById("person-detail-research").hidden = true;
 
   const photo = document.getElementById("person-detail-photo");
   const photoFrame = document.getElementById("person-detail-photo-frame");
@@ -139,20 +195,27 @@ function renderPerson(person, publications) {
   }
 
   const links = document.getElementById("person-detail-links");
-  const linkItems = [
-    person.email
-      ? `<a class="text-link" href="mailto:${escapeHtml(person.email)}">${escapeHtml(person.email)}</a>`
-      : "",
-    person.homepage
-      ? `<a class="text-link" href="${escapeHtml(person.homepage)}" target="_blank" rel="noopener noreferrer">Homepage</a>`
-      : ""
-  ].filter(Boolean);
+  links.innerHTML = "";
+  links.hidden = true;
 
-  links.innerHTML = linkItems.join("");
-  links.hidden = linkItems.length === 0;
+  const profileLines = document.getElementById("person-profile-lines");
+  const profileLinesMarkup = createProfileLinesMarkup(person);
+  profileLines.innerHTML = profileLinesMarkup;
+  profileLines.hidden = profileLinesMarkup.length === 0;
 
-  document.getElementById("person-detail-content").innerHTML =
-    createParagraphs(person.content);
+  const detailContent = document.getElementById("person-detail-content");
+  const detailContentMarkup = createParagraphs(person.content);
+  detailContent.innerHTML = detailContentMarkup;
+  detailContent.hidden = detailContentMarkup.length === 0;
+
+  const researchInterestsSection =
+    document.getElementById("person-research-interests-section");
+  const researchInterestsList =
+    document.getElementById("person-research-interests-list");
+  const researchInterestItems = createResearchInterestList(person);
+
+  researchInterestsSection.hidden = researchInterestItems.length === 0;
+  researchInterestsList.innerHTML = researchInterestItems;
 
   const educationSection = document.getElementById("person-education-section");
   const educationList = document.getElementById("person-education-list");

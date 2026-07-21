@@ -5,12 +5,12 @@ permalink: /lectures/
 ---
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Lectures · {{ site.title }}</title>
-  <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}" />
+  <link rel="stylesheet" href="{{ '/assets/css/wio.css' | relative_url }}" />
 </head>
 <body>
   <div class="site-layout">
@@ -20,9 +20,8 @@ permalink: /lectures/
         <section id="all-lectures">
           <div class="section-heading">
             <h2>Lectures</h2>
-            <p>Complete list of courses and lecture materials.</p>
           </div>
-          <div id="all-lecture-grid" class="lecture-grid"></div>
+          <div id="all-lecture-groups" class="lecture-groups"></div>
         </section>
       </div>
     </main>
@@ -41,12 +40,35 @@ permalink: /lectures/
     document.addEventListener("DOMContentLoaded", async () => {
       const response = await fetch("{{ '/data/lectures.json' | relative_url }}");
       const lectures = await response.json();
-      document.getElementById("all-lecture-grid").innerHTML = lectures.map(lecture => `
-        <a class="card clickable-card" href="{{ '/' | relative_url }}${escapeHtml(lecture.detailPage)}">
-          <h3>${escapeHtml(lecture.name)}</h3>
-          <p>${escapeHtml(lecture.description || "")}</p>
-        </a>
-      `).join("");
+
+      const groups = [
+        ["undergraduate", "Undergraduate Courses"],
+        ["graduate", "Graduate Courses"]
+      ];
+
+      document.getElementById("all-lecture-groups").innerHTML = groups
+        .map(([level, title]) => {
+          const items = lectures.filter(lecture => lecture.level === level);
+
+          if (!items.length) {
+            return "";
+          }
+
+          return `
+            <section class="lecture-group">
+              <h3>${escapeHtml(title)}</h3>
+              <ul class="lecture-list">
+                ${items.map(lecture => `
+        <li class="lecture-list-item">
+          <div class="lecture-period">${escapeHtml(lecture.period || "")}</div>
+          <div class="lecture-name">${escapeHtml(lecture.name || "")}</div>
+        </li>
+                `).join("")}
+              </ul>
+            </section>
+          `;
+        })
+        .join("");
     });
   </script>
 

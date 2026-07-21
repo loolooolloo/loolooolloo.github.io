@@ -9,7 +9,7 @@ title: Home
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>{{ site.title }}</title>
-  <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}" />
+  <link rel="stylesheet" href="{{ '/assets/css/wio.css' | relative_url }}" />
 </head>
 <body>
   <div class="site-layout">
@@ -34,7 +34,6 @@ title: Home
           <div class="section-heading section-heading-with-action">
             <div>
               <h2>News</h2>
-              <p>Recent activities, publications, awards, and laboratory announcements.</p>
             </div>
             <a class="more-link" href="{{ '/news/' | relative_url }}">More <span aria-hidden="true">＋</span></a>
           </div>
@@ -59,9 +58,8 @@ title: Home
           <div class="section-heading section-heading-with-action">
             <div>
               <h2>Research Areas</h2>
-              <p>Core research themes of the laboratory.</p>
             </div>
-            <a class="more-link" href="{{ '/research/' | relative_url }}">More <span aria-hidden="true">＋</span></a>
+            <a class="more-link research-details-link" href="{{ '/research/' | relative_url }}">View details <span aria-hidden="true">＋</span></a>
           </div>
           <div id="research-grid" class="card-grid"></div>
         </section>
@@ -95,17 +93,15 @@ title: Home
           <div class="section-heading section-heading-with-action">
             <div>
               <h2>Lectures</h2>
-              <p>Courses, lecture materials, and academic resources.</p>
             </div>
             <a class="more-link" href="{{ '/lectures/' | relative_url }}">More <span aria-hidden="true">＋</span></a>
           </div>
-          <div id="lecture-grid" class="lecture-grid"></div>
+          <ul id="lecture-list" class="lecture-list"></ul>
         </section>
 
         <section id="contact">
           <div class="section-heading">
             <h2>Contact</h2>
-            <p>Laboratory address and contact information.</p>
           </div>
           <div class="contact-box">
             <div>

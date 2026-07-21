@@ -63,41 +63,21 @@ function getNewsSummary(item) {
 }
 
 function getNewsTimestamp(item) {
-  const year = parseOptionalInteger(item.year);
-  const month = parseOptionalInteger(item.month);
-  const day = parseOptionalInteger(item.day);
+  const parsed = Date.parse(`${item.date || ""}T00:00:00`);
 
-  if (year === null) {
+  if (Number.isNaN(parsed)) {
     return 0;
   }
 
-  return new Date(
-    year,
-    month === null ? 0 : month - 1,
-    day === null ? 1 : day
-  ).getTime();
+  return parsed;
 }
 
 function getNewsDateLabel(item) {
-  const year = parseOptionalInteger(item.year);
-  const month = parseOptionalInteger(item.month);
-  const day = parseOptionalInteger(item.day);
-
-  if (year === null) {
+  if (!item.date) {
     return "";
   }
 
-  const parts = [String(year)];
-
-  if (month !== null) {
-    parts.push(String(month).padStart(2, "0"));
-  }
-
-  if (day !== null) {
-    parts.push(String(day).padStart(2, "0"));
-  }
-
-  return parts.join(".");
+  return String(item.date).replaceAll("-", ".");
 }
 
 
@@ -121,10 +101,6 @@ function renderNews(news) {
           <p class="item-title">
             ${escapeHtml(item.title)}
           </p>
-
-          <p class="item-description">
-            ${escapeHtml(getNewsSummary(item))}
-          </p>
         </div>
       </li>
     `)
@@ -132,7 +108,9 @@ function renderNews(news) {
 }
 
 function personCard(person) {
-  const researchItems = getResearchItems(person.research);
+  const researchItems = getResearchItems(
+    person.research
+  );
 
   return `
     <a class="person-card clickable-card" href="${escapeHtml(person.detailPage)}">
@@ -145,7 +123,7 @@ function personCard(person) {
         <p class="person-role">${escapeHtml(person.role)}</p>
         ${researchItems.length ? `
           <div class="research-interest">
-            <p class="research-interest-title">Research interest</p>
+            <p class="research-interest-title">Research Interests</p>
             <ul>
               ${researchItems.map(item => `<li>${escapeHtml(item)}</li>`).join("")}
             </ul>
@@ -213,12 +191,25 @@ function renderResearch(areas) {
   }
 
   researchGrid.innerHTML = visibleResearch
-    .map(a => `
-      <a class="card clickable-card" href="${escapeHtml(a.detailPage)}">
-        <h3>${escapeHtml(a.name)}</h3>
-        <p>${escapeHtml(a.description)}</p>
-      </a>
-    `).join("");
+    .map(a => {
+      const keywords = Array.isArray(a.keywords)
+        ? a.keywords.slice(0, 4)
+        : [];
+
+      return `
+        <a class="card research-home-card clickable-card" href="research/#${escapeHtml(a.id)}">
+          <p class="research-card-kicker">${escapeHtml(a.titleKo || "Research Area")}</p>
+          <h3>${escapeHtml(a.titleEn || a.name)}</h3>
+          <p>${escapeHtml(a.description)}</p>
+          ${keywords.length ? `
+            <div class="research-keyword-list">
+              ${keywords.map(keyword => `<span>${escapeHtml(keyword)}</span>`).join("")}
+            </div>
+          ` : ""}
+          <span class="research-topic-link">View details →</span>
+        </a>
+      `;
+    }).join("");
 }
 
 function publicationMarkup(item) {
@@ -286,13 +277,13 @@ function renderPublications(publications) {
 }
 
 function renderLectures(lectures) {
-  document.getElementById("lecture-grid").innerHTML = lectures
+  document.getElementById("lecture-list").innerHTML = lectures
     .filter(l => l.showOnHome !== false)
     .map(l => `
-      <a class="card clickable-card" href="${escapeHtml(l.detailPage)}">
-        <h3>${escapeHtml(l.name)}</h3>
-        <p>${escapeHtml(l.description)}</p>
-      </a>
+      <li class="lecture-list-item">
+        <div class="lecture-period">${escapeHtml(l.period || "")}</div>
+        <div class="lecture-name">${escapeHtml(l.name || "")}</div>
+      </li>
     `).join("");
 }
 
