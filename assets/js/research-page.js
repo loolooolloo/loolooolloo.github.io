@@ -124,6 +124,28 @@ function researchAreaMarkup(area, publications) {
   `;
 }
 
+function scrollToCurrentResearchAnchor() {
+  const hash = window.location.hash;
+
+  if (!hash) {
+    return;
+  }
+
+  const target = document.getElementById(
+    decodeURIComponent(hash.slice(1))
+  );
+
+  if (!target) {
+    return;
+  }
+
+  requestAnimationFrame(() => {
+    target.scrollIntoView({
+      block: "start"
+    });
+  });
+}
+
 document.addEventListener("DOMContentLoaded", async () => {
   const container = document.getElementById("research-area-list");
 
@@ -140,6 +162,8 @@ document.addEventListener("DOMContentLoaded", async () => {
     container.innerHTML = visible.length
       ? visible.map(area => researchAreaMarkup(area, publications)).join("")
       : `<p class="empty-message">No research areas are currently available.</p>`;
+
+    scrollToCurrentResearchAnchor();
   } catch (error) {
     console.error(error);
     container.innerHTML =
