@@ -1480,6 +1480,14 @@ summary:focus-visible { outline: 2px solid #326f8f; outline-offset: 4px; }
 }
 @media (max-width: 920px) {
   .content-wrapper { padding-top: 28px; }
+  .sidebar-header .sidebar-brand {
+    flex: 1;
+    min-width: 0;
+    width: auto;
+    margin: 0;
+  }
+  .lab-name a { white-space: normal; }
+  .menu-toggle { flex-shrink: 0; }
   .research-area-section,
   section { scroll-margin-top: 110px; }
 }
