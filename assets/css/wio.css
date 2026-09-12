@@ -1480,14 +1480,20 @@ summary:focus-visible { outline: 2px solid #326f8f; outline-offset: 4px; }
 }
 @media (max-width: 920px) {
   .content-wrapper { padding-top: 28px; }
+  .sidebar-header {
+    display: grid;
+    grid-template-columns: 44px minmax(0, 1fr) 44px;
+    gap: 12px;
+  }
   .sidebar-header .sidebar-brand {
-    flex: 1;
+    grid-column: 2;
     min-width: 0;
     width: auto;
     margin: 0;
+    text-align: center;
   }
   .lab-name a { white-space: normal; }
-  .menu-toggle { flex-shrink: 0; }
+  .menu-toggle { grid-column: 3; grid-row: 1; }
   .research-area-section,
   section { scroll-margin-top: 110px; }
 }
