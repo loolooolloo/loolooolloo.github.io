@@ -58,7 +58,9 @@
       const email = contact.email
         ? `Email: <a class="text-link" href="mailto:${escapeSiteHtml(contact.email)}">${escapeSiteHtml(contact.email)}</a>`
         : "";
-      const telephone = contact.telephone ? `Tel: ${escapeSiteHtml(contact.telephone)}` : "";
+      const telephone = contact.telephone
+        ? `Tel: <a class="text-link" href="tel:${escapeSiteHtml(contact.telephone.replace(/[^\d+]/g, ""))}">${escapeSiteHtml(contact.telephone)}</a>`
+        : "";
       contactDetails.innerHTML = [email, telephone].filter(Boolean).join("<br />");
     }
   }
@@ -143,7 +145,28 @@
     }
   }
 
+  function markCurrentNavigation() {
+    const base = "{{ '/' | relative_url }}";
+    const path = window.location.pathname.slice(base.length - 1);
+    const sections = [
+      ["/news/", "news"],
+      ["/people/", "professor"],
+      ["/research/", "research"],
+      ["/publications", "publications"],
+      ["/lectures/", "lectures"]
+    ];
+    const match = sections.find(([prefix]) => path.startsWith(prefix));
+    if (!match) return;
+
+    const link = document.querySelector(`.nav-link[href$="#${match[1]}"]`);
+    if (link) {
+      link.classList.add("is-current");
+      link.setAttribute("aria-current", "page");
+    }
+  }
+
   document.addEventListener("DOMContentLoaded", initializeMobileNavigation);
+  document.addEventListener("DOMContentLoaded", markCurrentNavigation);
   document.addEventListener("DOMContentLoaded", updateSiteMetadata);
   document.addEventListener("DOMContentLoaded", updatePeopleNavigation);
   document.addEventListener("DOMContentLoaded", updateResearchNavigation);
