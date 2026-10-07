@@ -1,8 +1,8 @@
 {
   "labName": "Wireless Intelligence\nand Optimization Lab.",
-  "universityName": "",
-  "departmentName": "",
-  "description": "Wireless Intelligence and Optimization Lab.",
+  "universityName": "Changwon National University",
+  "departmentName": "Department of Artificial Intelligence Engineering",
+  "description": "국립창원대학교 무선지능최적화연구실(WIO Lab.)은 인공지능, MIMO 신호처리, 최적화 이론을 바탕으로 차세대 무선통신 시스템을 연구합니다.",
   "contact": {
     "officeTitle": "Office",
     "officeLines": [

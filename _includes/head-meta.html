@@ -1,0 +1,19 @@
+{%- if page.url == "/" -%}
+  {%- assign meta_title = site.title -%}
+{%- else -%}
+  {%- assign meta_title = page.title | append: " · " | append: site.title -%}
+{%- endif -%}
+{%- assign meta_description = page.description | default: site.description -%}
+{%- assign meta_image = page.image | default: "/assets/images/landing_page_260715.png" -%}
+<meta name="description" content="{{ meta_description | escape }}" />
+<link rel="canonical" href="{{ page.url | absolute_url }}" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="{{ site.title | escape }}" />
+<meta property="og:title" content="{{ meta_title | escape }}" />
+<meta property="og:description" content="{{ meta_description | escape }}" />
+<meta property="og:url" content="{{ page.url | absolute_url }}" />
+<meta property="og:image" content="{{ meta_image | absolute_url }}" />
+<meta property="og:locale" content="ko_KR" />
+<meta name="twitter:card" content="summary_large_image" />
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css" />

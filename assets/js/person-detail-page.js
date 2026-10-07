@@ -109,9 +109,27 @@ function createProfileLinesMarkup(person) {
         return `<span class="person-profile-line-spacer" aria-hidden="true"></span>`;
       }
 
-      return line ? `<p>${escapeHtml(line)}</p>` : "";
+      return line ? `<p>${linkifyContactLine(line)}</p>` : "";
     })
     .join("");
+}
+
+function linkifyContactLine(line) {
+  const email = line.match(/[\w.+-]+@[\w-]+(\.[\w-]+)+/);
+  if (email) {
+    const address = email[0];
+    const [before, after] = [line.slice(0, email.index), line.slice(email.index + address.length)];
+    return `${escapeHtml(before)}<a class="text-link" href="mailto:${escapeHtml(address)}">${escapeHtml(address)}</a>${escapeHtml(after)}`;
+  }
+
+  const phone = line.match(/^(Tel|Phone|전화)\s*:\s*(\+?[\d\s-]{7,})$/i);
+  if (phone) {
+    const number = phone[2].trim();
+    const href = number.replace(/[^\d+]/g, "");
+    return `${escapeHtml(phone[1])}: <a class="text-link" href="tel:${escapeHtml(href)}">${escapeHtml(number)}</a>`;
+  }
+
+  return escapeHtml(line);
 }
 
 function createTimelineDescription(item) {

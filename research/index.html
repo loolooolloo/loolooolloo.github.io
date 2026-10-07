@@ -9,6 +9,7 @@ permalink: /research/
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  {% include head-meta.html %}
   <title>Research Areas · {{ site.title }}</title>
   <link rel="stylesheet" href="{{ '/assets/css/wio.css' | relative_url }}" />
 </head>
@@ -29,6 +30,37 @@ permalink: /research/
               src="{{ '/assets/images/research/research-overview-260722.png' | relative_url }}"
               alt="Overview of AI for wireless communications, MIMO signal processing and beamforming, and next-generation wireless system operation"
             />
+          </div>
+
+          <!-- Text version of the overview image, shown on small screens where the image text is too small to read. -->
+          <div class="research-overview-summary">
+            <div>
+              <h3>AI for Wireless Communications</h3>
+              <ul>
+                <li>Channel estimation and prediction</li>
+                <li>AI-assisted receiver selection</li>
+                <li>Adaptive PHY-layer operation</li>
+                <li>Lightweight and reliable wireless AI</li>
+              </ul>
+            </div>
+            <div>
+              <h3>MIMO Signal Processing and Beamforming</h3>
+              <ul>
+                <li>MIMO detection and receiver design</li>
+                <li>Precoding and beamforming</li>
+                <li>CSI acquisition and feedback</li>
+                <li>Pilot design and spatial-domain signaling</li>
+              </ul>
+            </div>
+            <div>
+              <h3>Design and Operation of Next-Generation Wireless Systems</h3>
+              <ul>
+                <li>Standards-aware system operation</li>
+                <li>Reference signal design: CSI-RS, SRS</li>
+                <li>Feedback and scheduling procedures</li>
+                <li>Resource allocation and link adaptation</li>
+              </ul>
+            </div>
           </div>
 
           <h2 id="research-overview-title">연구 개요</h2>
