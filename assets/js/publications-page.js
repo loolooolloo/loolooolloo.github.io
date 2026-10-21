@@ -1,4 +1,4 @@
-const PUBLICATIONS_DATA_PATH = "/data/publications.json";
+const PUBLICATIONS_DATA_PATH = document.currentScript?.dataset.publicationsUrl || "/data/publications.json";
 
 async function loadJson(path) {
   const response = await fetch(path);
