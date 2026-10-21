@@ -46,6 +46,7 @@ function createPublicationMarkup(publication) {
   const pages = publication.pages ? `, pp. ${escapeHtml(publication.pages)}` : "";
 
   const links = [
+    publication.url ? `<a href="${escapeHtml(publication.url)}" target="_blank" rel="noopener noreferrer">Patent</a>` : "",
     publication.doi ? `<a href="${escapeHtml(publication.doi)}" target="_blank" rel="noopener noreferrer">DOI</a>` : "",
     publication.pdf ? `<a href="${escapeHtml(publication.pdf)}" target="_blank" rel="noopener noreferrer">PDF</a>` : "",
     publication.code ? `<a href="${escapeHtml(publication.code)}" target="_blank" rel="noopener noreferrer">Code</a>` : ""
