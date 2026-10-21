@@ -168,14 +168,15 @@
     "year": "2025",
     "month": "12",
     "day": "30",
-    "authors": "Hyeonsoo Kim, Daejun Kang, Sangwon Kim, Keonyoung Lee, Yongjae Jung, Yongjae Jung, Junsuk Kim, Jinwoo Kim, Minho Yang, Hyoungjoo Lee, Yonggue Han, Junyoung Woo, Sanggeun Lee, Juhyun Lee, Chaiman Lim",
+    "authors": "Hyeonsoo Kim, Daejun Kang, Sangwon Kim, Keonyoung Lee, Yongjae Jung, Junsuk Kim, Jinwoo Kim, Minho Yang, Hyoungjoo Lee, Yonggue Han, Junyoung Woo, Sanggeun Lee, Juhyun Lee, Chaiman Lim",
     "title": "Transmitting sound reference signals (SRSs) based on physical downlink shared channel (PDSCH) scheduling rate",
     "venue": "U.S. Patent 12,512,938 B2",
-    "status": "Granted",
+    "status": "Granted (Same patent family: KR103001247B1)",
     "doi": "",
     "pdf": "",
     "code": "",
-    "showOnHome": false
+    "showOnHome": false,
+    "url": "https://patents.google.com/patent/US12512938B2/en"
   },
   {
     "id": "patent-us-2023-01",
@@ -184,14 +185,15 @@
     "year": "2023",
     "month": "02",
     "day": "28",
-    "authors": "Kwonjong Lee, Kyojin Lee, Hyungjae Lee, Chungyong Lee, Chahyeon Eom, Sanggeun Lee",
+    "authors": "Kwonjong Lee, Hyojin Lee, Hyungje Lee, Chungyong Lee, Chahyeon Eom, Sanggeun Lee",
     "title": "Method and apparatus for designing and operating multi-dimensional constellation",
     "venue": "U.S. Patent 11,595,170 B2",
-    "status": "Granted",
+    "status": "Granted (Same patent family: KR102933664B1)",
     "doi": "",
     "pdf": "",
     "code": "",
-    "showOnHome": false
+    "showOnHome": false,
+    "url": "https://patents.google.com/patent/US11595170B2/en"
   },
   {
     "id": "patent-us-2022-02",
@@ -203,11 +205,12 @@
     "authors": "Byungju Lee, Chahyeon Eom, Hyojin Lee, Chungyong Lee, Jaehyun Lee, Sanggeun Lee",
     "title": "Device and method for channel forecast in wireless communication system",
     "venue": "U.S. Patent 11,395,159 B2",
-    "status": "Granted",
+    "status": "Granted (Same patent family: KR102725388B1)",
     "doi": "",
     "pdf": "",
     "code": "",
-    "showOnHome": false
+    "showOnHome": false,
+    "url": "https://patents.google.com/patent/US11395159B2/en"
   },
   {
     "id": "patent-us-2022-01",
@@ -219,11 +222,12 @@
     "authors": "Hoondong Noh, Seongmok Lim, Younsun Kim, Youngwoo Kwak, Sanggeun Lee, Chungyong Lee",
     "title": "Method and apparatus for transmitting or receiving channel information in wireless communication system",
     "venue": "U.S. Patent 11,431,438 B2",
-    "status": "Granted",
+    "status": "Granted (Same patent family: KR102466898B1)",
     "doi": "",
     "pdf": "",
     "code": "",
-    "showOnHome": false
+    "showOnHome": false,
+    "url": "https://patents.google.com/patent/US11431438B2/en"
   },
   {
     "id": "patent-us-2019-01",
@@ -235,11 +239,12 @@
     "authors": "Hyoungju Ji, Sangwon Park, Younsun Kim, Chungyong Lee, Sanggeun Lee",
     "title": "Inter-cell interference measurement method and device in flexible duplex system",
     "venue": "U.S. Patent 10,382,993 B2",
-    "status": "Granted",
+    "status": "Granted (Same patent family: KR102253258B1)",
     "doi": "",
     "pdf": "",
     "code": "",
-    "showOnHome": false
+    "showOnHome": false,
+    "url": "https://patents.google.com/patent/US10382993B2/en"
   },
   {
     "id": "patent-us-2018-01",
@@ -251,11 +256,12 @@
     "authors": "Hyoungju Ji, Sanggeun Lee, Younsun Kim, Chungyong Lee, Sangwon Park",
     "title": "Method and apparatus for feedback in mobile communication system",
     "venue": "U.S. Patent 10,057,038 B2",
-    "status": "Granted",
+    "status": "Granted (Same patent family: KR102368198B1)",
     "doi": "",
     "pdf": "",
     "code": "",
-    "showOnHome": false
+    "showOnHome": false,
+    "url": "https://patents.google.com/patent/US10057038B2/en"
   },
   {
     "id": "patent-kr-2026-04",
@@ -314,12 +320,13 @@
     "day": "28",
     "authors": "이형주, 이상근, 이주현, 정의창, 임채만",
     "title": "전자 장치의 수신 빔 선택 방법 및 전자 장치",
-    "venue": "대한민국특허 10-2960384",
-    "status": "등록",
+    "venue": "대한민국 특허 10-2960384",
+    "status": "등록 (동일 특허 패밀리: US12143194B2)",
     "doi": "https://doi.org/10.8080/1020200126152",
     "pdf": "",
     "code": "",
-    "showOnHome": false
+    "showOnHome": false,
+    "url": "https://patents.google.com/patent/KR102960384B1/ko"
   },
   {
     "id": "patent-kr-2025-01",
@@ -330,12 +337,13 @@
     "day": "10",
     "authors": "김진우, 김준석, 김태윤, 양민호, 우준영, 이상근, 이주현, 이형주, 한용규, 임채만",
     "title": "전자 장치 및 전자 장치에서 기준 신호를 전송하는 방법",
-    "venue": "대한민국특허 10-2900322",
+    "venue": "대한민국 특허 10-2900322",
     "status": "등록",
     "doi": "https://doi.org/10.8080/1020200176551",
     "pdf": "",
     "code": "",
-    "showOnHome": false
+    "showOnHome": false,
+    "url": "https://patents.google.com/patent/KR102900322B1/ko"
   },
   {
     "id": "patent-kr-2024-01",
@@ -346,12 +354,13 @@
     "day": "30",
     "authors": "이병주, 엄차현, 이효진, 이충용, 이재현, 이상근",
     "title": "무선 통신 시스템에서 채널 예측을 위한 장치 및 방법",
-    "venue": "대한민국특허 10-2725388",
-    "status": "등록",
+    "venue": "대한민국 특허 10-2725388",
+    "status": "등록 (동일 특허 패밀리: US11395159B2)",
     "doi": "https://doi.org/10.8080/1020190078854",
     "pdf": "",
     "code": "",
-    "showOnHome": false
+    "showOnHome": false,
+    "url": "https://patents.google.com/patent/KR102725388B1/ko"
   },
   {
     "id": "patent-kr-2022-03",
@@ -362,12 +371,13 @@
     "day": "23",
     "authors": "지형주, 이상근, 김윤선, 이충용, 박상원",
     "title": "이동 통신 시스템에서의 피드백 방법 및 장치",
-    "venue": "대한민국특허 10-2368198",
-    "status": "등록",
+    "venue": "대한민국 특허 10-2368198",
+    "status": "등록 (동일 특허 패밀리: US10057038B2)",
     "doi": "https://doi.org/10.8080/1020150066461",
     "pdf": "",
     "code": "",
-    "showOnHome": false
+    "showOnHome": false,
+    "url": "https://patents.google.com/patent/KR102368198B1/ko"
   },
   {
     "id": "patent-kr-2022-02",
@@ -378,12 +388,13 @@
     "day": "09",
     "authors": "노훈동, 임성목, 김윤선, 곽영우, 이상근, 이충용",
     "title": "무선 통신 시스템에서 채널 정보 송수신 방법 및 장치",
-    "venue": "대한민국특허 10-2466898",
-    "status": "등록",
+    "venue": "대한민국 특허 10-2466898",
+    "status": "등록 (동일 특허 패밀리: US11431438B2)",
     "doi": "https://doi.org/10.8080/1020170126359",
     "pdf": "",
     "code": "",
-    "showOnHome": false
+    "showOnHome": false,
+    "url": "https://patents.google.com/patent/KR102466898B1/ko"
   },
   {
     "id": "patent-kr-2022-01",
@@ -394,12 +405,15 @@
     "day": "29",
     "authors": "양민호, 유병욱, 이상근, 이주현, 임채만, 정의창",
     "title": "무선 통신을 제공하는 전자 장치 및 그의 동작 방법",
-    "venue": "Korean Patent No. 10-2022-0188332",
-    "status": "출원",
+    "venue": "대한민국 특허출원 10-2022-0188332",
+    "status": "출원·공개",
     "doi": "https://doi.org/10.8080/1020220188332",
     "pdf": "",
     "code": "",
-    "showOnHome": false
+    "showOnHome": false,
+    "publicationNumber": "KR20240088495A",
+    "publicationDate": "2024-06-20",
+    "url": "https://patents.google.com/patent/KR20240088495A/ko"
   },
   {
     "id": "patent-kr-2021-02",
@@ -410,12 +424,13 @@
     "day": "12",
     "authors": "박상원, 지형주, 김윤선, 이충용, 이상근",
     "title": "플렉서블 듀플렉스 시스템에서 셀 간 간섭 측정 방법 및 장치",
-    "venue": "대한민국특허 10-2253258",
-    "status": "등록",
+    "venue": "대한민국 특허 10-2253258",
+    "status": "등록 (동일 특허 패밀리: US10382993B2)",
     "doi": "https://doi.org/10.8080/1020150045467",
     "pdf": "",
     "code": "",
-    "showOnHome": false
+    "showOnHome": false,
+    "url": "https://patents.google.com/patent/KR102253258B1/ko"
   },
   {
     "id": "patent-kr-2021-01",
@@ -426,28 +441,37 @@
     "day": "15",
     "authors": "이형주, 김진우, 양민호, 이상근, 이주현, 정의창, 임채만",
     "title": "기지국에 대한 정보를 획득하기 위한 전자 장치, 방법, 및 컴퓨터 판독가능 저장 매체",
-    "venue": "대한민국특허 10-2021-0137594",
-    "status": "출원",
+    "venue": "대한민국 특허출원 10-2021-0137594",
+    "status": "출원·공개",
     "doi": "https://doi.org/10.8080/1020210137594",
     "pdf": "",
     "code": "",
-    "showOnHome": false
+    "showOnHome": false,
+    "publicationNumber": "KR20230037416A",
+    "publicationDate": "2023-03-16",
+    "url": "https://patents.google.com/patent/KR20230037416A/ko"
   },
   {
     "id": "patent-kr-2020-01",
     "type": "patent",
     "country": "Korea",
-    "year": "2020",
-    "month": "10",
-    "day": "07",
+    "year": "2026",
+    "month": "08",
+    "day": "03",
     "authors": "이형주, 강대준, 김상원, 김현수, 이건영, 정용재, 김준석, 김진우, 양민호, 한용규, 우준영, 이상근, 이주현, 임채만",
     "title": "기준 신호를 송신하는 전자 장치 및 그 동작 방법",
-    "venue": "대한민국특허 10-2020-0129412",
-    "status": "출원",
+    "venue": "대한민국 특허 10-3001247",
+    "status": "등록 (동일 특허 패밀리: US12512938B2)",
     "doi": "https://doi.org/10.8080/1020200129412",
     "pdf": "",
     "code": "",
-    "showOnHome": false
+    "showOnHome": false,
+    "applicationNumber": "10-2020-0129412",
+    "filingDate": "2020-10-07",
+    "publicationNumber": "KR103001247B1",
+    "publicationDate": "2026-08-07",
+    "grantDate": "2026-08-03",
+    "url": "https://patents.google.com/patent/KR103001247B1/ko"
   },
   {
     "id": "patent-wo-2025-01",
@@ -459,12 +483,16 @@
     "authors": "Xiaoyu Sun, Sanggeun Lee, Liying Zhou, Yizhou Xu, He Wang, and Dingye Zhang",
     "title": "Method performed by first node in wireless communication system and associated device",
     "venue": "PCT International Publication WO2025230225A1",
-    "status": "Published international application (pending). Application: PCT/KR2025/005588; filed April 24, 2025; published November 6, 2025. Same patent family as CN120857234A.",
+    "status": "Published international application (Same patent family: CN120857234A)",
     "url": "https://patents.google.com/patent/WO2025230225A1/en",
     "doi": "",
     "pdf": "",
     "code": "",
-    "showOnHome": false
+    "showOnHome": false,
+    "applicationNumber": "PCT/KR2025/005588",
+    "filingDate": "2025-04-24",
+    "publicationNumber": "WO2025230225A1",
+    "publicationDate": "2025-11-06"
   },
   {
     "id": "patent-cn-2025-01",
@@ -476,11 +504,59 @@
     "authors": "Xiaoyu Sun, Sanggeun Lee, Liying Zhou, Yizhou Xu, He Wang, and Dingye Zhang",
     "title": "Method performed by a first node in a wireless communication system and related devices",
     "venue": "Chinese Patent Application Publication CN120857234A",
-    "status": "Published application (pending). Application: 202510122902.0; filed January 24, 2025; published October 28, 2025. Same patent family as WO2025230225A1.",
+    "status": "Published application (Same patent family: WO2025230225A1)",
     "url": "https://patents.google.com/patent/CN120857234A/en",
     "doi": "",
     "pdf": "",
     "code": "",
-    "showOnHome": false
+    "showOnHome": false,
+    "applicationNumber": "202510122902.0",
+    "filingDate": "2025-01-24",
+    "publicationNumber": "CN120857234A",
+    "publicationDate": "2025-10-28"
+  },
+  {
+    "id": "patent-kr-2026-05",
+    "type": "patent",
+    "country": "Korea",
+    "year": "2026",
+    "month": "02",
+    "day": "26",
+    "authors": "이권종, 이효진, 이형제, 이충용, 엄차현, 이상근",
+    "title": "다차원 성상도 설계 및 운용을 위한 방법 및 장치",
+    "venue": "대한민국 특허 10-2933664",
+    "status": "등록 (동일 특허 패밀리: US11595170B2)",
+    "applicationNumber": "10-2020-0015031",
+    "filingDate": "2020-02-07",
+    "publicationNumber": "KR102933664B1",
+    "publicationDate": "2026-03-05",
+    "grantDate": "2026-02-26",
+    "doi": "",
+    "pdf": "",
+    "code": "",
+    "showOnHome": false,
+    "url": "https://patents.google.com/patent/KR102933664B1/ko"
+  },
+  {
+    "id": "patent-us-2024-01",
+    "type": "patent",
+    "country": "US",
+    "year": "2024",
+    "month": "11",
+    "day": "12",
+    "authors": "Hyoungjoo Lee, Sanggeun Lee, Juhyun Lee, Euichang Jung, Chaiman Lim",
+    "title": "Method for selecting reception beam in electronic device, and electronic device",
+    "venue": "U.S. Patent 12,143,194 B2",
+    "status": "Granted (Same patent family: KR102960384B1)",
+    "applicationNumber": "US17/568,233",
+    "filingDate": "2022-01-04",
+    "publicationNumber": "US12143194B2",
+    "publicationDate": "2024-11-12",
+    "grantDate": "2024-11-12",
+    "doi": "",
+    "pdf": "",
+    "code": "",
+    "showOnHome": false,
+    "url": "https://patents.google.com/patent/US12143194B2/en"
   }
 ]
