@@ -448,5 +448,39 @@
     "pdf": "",
     "code": "",
     "showOnHome": false
+  },
+  {
+    "id": "patent-wo-2025-01",
+    "type": "patent",
+    "country": "WO",
+    "year": "2025",
+    "month": "11",
+    "day": "06",
+    "authors": "Xiaoyu Sun, Sanggeun Lee, Liying Zhou, Yizhou Xu, He Wang, and Dingye Zhang",
+    "title": "Method performed by first node in wireless communication system and associated device",
+    "venue": "PCT International Publication WO2025230225A1",
+    "status": "Published international application (pending). Application: PCT/KR2025/005588; filed April 24, 2025; published November 6, 2025. Same patent family as CN120857234A.",
+    "url": "https://patents.google.com/patent/WO2025230225A1/en",
+    "doi": "",
+    "pdf": "",
+    "code": "",
+    "showOnHome": false
+  },
+  {
+    "id": "patent-cn-2025-01",
+    "type": "patent",
+    "country": "China",
+    "year": "2025",
+    "month": "10",
+    "day": "28",
+    "authors": "Xiaoyu Sun, Sanggeun Lee, Liying Zhou, Yizhou Xu, He Wang, and Dingye Zhang",
+    "title": "Method performed by a first node in a wireless communication system and related devices",
+    "venue": "Chinese Patent Application Publication CN120857234A",
+    "status": "Published application (pending). Application: 202510122902.0; filed January 24, 2025; published October 28, 2025. Same patent family as WO2025230225A1.",
+    "url": "https://patents.google.com/patent/CN120857234A/en",
+    "doi": "",
+    "pdf": "",
+    "code": "",
+    "showOnHome": false
   }
 ]
