@@ -1,5 +1,17 @@
 [
   {
+    "period": "Fall 2026",
+    "name": "Introduction to Electrical and Electronic Engineering (AIA1012)",
+    "level": "undergraduate",
+    "showOnHome": true
+  },
+  {
+    "period": "Fall 2026",
+    "name": "Introduction to Artificial Intelligence for Humanities & Social Sciences (GEA8811)",
+    "level": "undergraduate",
+    "showOnHome": true
+  },
+  {
     "period": "Spring 2026",
     "name": "Introduction to Artificial Intelligence for Science and Engineering (GEA8812)",
     "level": "undergraduate",
