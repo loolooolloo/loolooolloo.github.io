@@ -91,6 +91,7 @@
       font-size: 1.55rem;
       line-height: 1.3;
       letter-spacing: -0.038em;
+      text-align: center;
       word-break: keep-all;
     }
 
@@ -104,10 +105,16 @@
       color: var(--sidebar-muted);
       font-size: 0.9rem;
       letter-spacing: -0.01em;
+      text-align: center;
     }
 
-    .site-subtitle-separator {
-      margin: 0 0.25em;
+    .lab-subtitle [data-site-field]:not([hidden]) {
+      display: block;
+    }
+
+    .lab-subtitle #site-department-name {
+      font-size: 0.74rem;
+      white-space: nowrap;
     }
 
     .navigation {
@@ -1593,7 +1600,6 @@ summary:focus-visible { outline: 2px solid #326f8f; outline-offset: 4px; }
     line-height: 1.35;
   }
   .sidebar-header .lab-subtitle[hidden],
-  .sidebar-header .site-subtitle-separator,
   .sidebar-header #site-department-name { display: none; }
   .menu-toggle { grid-column: 2; }
 }

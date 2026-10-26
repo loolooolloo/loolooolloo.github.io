@@ -69,9 +69,8 @@
     const subtitle = document.getElementById("lab-subtitle");
     const university = document.getElementById("site-university-name");
     const department = document.getElementById("site-department-name");
-    const separator = document.getElementById("site-subtitle-separator");
 
-    if (!subtitle || !university || !department || !separator) return;
+    if (!subtitle || !university || !department) return;
 
     const universityName = String(site.universityName || "").trim();
     const departmentName = String(site.departmentName || "").trim();
@@ -80,7 +79,6 @@
     department.textContent = departmentName;
     university.hidden = !universityName;
     department.hidden = !departmentName;
-    separator.hidden = !(universityName && departmentName);
     subtitle.hidden = !(universityName || departmentName);
   }
 
