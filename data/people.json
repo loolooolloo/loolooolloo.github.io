@@ -77,13 +77,33 @@
   {
     "id": "student-1",
     "category": "student",
-    "name": "Student Name 1",
-    "role": "Ph.D. Student",
-    "research": "Hybrid beamforming and massive MIMO",
-    "photo": "assets/images/student-1.jpg",
+    "name": "Hyejin Cho (조혜진)",
+    "role": "Undergraduate Researcher",
+    "research": [
+      "AI-assisted channel estimation"
+    ],
+    "researchDetail": [
+      "CNN-based denoising"
+    ],
+    "profileLines": [
+      "Department of Artificial Intelligence Engineering",
+      "Changwon National University",
+      "_blank",
+      "E-mail: 20255235@gs.cwnu.ac.kr"
+    ],
+    "photo": "assets/images/people/HyejinCho.jpg",
     "detailPage": "people/student-1.html",
-    "showOnHome": false,
-    "education": [],
+    "showOnHome": true,
+    "education": [
+      {
+        "period": "2025 - Present",
+        "title": "Undergraduate Student",
+        "description": [
+          "Changwon National University",
+          "Department of Artificial Intelligence Engineering"
+        ]
+      }
+    ],
     "experience": []
   },
   {
