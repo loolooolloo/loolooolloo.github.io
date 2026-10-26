@@ -956,9 +956,9 @@
 /* Group each Publications category in the same pale container. */
 .publication-subsection {
   padding: 24px 28px 4px;
-  border: 1px solid #d6e1eb;
+  border: 1px solid #d9dfe4;
   border-radius: 12px;
-  background: #edf3f8;
+  background: #eef0f2;
 }
 
 .publication-subsection + .publication-subsection {
@@ -970,11 +970,11 @@
 }
 
 .publication-subsection .publication-list {
-  border-top-color: #d3dee8;
+  border-top-color: #d9dfe4;
 }
 
 .publication-subsection .publication-item {
-  border-bottom-color: #d3dee8;
+  border-bottom-color: #d9dfe4;
 }
 
 .publication-subsection .publication-item:last-child {
