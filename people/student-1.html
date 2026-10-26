@@ -71,7 +71,7 @@ permalink: /people/student-1.html
     window.PERSON_PUBLICATIONS_DATA_PATH = "{{ '/data/publications.json' | relative_url }}";
     window.PERSON_SITE_BASE_URL = "{{ '/' | relative_url }}";
   </script>
-  <script src="{{ '/assets/js/person-detail-page.js' | relative_url }}"></script>
+  <script src="{{ '/assets/js/person-detail-page.js' | relative_url }}?v={{ site.time | date: '%s' }}"></script>
   {% include mobile-nav-script.html %}
 </body>
 </html>

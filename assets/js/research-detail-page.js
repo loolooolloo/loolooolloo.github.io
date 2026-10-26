@@ -8,7 +8,7 @@ const RESEARCH_DETAIL_SITE_BASE_URL =
   window.RESEARCH_DETAIL_SITE_BASE_URL || "/";
 
 async function loadJson(path) {
-  const response = await fetch(path);
+  const response = await fetch(window.withSiteVersion(path));
 
   if (!response.ok) {
     throw new Error(`Failed to load ${path}: ${response.status}`);

@@ -2,7 +2,7 @@ const HOME_NEWS_LIMIT = 3;
 const HOME_RECENT_PUBLICATION_LIMIT = 5;
 
 async function loadJson(path) {
-  const response = await fetch(path);
+  const response = await fetch(window.withSiteVersion(path));
   if (!response.ok) throw new Error(`Failed to load ${path}: ${response.status}`);
   return response.json();
 }

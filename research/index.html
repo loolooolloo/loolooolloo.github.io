@@ -84,7 +84,7 @@ permalink: /research/
       "{{ '/' | relative_url }}";
   </script>
 
-  <script src="{{ '/assets/js/research-page.js' | relative_url }}"></script>
+  <script src="{{ '/assets/js/research-page.js' | relative_url }}?v={{ site.time | date: '%s' }}"></script>
   {% include mobile-nav-script.html %}
 </body>
 </html>

@@ -1,7 +1,7 @@
 const PUBLICATIONS_DATA_PATH = document.currentScript?.dataset.publicationsUrl || "/data/publications.json";
 
 async function loadJson(path) {
-  const response = await fetch(path);
+  const response = await fetch(window.withSiteVersion(path));
   if (!response.ok) throw new Error(`Failed to load ${path}: ${response.status}`);
   return response.json();
 }

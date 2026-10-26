@@ -45,7 +45,7 @@ permalink: /news/
   </script>
 
   <script
-    src="{{ '/assets/js/news-page.js' | relative_url }}"
+    src="{{ '/assets/js/news-page.js' | relative_url }}?v={{ site.time | date: '%s' }}"
   ></script>
 
   {% include mobile-nav-script.html %}

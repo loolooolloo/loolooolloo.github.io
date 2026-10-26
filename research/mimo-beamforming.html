@@ -51,7 +51,7 @@ permalink: /research/mimo-beamforming.html
     window.RESEARCH_PUBLICATIONS_DATA_PATH = "{{ '/data/publications.json' | relative_url }}";
     window.RESEARCH_DETAIL_SITE_BASE_URL = "{{ '/' | relative_url }}";
   </script>
-  <script src="{{ '/assets/js/research-detail-page.js' | relative_url }}"></script>
+  <script src="{{ '/assets/js/research-detail-page.js' | relative_url }}?v={{ site.time | date: '%s' }}"></script>
   {% include mobile-nav-script.html %}
 </body>
 </html>

@@ -84,7 +84,7 @@
 
   async function updateSiteMetadata() {
     try {
-      const response = await fetch("{{ '/data/site.json' | relative_url }}");
+      const response = await fetch(window.withSiteVersion("{{ '/data/site.json' | relative_url }}"));
       if (!response.ok) return;
 
       const site = await response.json();
@@ -109,7 +109,7 @@
     if (!studentsNavItem) return;
 
     try {
-      const response = await fetch("{{ '/data/people.json' | relative_url }}");
+      const response = await fetch(window.withSiteVersion("{{ '/data/people.json' | relative_url }}"));
       if (!response.ok) return;
 
       const people = await response.json();
@@ -131,7 +131,7 @@
     if (!researchNavItem) return;
 
     try {
-      const response = await fetch("{{ '/data/research.json' | relative_url }}");
+      const response = await fetch(window.withSiteVersion("{{ '/data/research.json' | relative_url }}"));
       if (!response.ok) return;
 
       const research = await response.json();
