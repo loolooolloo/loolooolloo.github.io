@@ -118,6 +118,8 @@
       });
 
       studentsNavItem.hidden = !hasVisibleStudents;
+      const currentPerson = people.find(person => person.id === window.PERSON_ID);
+      if (currentPerson) markCurrentNavigation(currentPerson.category);
     } catch (error) {
       console.error(error);
     }
@@ -143,20 +145,26 @@
     }
   }
 
-  function markCurrentNavigation() {
+  function markCurrentNavigation(personCategory) {
     const base = "{{ '/' | relative_url }}";
     const path = window.location.pathname.slice(base.length - 1);
     const sections = [
       ["/news/", "news"],
-      ["/people/", "professor"],
       ["/research/", "research"],
       ["/publications", "publications"],
       ["/lectures/", "lectures"]
     ];
-    const match = sections.find(([prefix]) => path.startsWith(prefix));
-    if (!match) return;
+    const sectionId = path.startsWith("/people/")
+      ? { professor: "professor", student: "students" }[personCategory]
+      : sections.find(([prefix]) => path.startsWith(prefix))?.[1];
+    if (!sectionId) return;
 
-    const link = document.querySelector(`.nav-link[href$="#${match[1]}"]`);
+    document.querySelectorAll(".nav-link.is-current, .nav-link[aria-current]").forEach(link => {
+      link.classList.remove("is-current");
+      link.removeAttribute("aria-current");
+    });
+
+    const link = document.querySelector(`.nav-link[href$="#${sectionId}"]`);
     if (link) {
       link.classList.add("is-current");
       link.setAttribute("aria-current", "page");
@@ -164,7 +172,7 @@
   }
 
   document.addEventListener("DOMContentLoaded", initializeMobileNavigation);
-  document.addEventListener("DOMContentLoaded", markCurrentNavigation);
+  document.addEventListener("DOMContentLoaded", () => markCurrentNavigation());
   document.addEventListener("DOMContentLoaded", updateSiteMetadata);
   document.addEventListener("DOMContentLoaded", updatePeopleNavigation);
   document.addEventListener("DOMContentLoaded", updateResearchNavigation);
