@@ -67,8 +67,8 @@
 
     .lab-logo-link {
       display: block;
-      width: 100%;
-      margin-bottom: 18px;
+      width: 85%;
+      margin: 0 auto 18px;
     }
 
     .lab-logo {
