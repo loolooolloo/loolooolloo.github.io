@@ -39,6 +39,14 @@ function compareByDateDescending(a, b) {
   return getPublicationTimestamp(b) - getPublicationTimestamp(a);
 }
 
+function getPatentLinkLabel(url) {
+  try {
+    return new URL(url).hostname === "patents.google.com" ? "Google Patents" : "Patent";
+  } catch {
+    return "Patent";
+  }
+}
+
 function createPublicationMarkup(publication) {
   const venue = publication.venue ? `, ${escapeHtml(publication.venue)}` : "";
   const volume = publication.volume ? `, vol. ${escapeHtml(publication.volume)}` : "";
@@ -46,7 +54,7 @@ function createPublicationMarkup(publication) {
   const pages = publication.pages ? `, pp. ${escapeHtml(publication.pages)}` : "";
 
   const links = [
-    publication.url ? `<a href="${escapeHtml(publication.url)}" target="_blank" rel="noopener noreferrer">Patent</a>` : "",
+    publication.url ? `<a href="${escapeHtml(publication.url)}" target="_blank" rel="noopener noreferrer">${getPatentLinkLabel(publication.url)}</a>` : "",
     publication.doi ? `<a href="${escapeHtml(publication.doi)}" target="_blank" rel="noopener noreferrer">DOI</a>` : "",
     publication.pdf ? `<a href="${escapeHtml(publication.pdf)}" target="_blank" rel="noopener noreferrer">PDF</a>` : "",
     publication.code ? `<a href="${escapeHtml(publication.code)}" target="_blank" rel="noopener noreferrer">Code</a>` : ""
