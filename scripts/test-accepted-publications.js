@@ -52,7 +52,20 @@ for (const [file, compare, markup] of sortFiles) {
   assert.equal(sampleOrder, "late,early,undated,new,old", file);
   context.paper = accepted;
   const html = vm.runInContext(markup + "(paper)", context);
-  assert.ok(html.includes(">Accepted</p>"), file);
+  if (file === "assets/js/main.js" || file === "assets/js/publications-page.js") {
+    assert.ok(html.includes('class="publication-type">Accepted</div>'), file);
+    assert.ok(!html.includes(">Accepted</p>"), file);
+    context.paper = { ...accepted, status: "Accepted for publication" };
+    const acceptedMarkup = vm.runInContext(markup + "(paper)", context);
+    assert.ok(acceptedMarkup.includes('class="publication-type">Accepted</div>'), file);
+    assert.ok(!acceptedMarkup.includes(">Accepted for publication</p>"), file);
+    context.paper = { ...accepted, year: "2025", status: "Granted" };
+    const publishedMarkup = vm.runInContext(markup + "(paper)", context);
+    assert.ok(publishedMarkup.includes('class="publication-type">2025</div>'), file);
+    assert.ok(publishedMarkup.includes(">Granted</p>"), file);
+  } else {
+    assert.ok(html.includes(">Accepted</p>"), file);
+  }
   assert.ok(html.includes(accepted.title), file);
   assert.ok(!html.includes("undefined") && !html.includes("null"), file);
   context.paper = { ...accepted, status: 'Accepted <script>alert("x")</script>' };
@@ -63,13 +76,15 @@ const home = contextFor("assets/js/main.js");
 vm.runInContext("renderPublications(data)", home);
 const homeHtml = home.elements.get("journal-list").innerHTML;
 assert.ok(homeHtml.indexOf(accepted.title) < homeHtml.indexOf("Performance analysis for optimal pilot spacing"));
-assert.ok(homeHtml.includes(">Accepted</p>"));
+assert.ok(homeHtml.includes('class="publication-type">Accepted</div>'));
+assert.ok(!homeHtml.includes(">Accepted</p>"));
 
 const page = contextFor("assets/js/publications-page.js");
 vm.runInContext("renderPublications(data)", page);
 const listHtml = page.elements.get("international-journal-list").innerHTML;
 assert.ok(listHtml.indexOf(accepted.title) < listHtml.indexOf("Performance analysis for optimal pilot spacing"));
-assert.ok(listHtml.includes(">Accepted</p>"));
+assert.ok(listHtml.includes('class="publication-type">Accepted</div>'));
+assert.ok(!listHtml.includes(">Accepted</p>"));
 
 const research = contextFor("assets/js/research-page.js");
 research.paper = accepted;

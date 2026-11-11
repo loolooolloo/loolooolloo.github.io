@@ -133,7 +133,7 @@ The checker fails on broken JSON, duplicate IDs, invalid categories/types, missi
 - Leave `year`, `month`, `day`, `volume`, `number`, `pages`, and `doi` empty until publication metadata is confirmed.
 - Optionally set `acceptedAt` to the actual decision date (`YYYY-MM-DD`). This is separate from the publication date.
 - Accepted papers appear first in date-sorted publication lists, with newer acceptance dates first. Published papers retain their publication-date order.
-- Set `showOnHome: true` to include the paper among the home page's selected publications. Status appears below the authors wherever a paper is shown.
+- Set `showOnHome: true` to include the paper among the home page's selected publications. On the home and Publications pages, Accepted appears in the year column without a duplicate line below the authors. Other status messages retain their existing placement.
 - Once published online, remove the Accepted status and fill in the confirmed publication date and DOI. Non-accepted publications still require a year.
 
 Check rendering, ordering, and year validation with:

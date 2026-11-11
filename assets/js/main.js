@@ -232,11 +232,11 @@ function publicationMarkup(item) {
 
   return `
     <li class="publication-item">
-      <div class="publication-type">${escapeHtml(item.year || "")}</div>
+      <div class="publication-type">${escapeHtml(isAccepted(item) ? "Accepted" : item.year || "")}</div>
       <div>
         <p class="item-title">“${escapeHtml(item.title)},” ${escapeHtml(item.venue || "")}</p>
         <p class="item-description">${escapeHtml(item.authors || "")}</p>
-        ${item.status ? `<p class="item-description">${escapeHtml(item.status)}</p>` : ""}
+        ${item.status && !isAccepted(item) ? `<p class="item-description">${escapeHtml(item.status)}</p>` : ""}
         ${links ? `<div class="publication-links">${links}</div>` : ""}
       </div>
     </li>

@@ -73,13 +73,13 @@ function createPublicationMarkup(publication) {
 
   return `
     <li class="publication-item">
-      <div class="publication-type">${escapeHtml(publication.year || "")}</div>
+      <div class="publication-type">${escapeHtml(isAccepted(publication) ? "Accepted" : publication.year || "")}</div>
       <div>
         <p class="item-title">
           “${escapeHtml(publication.title)}”${venue}${volume}${number}${pages}.
         </p>
         <p class="item-description">${escapeHtml(publication.authors || "")}</p>
-        ${publication.status ? `<p class="item-description">${escapeHtml(publication.status)}</p>` : ""}
+        ${publication.status && !isAccepted(publication) ? `<p class="item-description">${escapeHtml(publication.status)}</p>` : ""}
         ${links ? `<div class="publication-links">${links}</div>` : ""}
       </div>
     </li>
