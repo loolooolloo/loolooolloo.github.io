@@ -32,6 +32,10 @@ function parseOptionalInteger(value) {
     : parsed;
 }
 
+function isAccepted(publication) {
+  return /^accepted\b/i.test(String(publication.status || "").trim());
+}
+
 function getPublicationTimestamp(publication) {
   const year = parseOptionalInteger(publication.year);
   const month = parseOptionalInteger(publication.month);
@@ -47,6 +51,13 @@ function getPublicationTimestamp(publication) {
 }
 
 function comparePublicationsByDate(a, b) {
+  const acceptedFirst = Number(isAccepted(b)) - Number(isAccepted(a));
+  if (acceptedFirst) return acceptedFirst;
+  if (isAccepted(a) && isAccepted(b)) {
+    const acceptanceOrder = (Date.parse(b.acceptedAt || "") || 0) -
+      (Date.parse(a.acceptedAt || "") || 0);
+    if (acceptanceOrder) return acceptanceOrder;
+  }
   return getPublicationTimestamp(b) - getPublicationTimestamp(a);
 }
 
@@ -225,6 +236,7 @@ function publicationMarkup(item) {
       <div>
         <p class="item-title">“${escapeHtml(item.title)},” ${escapeHtml(item.venue || "")}</p>
         <p class="item-description">${escapeHtml(item.authors || "")}</p>
+        ${item.status ? `<p class="item-description">${escapeHtml(item.status)}</p>` : ""}
         ${links ? `<div class="publication-links">${links}</div>` : ""}
       </div>
     </li>

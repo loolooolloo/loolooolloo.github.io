@@ -125,3 +125,20 @@ node scripts/validate-data.js
 ```
 
 The checker fails on broken JSON, duplicate IDs, invalid categories/types, missing detail pages, and broken publication references. Missing image assets are reported as warnings so placeholder content can still be staged while the site remains buildable.
+
+## Accepted publications
+
+- Add accepted papers to the existing journal or conference list in `data/publications.json`.
+- Set `"status": "Accepted"` (or `"Accepted for publication"`).
+- Leave `year`, `month`, `day`, `volume`, `number`, `pages`, and `doi` empty until publication metadata is confirmed.
+- Optionally set `acceptedAt` to the actual decision date (`YYYY-MM-DD`). This is separate from the publication date.
+- Accepted papers appear first in date-sorted publication lists, with newer acceptance dates first. Published papers retain their publication-date order.
+- Set `showOnHome: true` to include the paper among the home page's selected publications. Status appears below the authors wherever a paper is shown.
+- Once published online, remove the Accepted status and fill in the confirmed publication date and DOI. Non-accepted publications still require a year.
+
+Check rendering, ordering, and year validation with:
+
+```sh
+node scripts/test-accepted-publications.js
+node scripts/validate-data.js
+```

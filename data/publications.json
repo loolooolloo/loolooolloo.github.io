@@ -1,5 +1,25 @@
 [
   {
+    "id": "journal-int-2026-01",
+    "type": "journal",
+    "scope": "international",
+    "year": "",
+    "month": "",
+    "day": "",
+    "authors": "Jimin Hong, Sanggeun Lee, and Dongkyu Sim",
+    "title": "Block Diagonalization with Null Space Selection via Matrix Inversion-Based Hybrid Beamforming under Partial CSI",
+    "venue": "IEEE Transactions on Wireless Communications",
+    "volume": "",
+    "number": "",
+    "pages": "",
+    "status": "Accepted",
+    "acceptedAt": "2026-11-10",
+    "doi": "",
+    "pdf": "",
+    "code": "",
+    "showOnHome": true
+  },
+  {
     "id": "journal-int-2025-02",
     "type": "journal",
     "scope": "international",

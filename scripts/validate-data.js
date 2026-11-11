@@ -129,7 +129,17 @@ research.forEach((item, index) => {
 
 publications.forEach((item, index) => {
   const label = `publications[${index}] (${item.id || "missing id"})`;
-  validateRequiredStrings(item, ["type", "year", "authors", "title", "venue"], label);
+  validateRequiredStrings(item, ["type", "authors", "title", "venue"], label);
+  const accepted = ["journal", "conference"].includes(item.type) &&
+    /^accepted\b/i.test(String(item.status || "").trim());
+  if (!accepted) validateRequiredStrings(item, ["year"], label);
+  if (item.acceptedAt !== undefined && item.acceptedAt !== "") {
+    validateIsoDate(item.acceptedAt, `${label}.acceptedAt`);
+  }
+  if (accepted && !isNonEmptyString(item.year)) {
+    assert(!String(item.month || "").trim() && !String(item.day || "").trim(),
+      `${label}: publication month/day require a publication year`);
+  }
   assert(["journal", "conference", "patent"].includes(item.type), `${label}: type must be journal, conference, or patent`);
   if (["journal", "conference"].includes(item.type)) {
     assert(["international", "domestic"].includes(item.scope), `${label}: scope must be international or domestic`);

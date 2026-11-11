@@ -45,6 +45,7 @@ function publicationMarkup(item) {
       <div>
         <p class="item-title">“${escapeHtml(item.title)},” ${escapeHtml(item.venue || "")}</p>
         <p class="item-description">${escapeHtml(item.authors || "")}</p>
+        ${item.status ? `<p class="item-description">${escapeHtml(item.status)}</p>` : ""}
         ${links ? `<div class="publication-links">${links}</div>` : ""}
       </div>
     </li>

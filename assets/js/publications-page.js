@@ -21,6 +21,10 @@ function parseOptionalInteger(value) {
   return Number.isNaN(parsed) ? null : parsed;
 }
 
+function isAccepted(publication) {
+  return /^accepted\b/i.test(String(publication.status || "").trim());
+}
+
 function getPublicationTimestamp(publication) {
   const year = parseOptionalInteger(publication.year);
   const month = parseOptionalInteger(publication.month);
@@ -36,6 +40,13 @@ function getPublicationTimestamp(publication) {
 }
 
 function compareByDateDescending(a, b) {
+  const acceptedFirst = Number(isAccepted(b)) - Number(isAccepted(a));
+  if (acceptedFirst) return acceptedFirst;
+  if (isAccepted(a) && isAccepted(b)) {
+    const acceptanceOrder = (Date.parse(b.acceptedAt || "") || 0) -
+      (Date.parse(a.acceptedAt || "") || 0);
+    if (acceptanceOrder) return acceptanceOrder;
+  }
   return getPublicationTimestamp(b) - getPublicationTimestamp(a);
 }
 
