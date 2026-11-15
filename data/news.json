@@ -1,15 +1,29 @@
 [
   {
+    "id": "news-2026-11-11",
+    "date": "2026-11-11",
+    "title": "제한된 채널 상태 정보를 활용한 다중 사용자 하이브리드 빔포밍 연구, IEEE TWC 게재 확정",
+    "image": "",
+    "imageAlt": "",
+    "content": [
+      "충북대학교 정보통신공학부 연구진과 공동으로 수행한 하이브리드 빔포밍 연구 논문이 무선통신 분야의 저명 국제학술지인 **IEEE Transactions on Wireless Communications (TWC)에 게재 확정**되었습니다.",
+      "(논문 제목: *Block Diagonalization with Null Space Selection via Matrix Inversion-Based Hybrid Beamforming under Partial CSI*)",
+      "",
+      "본 논문은 다중 사용자 밀리미터파(mmWave) 거대 다중안테나 시스템을 대상으로, 제한된 채널 상태 정보(partial CSI)를 활용하는 하이브리드 빔포밍 설계 기법(BD-MI-HBF)을 제안했습니다. 행렬 역연산 기반의 설계를 통해 영공간 선택(null space selection)을 적용한 블록 대각화(block diagonalization) 프리코딩을 하이브리드 빔포밍 구조에서 구현하는 기법입니다."
+    ]
+  },
+  {
     "id": "news-2026-07-01",
     "date": "2026-07-01",
     "title": "연구 범위 구체화 및 연구실 명칭 개편",
     "image": "",
     "imageAlt": "",
     "content": [
-      "2026년 7월, 그동안 수행해 온 연구와 향후 연구 방향을 바탕으로 연구실의 연구 범위를 구체화하고, 연구실 명칭을 무선지능최적화연구실(Wireless Intelligence and Optimization Lab., WIO Lab.)로 개편하였습니다.",
-      "무선지능최적화연구실은 인공지능 기반 무선통신, MIMO 신호처리 및 하이브리드 빔포밍, 채널 추정 및 예측, 무선 네트워크 최적화를 주요 연구 분야로 설정하고, 차세대 무선통신 시스템의 지능화와 효율적인 운용을 위한 핵심 기술을 연구합니다.",
-      "또, 새롭게 정립한 연구 방향과 연구실 구성원 및 연구 성과를 소개하기 위한 공식 홈페이지를 함께 공개하였습니다."
-  ]
+      "2026년 7월, 연구실이 지향하는 연구 주제를 보다 명확히 담아내기 위해 연구실 명칭을 **무선지능최적화연구실(Wireless Intelligence and Optimization Lab., WIO Lab)**로 변경했습니다.",
+      "",
+      "WIO Lab은 **▲무선통신 시스템을 위한 인공지능 기술**, **▲MIMO 신호처리 및 빔포밍 기술**, **▲차세대 무선 시스템 설계 및 운용 기술**을 연구하며, 차세대 무선통신 시스템의 핵심 원천 기술 개발을 목표로 합니다.",
+      "명칭 변경과 함께 연구실의 세부 연구 분야, 구성원, 연구 성과를 한눈에 살펴볼 수 있는 공식 홈페이지를 개설했습니다."
+    ]
   },
   {
     "id": "news-2025-07-01",
@@ -18,8 +32,8 @@
     "image": "",
     "imageAlt": "",
     "content": [
-      "2025년 7월, 국립창원대학교 GAST 인공지능융합공학과 교수 임용과 함께 차세대무선통신연구실(Advanced Wireless Communications Lab., AWC Lab)이 새롭게 출범하였습니다.",
-      "차세대무선통신연구실은 인공지능 기반 무선통신, MIMO 신호처리 및 하이브리드 빔포밍 기술 등 차세대 무선통신 기술을 중심으로 연구를 수행합니다."
+      "2025년 7월, 이상근 교수의 국립창원대학교 글로컬첨단과학기술대학(Glocal Advanced institute of Science & Technology, GAST) 인공지능융합공학과 부임과 함께 **차세대무선통신연구실(Advanced Wireless Communications Lab., AWC Lab)**이 출범했습니다.",
+      "차세대무선통신연구실은 MIMO 송수신, 채널 추정, 저복잡도 수신 등 **무선통신 시스템을 위한 신호처리 기술**과 **인공지능을 접목한 무선통신 기술**을 중점적으로 연구합니다."
     ]
   }
 ]
