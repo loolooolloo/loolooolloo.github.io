@@ -57,6 +57,22 @@ Example:
 }
 ```
 
+### News line breaks and emphasis
+
+- Each `content` array item starts a new line, without paragraph spacing.
+- `\n` inside a string also inserts a line break. An empty item (`""`) adds a blank line between surrounding items.
+- Use `**bold**`, `*italic*`, or `***bold italic***` for emphasis.
+- These are limited inline formatting rules, not a full Markdown renderer. Raw HTML is displayed as text.
+
+```json
+"content": [
+  "논문이 **IEEE TWC**에 게재 확정되었습니다.",
+  "논문 제목: *Paper title*",
+  "",
+  "첫째 줄\n둘째 줄"
+]
+```
+
 ## Lecture data notes
 
 `data/lectures.json` is intentionally simple. Lecture detail pages are not currently used.

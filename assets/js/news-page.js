@@ -53,23 +53,32 @@ function resolveSiteUrl(path = "") {
   return `${base}${String(path).replace(/^\/+/, "")}`;
 }
 
-function getContentParagraphs(content) {
-  if (Array.isArray(content)) {
-    return content
-      .filter(paragraph => String(paragraph).trim() !== "")
-      .map(paragraph => `
-        <p>${escapeHtml(paragraph)}</p>
-      `)
-      .join("");
+// Only emphasis is supported; all source text, including HTML, stays escaped.
+function formatNewsInline(value) {
+  const source = String(value);
+  const emphasis = /\*\*\*([^\n]+?)\*\*\*|\*\*([^\n]+?)\*\*|\*([^*\n]+)\*/g;
+  let result = "";
+  let cursor = 0;
+  for (const match of source.matchAll(emphasis)) {
+    result += escapeHtml(source.slice(cursor, match.index));
+    if (match[1] !== undefined) {
+      result += `<strong><em>${escapeHtml(match[1])}</em></strong>`;
+    } else if (match[2] !== undefined) {
+      result += `<strong>${formatNewsInline(match[2])}</strong>`;
+    } else {
+      result += `<em>${escapeHtml(match[3])}</em>`;
+    }
+    cursor = match.index + match[0].length;
   }
+  return result + escapeHtml(source.slice(cursor));
+}
 
-  return String(content || "")
-    .split(/\r?\n+/)
-    .filter(paragraph => paragraph.trim() !== "")
-    .map(paragraph => `
-      <p>${escapeHtml(paragraph)}</p>
-    `)
-    .join("");
+function getContentParagraphs(content) {
+  const source = Array.isArray(content)
+    ? content.map(line => String(line ?? "")).join("\n")
+    : String(content ?? "");
+  if (!source) return "";
+  return `<p>${source.split(/\r\n|\r|\n/).map(formatNewsInline).join("<br>")}</p>`;
 }
 
 function createNewsAccordion(item, index) {
