@@ -13,7 +13,7 @@ assert.equal(published.year, "2026");
 assert.equal(published.month, "11");
 assert.equal(published.day, "16");
 assert.equal(published.status, "Early Access");
-assert.equal(published.url, "https://ieeexplore.ieee.org/document/11797728");
+assert.equal(published.url, undefined);
 assert.equal(published.doi, "https://doi.org/10.1109/TWC.2026.3754016");
 // Retain accepted-state regression coverage after the real paper is published.
 const publications = livePublications.map(p => p.id === published.id ? { ...p, year: "", month: "", day: "", status: "Accepted" } : p);
@@ -34,8 +34,8 @@ const { byPublicationDate, publicationItem } = render;
 const publishedHtml = publicationItem(published, [], { full: true });
 assert.ok(publishedHtml.includes('>2026</span>'));
 assert.ok(publishedHtml.includes('>Early Access</p>'));
-assert.ok(publishedHtml.includes('href="' + published.url + '"'));
-assert.ok(publishedHtml.includes('>Publisher<span'));
+assert.ok(!publishedHtml.includes("11797728"));
+assert.ok(!publishedHtml.includes("Publisher"));
 assert.ok(publishedHtml.includes('href="' + published.doi + '"'));
 assert.equal(validationErrors(livePublications), "");
 

@@ -196,7 +196,7 @@ export function publicationItem(item, names = [], { full = false } = {}) {
     : [];
   const venue = [item.venue, ...details].filter(Boolean).map(esc).join(", ");
   const links = [
-    item.url ? [item.url, item.type === "patent" ? patentLabel(item.url) : "Publisher"] : null,
+    item.url ? [item.url, patentLabel(item.url)] : null,
     item.doi ? [item.doi, "DOI"] : null,
     item.pdf ? [item.pdf, "PDF"] : null,
     item.code ? [item.code, "Code"] : null
