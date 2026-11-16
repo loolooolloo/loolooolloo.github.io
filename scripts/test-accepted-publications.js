@@ -3,92 +3,72 @@ const assert = require("node:assert/strict");
 const fs = require("node:fs");
 const path = require("node:path");
 const vm = require("node:vm");
+const { pathToFileURL } = require("node:url");
 const root = path.resolve(__dirname, "..");
 const publications = JSON.parse(fs.readFileSync(path.join(root, "data/publications.json"), "utf8"));
+const people = JSON.parse(fs.readFileSync(path.join(root, "data/people.json"), "utf8"));
+const research = JSON.parse(fs.readFileSync(path.join(root, "data/research.json"), "utf8"));
 const accepted = publications.find(p => p.id === "journal-int-2026-01");
 assert.ok(accepted);
 assert.equal(accepted.year, "");
 assert.equal(accepted.status, "Accepted");
 assert.equal(accepted.acceptedAt, "2026-11-10");
 
-function contextFor(file, data = publications) {
-  const elements = new Map();
-  const context = vm.createContext({
-    console,
-    document: {
-      currentScript: { dataset: {} },
-      addEventListener() {},
-      getElementById(id) {
-        if (!elements.has(id)) elements.set(id, { innerHTML: "", hidden: false });
-        return elements.get(id);
-      }
-    },
-    window: {},
-    data,
-    elements
-  });
-  vm.runInContext(fs.readFileSync(path.join(root, file), "utf8"), context);
-  return context;
-}
+// All publication lists share one sort (byPublicationDate) and one entry markup (publicationItem)
+// in assets/js/render.js; the home, Publications, Research and people pages use them.
+const load = file => import(pathToFileURL(path.join(root, file)).href);
 
-const sortFiles = [
-  ["assets/js/main.js", "comparePublicationsByDate", "publicationMarkup"],
-  ["assets/js/publications-page.js", "compareByDateDescending", "createPublicationMarkup"],
-  ["assets/js/person-detail-page.js", "comparePublicationsByDate", "createPublicationMarkup"],
-  ["assets/js/research-detail-page.js", "comparePublicationsByDate", "createPublicationMarkup"]
+(async () => {
+const render = await load("assets/js/render.js");
+const pages = await load("assets/js/pages.js");
+const { byPublicationDate, publicationItem } = render;
+
+assert.equal([...publications].sort(byPublicationDate)[0].id, accepted.id);
+const samples = [
+  { id: "old", year: "2024" },
+  { id: "new", year: "2025", month: "4" },
+  { id: "early", status: "Accepted for publication", acceptedAt: "2026-10-01" },
+  { id: "late", status: "Accepted", acceptedAt: "2026-11-10", year: null },
+  { id: "undated", status: "Accepted", year: "" }
 ];
-for (const [file, compare, markup] of sortFiles) {
-  const context = contextFor(file);
-  const order = vm.runInContext("[...data].sort(" + compare + ").map(p => p.id)", context);
-  assert.equal(order[0], accepted.id, file);
-  context.samples = [
-    { id: "old", year: "2024" },
-    { id: "new", year: "2025", month: "4" },
-    { id: "early", status: "Accepted for publication", acceptedAt: "2026-10-01" },
-    { id: "late", status: "Accepted", acceptedAt: "2026-11-10", year: null },
-    { id: "undated", status: "Accepted", year: "" }
-  ];
-  const sampleOrder = vm.runInContext("[...samples].sort(" + compare + ").map(p => p.id).join(',')", context);
-  assert.equal(sampleOrder, "late,early,undated,new,old", file);
-  context.paper = accepted;
-  const html = vm.runInContext(markup + "(paper)", context);
-  if (file === "assets/js/main.js" || file === "assets/js/publications-page.js") {
-    assert.ok(html.includes('class="publication-type">Accepted</div>'), file);
-    assert.ok(!html.includes(">Accepted</p>"), file);
-    context.paper = { ...accepted, status: "Accepted for publication" };
-    const acceptedMarkup = vm.runInContext(markup + "(paper)", context);
-    assert.ok(acceptedMarkup.includes('class="publication-type">Accepted</div>'), file);
-    assert.ok(!acceptedMarkup.includes(">Accepted for publication</p>"), file);
-    context.paper = { ...accepted, year: "2025", status: "Granted" };
-    const publishedMarkup = vm.runInContext(markup + "(paper)", context);
-    assert.ok(publishedMarkup.includes('class="publication-type">2025</div>'), file);
-    assert.ok(publishedMarkup.includes(">Granted</p>"), file);
-  } else {
-    assert.ok(html.includes(">Accepted</p>"), file);
-  }
-  assert.ok(html.includes(accepted.title), file);
-  assert.ok(!html.includes("undefined") && !html.includes("null"), file);
-  context.paper = { ...accepted, status: 'Accepted <script>alert("x")</script>' };
-  assert.ok(!vm.runInContext(markup + "(paper)", context).includes("<script>"), file);
+assert.equal([...samples].sort(byPublicationDate).map(p => p.id).join(","), "late,early,undated,new,old");
+
+const yearCell = label => new RegExp(`class="pub__year[^"]*">${label}</span>`);
+for (const full of [false, true]) {
+  const html = publicationItem(accepted, [], { full });
+  assert.match(html, yearCell("Accepted"));
+  assert.ok(!html.includes(">Accepted</p>"));
+  assert.ok(html.includes(accepted.title));
+  assert.ok(!html.includes("undefined") && !html.includes("null"));
+  const forPublication = publicationItem({ ...accepted, status: "Accepted for publication" }, [], { full });
+  assert.match(forPublication, yearCell("Accepted"));
+  assert.ok(!forPublication.includes(">Accepted for publication</p>"));
+  const granted = publicationItem({ ...accepted, year: "2025", status: "Granted" }, [], { full });
+  assert.match(granted, yearCell("2025"));
+  assert.ok(granted.includes(">Granted</p>"));
+  assert.ok(!publicationItem({ ...accepted, status: 'Accepted <script>alert("x")</script>' }, [], { full }).includes("<script>"));
 }
 
-const home = contextFor("assets/js/main.js");
-vm.runInContext("renderPublications(data)", home);
-const homeHtml = home.elements.get("journal-list").innerHTML;
+// Home: the accepted paper comes before the newest published one.
+const homeHtml = render.publications(publications).html;
 assert.ok(homeHtml.indexOf(accepted.title) < homeHtml.indexOf("Performance analysis for optimal pilot spacing"));
-assert.ok(homeHtml.includes('class="publication-type">Accepted</div>'));
+assert.match(homeHtml, yearCell("Accepted"));
 assert.ok(!homeHtml.includes(">Accepted</p>"));
 
-const page = contextFor("assets/js/publications-page.js");
-vm.runInContext("renderPublications(data)", page);
-const listHtml = page.elements.get("international-journal-list").innerHTML;
+// Publications page.
+const listHtml = pages.publicationGroups(publications, []);
 assert.ok(listHtml.indexOf(accepted.title) < listHtml.indexOf("Performance analysis for optimal pilot spacing"));
-assert.ok(listHtml.includes('class="publication-type">Accepted</div>'));
+assert.match(listHtml, yearCell("Accepted"));
 assert.ok(!listHtml.includes(">Accepted</p>"));
 
-const research = contextFor("assets/js/research-page.js");
-research.paper = accepted;
-assert.ok(vm.runInContext("publicationMarkup(paper)", research).includes(">Accepted</p>"));
+// Research page lists the accepted paper where research.json relates it.
+const related = research.find(area => (area.relatedPublicationIds || []).includes(accepted.id));
+if (related) assert.match(pages.researchAreas([related], publications, []), yearCell("Accepted"));
+
+// Person pages sort their selected publications the same way.
+const lead = people.find(person => person.category === "professor");
+const personHtml = pages.personPage({ ...lead, selectedPublicationIds: ["journal-int-2025-02", accepted.id] }, publications, []);
+assert.ok(personHtml.indexOf(accepted.title) < personHtml.indexOf("Performance analysis for optimal pilot spacing"));
 
 function validationErrors(papers) {
   const errors = [];
@@ -118,3 +98,4 @@ assert.match(validationErrors(publications.map(p => p.id === accepted.id ? { ...
 assert.match(validationErrors(publications.map(p => p.id === accepted.id ? { ...p, month: "11" } : p)), /month\/day/);
 assert.match(validationErrors(publications.map(p => p.id === accepted.id ? { ...p, acceptedAt: "Nov 10" } : p)), /acceptedAt/);
 console.log("Accepted publication rendering, ordering, and validation checks passed.");
+})().catch(error => { console.error(error); process.exit(1); });

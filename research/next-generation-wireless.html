@@ -1,57 +1,16 @@
 ---
-layout: null
+layout: wio
 title: Next-Generation Wireless Communications
 permalink: /research/next-generation-wireless.html
+kind: research-detail
+nav: research
+data_id: "next-generation-wireless-systems"
 ---
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  {% include head-meta.html %}
-  <title>Next-Generation Wireless Communications · {{ site.title }}</title>
-</head>
-
-<body>
-  <div class="site-layout">
-    {% include sidebar.html %}
-
-    <main class="main-content">
-      <div class="content-wrapper">
-        <section id="research-detail">
-          <a class="back-link" href="{{ '/research/' | relative_url }}">
-            ← Back to Research Areas
-          </a>
-
-          <article class="detail-content research-detail-content">
-            <p class="eyebrow">Research Area</p>
-            <h1 id="research-detail-title">Next-Generation Wireless Communications</h1>
-            <p id="research-detail-description">5G-Advanced, 6G, satellite communications, and integrated terrestrial-non-terrestrial networks.</p>
-
-            <div id="research-detail-image-wrap" class="research-detail-image-wrap" hidden>
-              <img id="research-detail-image" class="research-detail-image" src="" alt="" />
-            </div>
-
-            <div id="research-detail-content" class="research-detail-body"></div>
-
-            <section id="related-publications-section" class="related-publications-section" hidden>
-              <h2>Related Publications</h2>
-              <ul id="related-publications-list" class="publication-list"></ul>
-            </section>
-          </article>
-        </section>
+    <header class="page-head">
+      <div class="wrap page-head__inner">
+        <a class="page-head__back" href="{{ '/research/' | relative_url }}">← Back to Research Areas</a>
+        <h1 class="page-head__title" id="page-title">Next-Generation Wireless Communications</h1>
+        <p class="page-head__note" id="page-note">5G-Advanced, 6G, satellite communications, and integrated terrestrial-non-terrestrial networks.</p>
       </div>
-    </main>
-  </div>
-
-  <script>
-    window.RESEARCH_TOPIC_ID = "next-generation-wireless-systems";
-    window.RESEARCH_DETAIL_DATA_PATH = "{{ '/data/research.json' | relative_url }}";
-    window.RESEARCH_PUBLICATIONS_DATA_PATH = "{{ '/data/publications.json' | relative_url }}";
-    window.RESEARCH_DETAIL_SITE_BASE_URL = "{{ '/' | relative_url }}";
-  </script>
-  <script src="{{ '/assets/js/research-detail-page.js' | relative_url }}?v={{ site.time | date: '%s' }}"></script>
-  {% include mobile-nav-script.html %}
-</body>
-</html>
+    </header>
+    <div id="page-body" aria-live="polite"></div>

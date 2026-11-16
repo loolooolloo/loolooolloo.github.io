@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#172235" />
+  {% include head-meta.html %}
+  <title>{% if page.kind == "home" %}{{ site.title }}{% else %}{{ page.title }} · {{ site.title }}{% endif %}</title>
+</head>
+{%- comment -%}
+  Every page shares this frame. Front matter sets:
+    kind     home | news | research | research-detail | publications | lectures | person
+    nav      which menu item is marked as current (news, professor, students, research, publications, lectures)
+    data_id  the person or research topic a detail page shows
+  The page content is rendered in the browser from /data/*.json by assets/js/render.js (home)
+  and assets/js/pages.js (sub-pages).
+{%- endcomment %}
+<body data-page="{{ page.kind }}"{% if page.data_id %} data-id="{{ page.data_id }}"{% endif %}>
+  <a class="skip-link" href="#main">Skip to content</a>
+  {% include site-header.html %}
+
+  <main id="main">
+{{ content }}
+  </main>
+
+  {% include site-footer.html %}
+
+  {%- assign version = site.time | date: '%s' %}
+  {% if page.kind == "home" %}
+  <script type="module" src="{{ '/assets/js/render.js' | relative_url }}?v={{ version }}"></script>
+  {% else %}
+  <script type="module" src="{{ '/assets/js/pages.js' | relative_url }}?v={{ version }}"></script>
+  {% endif %}
+  <script type="module" src="{{ '/assets/js/app.js' | relative_url }}?v={{ version }}"></script>
+</body>
+</html>

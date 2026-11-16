@@ -1,0 +1,32 @@
+{%- comment -%}
+  The top menu on every page. On the home page the links are in-page anchors (#news), so the
+  menu can mark the section being read; elsewhere they lead back to those sections (/#news).
+  Students and Research Areas are hidden by the page scripts when data/*.json has nothing to show.
+{%- endcomment -%}
+{%- if page.kind == "home" -%}
+  {%- assign navbase = "" -%}
+{%- else -%}
+  {%- assign navbase = "/" | relative_url -%}
+{%- endif -%}
+<header class="site-header">
+  <div class="wrap site-header__inner">
+    <a class="brand" href="{{ '/' | relative_url }}" aria-label="Wireless Intelligence and Optimization Lab. home">
+      <img src="{{ '/assets/images/logo/logo_wio_260716_bright.png' | relative_url }}" alt="WIO" width="846" height="230" />
+    </a>
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
+      <span class="menu-toggle__bars" aria-hidden="true"></span>
+      <span class="visually-hidden">Menu</span>
+    </button>
+    <nav id="site-nav" class="site-nav" aria-label="Main navigation">
+      <ul>
+        <li><a class="nav-link" href="{{ navbase }}#news"{% if page.nav == "news" %} aria-current="page"{% endif %}>News</a></li>
+        <li data-show="professor"><a class="nav-link" href="{{ navbase }}#professor"{% if page.nav == "professor" %} aria-current="page"{% endif %}>Professor</a></li>
+        <li data-show="students"><a class="nav-link" href="{{ navbase }}#students"{% if page.nav == "students" %} aria-current="page"{% endif %}>Students</a></li>
+        <li data-show="research"><a class="nav-link" href="{{ navbase }}#research"{% if page.nav == "research" %} aria-current="page"{% endif %}>Research Areas</a></li>
+        <li><a class="nav-link" href="{{ navbase }}#publications"{% if page.nav == "publications" %} aria-current="page"{% endif %}>Publications</a></li>
+        <li><a class="nav-link" href="{{ navbase }}#lectures"{% if page.nav == "lectures" %} aria-current="page"{% endif %}>Lectures</a></li>
+        <li><a class="nav-link" href="{{ navbase }}#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>

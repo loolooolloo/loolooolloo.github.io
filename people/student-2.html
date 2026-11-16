@@ -1,77 +1,17 @@
 ---
-layout: null
+layout: wio
 title: Student Name 2
 sitemap: false
 permalink: /people/student-2.html
+kind: person
+nav: students
+data_id: "student-2"
 ---
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  {% include head-meta.html %}
-  <title>Student Name 2 · {{ site.title }}</title>
-</head>
-<body>
-  <div class="site-layout">
-    {% include sidebar.html %}
-    <main class="main-content">
-      <div class="content-wrapper">
-        <section>
-          <a class="back-link" href="{{ '/' | relative_url }}#students">← Back to People</a>
-          <article class="detail-content person-detail-content">
-            <div class="person-detail-header">
-              <div id="person-detail-photo-frame" class="person-detail-photo-frame" hidden>
-                <img id="person-detail-photo" class="person-detail-photo" src="" alt="" />
-              </div>
-
-              <div class="person-detail-summary">
-                <h1 id="person-detail-name">Student Name 2</h1>
-                <p id="person-detail-role" class="person-detail-role"></p>
-                <p id="person-detail-research"></p>
-                <div id="person-profile-lines" class="person-profile-lines"></div>
-                <div id="person-detail-links" class="person-detail-links" hidden></div>
-
-                <section
-                  id="person-research-interests-section"
-                  class="person-research-interests person-detail-section-inline"
-                  hidden
-                >
-                  <h2>Research Interests</h2>
-                  <ul id="person-research-interests-list" class="person-detail-list"></ul>
-                </section>
-              </div>
-            </div>
-
-            <div id="person-detail-content" class="person-detail-body" hidden></div>
-
-            <section id="person-experience-section" class="person-detail-section" hidden>
-              <h2>Experience</h2>
-              <ul id="person-experience-list" class="timeline-list"></ul>
-            </section>
-
-            <section id="person-education-section" class="person-detail-section" hidden>
-              <h2>Education</h2>
-              <ul id="person-education-list" class="timeline-list"></ul>
-            </section>
-
-            <section id="person-publications-section" class="person-detail-section" hidden>
-              <h2>Selected Publications</h2>
-              <ul id="person-publications-list" class="publication-list"></ul>
-            </section>
-          </article>
-        </section>
+    <header class="page-head">
+      <div class="wrap page-head__inner">
+        <a class="page-head__back" href="{{ '/#students' | relative_url }}">← Back to People</a>
+        <h1 class="page-head__title" id="page-title">Student Name 2</h1>
+        <p class="page-head__role" id="page-note">M.S. Student</p>
       </div>
-    </main>
-  </div>
-  <script>
-    window.PERSON_ID = "student-2";
-    window.PERSON_DATA_PATH = "{{ '/data/people.json' | relative_url }}";
-    window.PERSON_PUBLICATIONS_DATA_PATH = "{{ '/data/publications.json' | relative_url }}";
-    window.PERSON_SITE_BASE_URL = "{{ '/' | relative_url }}";
-  </script>
-  <script src="{{ '/assets/js/person-detail-page.js' | relative_url }}?v={{ site.time | date: '%s' }}"></script>
-  {% include mobile-nav-script.html %}
-</body>
-</html>
+    </header>
+    <div id="page-body" aria-live="polite"></div>

@@ -1,10 +1,11 @@
 const assert = require('node:assert/strict');
-const fs = require('node:fs');
-const vm = require('node:vm');
 const path = require('node:path');
-const context = vm.createContext({window: {}, document: {addEventListener() {}}, console});
-vm.runInContext(fs.readFileSync(path.join(__dirname, '../assets/js/news-page.js'), 'utf8'), context);
-const render = content => context.getContentParagraphs(content);
+const { pathToFileURL } = require('node:url');
+
+// The news renderer lives in assets/js/render.js (an ES module shared by the home and News pages).
+(async () => {
+const { newsParagraphs } = await import(pathToFileURL(path.join(__dirname, '../assets/js/render.js')).href);
+const render = content => newsParagraphs(content);
 assert.equal(render(['첫째 줄', '둘째 줄']), '<p>첫째 줄<br>둘째 줄</p>');
 assert.equal(render(['첫째 줄', '', '셋째 줄']), '<p>첫째 줄<br><br>셋째 줄</p>');
 assert.equal(render(['A\nB', 'C\r\nD']), '<p>A<br>B<br>C<br>D</p>');
@@ -18,3 +19,4 @@ assert.equal(render('**A\nB**'), '<p>**A<br>B**</p>');
 assert.equal(render([]), '');
 assert.equal(render(null), '');
 console.log('News formatting: 12 checks passed');
+})().catch(error => { console.error(error); process.exit(1); });

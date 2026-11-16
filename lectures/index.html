@@ -1,77 +1,13 @@
 ---
-layout: null
+layout: wio
 title: Lectures
 permalink: /lectures/
+kind: lectures
+nav: lectures
 ---
-
-<!DOCTYPE html>
-<html lang="ko">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  {% include head-meta.html %}
-  <title>Lectures · {{ site.title }}</title>
-</head>
-<body>
-  <div class="site-layout">
-    {% include sidebar.html %}
-    <main class="main-content">
-      <div class="content-wrapper">
-        <section id="all-lectures">
-          <div class="section-heading">
-            <h2>Lectures</h2>
-          </div>
-          <div id="all-lecture-groups" class="lecture-groups"></div>
-        </section>
+    <header class="page-head">
+      <div class="wrap page-head__inner">
+        <h1 class="page-head__title" id="page-title">Lectures</h1>
       </div>
-    </main>
-  </div>
-
-  <script>
-    function escapeHtml(value = "") {
-      return String(value)
-        .replaceAll("&", "&amp;")
-        .replaceAll("<", "&lt;")
-        .replaceAll(">", "&gt;")
-        .replaceAll('"', "&quot;")
-        .replaceAll("'", "&#039;");
-    }
-
-    document.addEventListener("DOMContentLoaded", async () => {
-      const response = await fetch(window.withSiteVersion("{{ '/data/lectures.json' | relative_url }}"));
-      const lectures = await response.json();
-
-      const groups = [
-        ["undergraduate", "Undergraduate Courses"],
-        ["graduate", "Graduate Courses"]
-      ];
-
-      document.getElementById("all-lecture-groups").innerHTML = groups
-        .map(([level, title]) => {
-          const items = lectures.filter(lecture => lecture.level === level);
-
-          if (!items.length) {
-            return "";
-          }
-
-          return `
-            <section class="lecture-group">
-              <h3>${escapeHtml(title)}</h3>
-              <ul class="lecture-list">
-                ${items.map(lecture => `
-        <li class="lecture-list-item">
-          <div class="lecture-period">${escapeHtml(lecture.period || "")}</div>
-          <div class="lecture-name">${escapeHtml(lecture.name || "")}</div>
-        </li>
-                `).join("")}
-              </ul>
-            </section>
-          `;
-        })
-        .join("");
-    });
-  </script>
-
-  {% include mobile-nav-script.html %}
-</body>
-</html>
+    </header>
+    <div id="page-body" aria-live="polite"></div>

@@ -1,124 +1,134 @@
 ---
-layout: null
+layout: wio
 title: Home
+kind: home
 ---
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  {% include head-meta.html %}
-  <title>{{ site.title }}</title>
-</head>
-<body>
-  <div class="site-layout">
-    {% include sidebar.html %}
-    <main class="main-content">
-      <div class="content-wrapper">
-        <section id="welcome" class="hero">
-          <figure class="hero-visual">
-            <img src="{{ '/assets/images/landing_page_260715.png' | relative_url }}" alt="Intelligent wireless network connecting a campus, city infrastructure, vehicles, drones, and IoT devices" />
-          </figure>
-          <div class="hero-content">
-            <h2 class="hero-title">
-              <span class="hero-title-ko">무선지능최적화연구실</span>
-              <span class="hero-title-en">Wireless Intelligence and Optimization Lab.</span>
-            </h2>
-            <p class="hero-description-ko">무선지능최적화연구실은 인공지능, 신호처리, 최적화 이론을 바탕으로 차세대 무선통신 시스템의 성능과 신뢰성을 높이는 연구를 수행합니다. 우리는 mmWave MIMO, 하이브리드 빔포밍, 채널 추정 및 예측, AI 기반 수신기와 무선 자원 최적화 기술을 연구하며, 복잡하고 빠르게 변화하는 무선 환경에서도 안정적이고 효율적인 연결을 제공하는 지능형 네트워크를 지향합니다.</p>
-            <p>The Wireless Intelligence and Optimization Lab. explores next-generation wireless communication systems through artificial intelligence, signal processing, and optimization. Our research spans mmWave MIMO, hybrid beamforming, channel estimation and prediction, AI-assisted receivers, and wireless resource optimization, with the goal of enabling intelligent networks that deliver reliable and efficient connectivity in complex and dynamic wireless environments.</p>
+    <section id="welcome" class="hero" aria-labelledby="lab-title">
+      <div class="wrap hero__inner">
+        <div class="hero__text">
+          <p class="hero__affiliation">
+            <span id="site-university">Changwon National University</span>
+            <span id="site-department">Department of Artificial Intelligence Engineering</span>
+          </p>
+          <h1 id="lab-title" class="hero__title">
+            <span class="hero__ko">무선지능<wbr>최적화연구실</span>
+            <span class="hero__en" lang="en">Wireless Intelligence and Optimization Lab.</span>
+          </h1>
+          <a class="hero__news" href="#news"><span class="hero__news-label" lang="en">News</span><span id="hero-news" class="hero__news-text"></span></a>
+        </div>
+        <!-- A half-wavelength linear array's beam pattern, computed in app.js. It is a picture of the lab's
+             subject (beamforming), not a result. The visitor sets the number of antennas with the slider;
+             the beam narrows and its peak grows as antennas are added. -->
+        <figure class="beam">
+          <svg class="beam__svg" viewBox="-320 -310 640 330" preserveAspectRatio="xMidYMax meet" aria-hidden="true">
+            <g class="beam__grid"></g>
+            <path class="beam__lobe" d=""></path>
+            <g class="beam__array"></g>
+          </svg>
+          <div class="beam__control" lang="en">
+            <label for="antenna-count">Antennas</label>
+            <input id="antenna-count" type="range" min="1" max="64" step="1" value="32">
+            <output for="antenna-count" class="beam__count">32</output>
           </div>
-        </section>
-
-        <section id="news">
-          <div class="section-heading section-heading-with-action">
-            <div>
-              <h2>News</h2>
-            </div>
-            <a class="more-link" href="{{ '/news/' | relative_url }}">More <span aria-hidden="true">＋</span></a>
-          </div>
-          <ul id="news-list" class="news-list"></ul>
-        </section>
-
-        <section id="professor">
-          <div class="section-heading">
-            <h2>Professor</h2>
-          </div>
-          <div id="professor-grid" class="people-grid"></div>
-        </section>
-
-        <section id="students">
-          <div class="section-heading">
-            <h2>Students</h2>
-          </div>
-          <div id="student-grid" class="people-grid"></div>
-        </section>
-
-        <section id="research">
-          <div class="section-heading section-heading-with-action">
-            <div>
-              <h2>Research Areas</h2>
-            </div>
-            <a class="more-link research-details-link" href="{{ '/research/' | relative_url }}">View details <span aria-hidden="true">＋</span></a>
-          </div>
-          <div id="research-grid" class="card-grid"></div>
-        </section>
-
-        <section id="publications">
-          <div class="section-heading section-heading-with-action">
-            <div>
-              <h2 id="publications-heading">Publications</h2>
-              <p id="publications-description">Selected journal papers, conference papers, and patents.</p>
-            </div>
-            <a class="more-link" href="{{ '/publications/' | relative_url }}">More <span aria-hidden="true">＋</span></a>
-          </div>
-
-          <div id="journal-group" class="publication-group">
-            <h3>Journal Papers</h3>
-            <ul id="journal-list" class="publication-list"></ul>
-          </div>
-
-          <div id="conference-group" class="publication-group">
-            <h3>Conference Papers</h3>
-            <ul id="conference-list" class="publication-list"></ul>
-          </div>
-
-          <div id="patent-group" class="publication-group">
-            <h3>Patents</h3>
-            <ul id="patent-list" class="publication-list"></ul>
-          </div>
-        </section>
-
-        <section id="lectures">
-          <div class="section-heading section-heading-with-action">
-            <div>
-              <h2>Lectures</h2>
-            </div>
-            <a class="more-link" href="{{ '/lectures/' | relative_url }}">More <span aria-hidden="true">＋</span></a>
-          </div>
-          <ul id="lecture-list" class="lecture-list"></ul>
-        </section>
-
-        <section id="contact">
-          <div class="section-heading">
-            <h2>Contact</h2>
-          </div>
-          <div class="contact-box">
-            <div>
-              <h3 id="contact-office-title">Office</h3>
-              <p id="contact-office-lines">Room 205, Bldg. 86,<br />Changwon National University<br />Changwon-si, Republic of Korea</p>
-            </div>
-            <div>
-              <h3 id="contact-info-title">Contact Information</h3>
-              <p id="contact-info-details">Email: <a class="text-link" href="mailto:sanggeun.lee@changwon.ac.kr">sanggeun.lee@changwon.ac.kr</a><br />Tel: <a class="text-link" href="tel:+82552133963">+82-55-213-3963</a></p>
-            </div>
-          </div>
-        </section>
+        </figure>
       </div>
-    </main>
-  </div>
+    </section>
 
-  <script src="{{ '/assets/js/main.js' | relative_url }}?v={{ site.time | date: '%s' }}"></script>
-  {% include mobile-nav-script.html %}
-</body>
-</html>
+    <section class="intro" aria-label="About the lab">
+      <div class="wrap intro__grid">
+        <div class="intro__text">
+            <p class="intro__ko">무선지능최적화연구실은 인공지능, 신호처리, 최적화 이론을 바탕으로 차세대 무선통신 시스템의 성능과 신뢰성을 높이는 연구를 수행합니다. 우리는 mmWave MIMO, 하이브리드 빔포밍, 채널 추정 및 예측, AI 기반 수신기와 무선 자원 최적화 기술을 연구하며, 복잡하고 빠르게 변화하는 무선 환경에서도 안정적이고 효율적인 연결을 제공하는 지능형 네트워크를 지향합니다.</p>
+            <p class="intro__en" lang="en">The Wireless Intelligence and Optimization Lab. explores next-generation wireless communication systems through artificial intelligence, signal processing, and optimization. Our research spans mmWave MIMO, hybrid beamforming, channel estimation and prediction, AI-assisted receivers, and wireless resource optimization, with the goal of enabling intelligent networks that deliver reliable and efficient connectivity in complex and dynamic wireless environments.</p>
+        </div>
+        <figure class="intro__figure">
+          <img src="{{ '/assets/images/landing-1600.jpg' | relative_url }}"
+               srcset="{{ '/assets/images/landing-800.jpg' | relative_url }} 800w, {{ '/assets/images/landing-1600.jpg' | relative_url }} 1600w"
+               sizes="(min-width: 1320px) 560px, (min-width: 960px) 42vw, calc(100vw - 32px)"
+               width="1600" height="742" loading="lazy"
+               alt="Intelligent wireless network connecting a campus, city infrastructure, vehicles, drones, and IoT devices">
+        </figure>
+      </div>
+    </section>
+
+    <section id="news" class="block" aria-labelledby="news-heading">
+      <div class="wrap block__grid">
+        <div class="block__head">
+          <h2 id="news-heading">News</h2>
+          <a class="more" href="{{ '/news/' | relative_url }}" aria-label="More news">More</a>
+        </div>
+        <ol id="news-list" class="news-list">
+        </ol>
+      </div>
+    </section>
+
+    <section id="professor" class="block block--people" data-show="professor" aria-labelledby="professor-heading">
+      <div class="wrap block__grid">
+        <div class="block__head">
+          <h2 id="professor-heading">Professor</h2>
+        </div>
+        <div id="professor-grid">
+        </div>
+      </div>
+    </section>
+
+    <section id="students" class="block block--people" data-show="students" aria-labelledby="students-heading">
+      <div class="wrap block__grid">
+        <div class="block__head">
+          <h2 id="students-heading">Students</h2>
+        </div>
+        <div id="student-grid" class="members">
+        </div>
+      </div>
+    </section>
+
+    <section id="research" class="block block--research" data-show="research" aria-labelledby="research-heading">
+      <div class="wrap block__grid">
+        <div class="block__head">
+          <h2 id="research-heading">Research Areas</h2>
+          <a class="more" href="{{ '/research/' | relative_url }}" aria-label="View details of all research areas">View details</a>
+        </div>
+        <ul id="research-list" class="areas">
+        </ul>
+      </div>
+    </section>
+
+    <section id="publications" class="block" aria-labelledby="publications-heading">
+      <div class="wrap block__grid">
+        <div class="block__head">
+          <h2 id="publications-heading">Publications</h2>
+          <p id="publications-description" class="block__note">Selected journal papers, conference papers, and patents.</p>
+          <a class="more" href="{{ '/publications/' | relative_url }}" aria-label="More publications">More</a>
+        </div>
+        <div id="publication-groups">
+        </div>
+      </div>
+    </section>
+
+    <section id="lectures" class="block block--lectures" aria-labelledby="lectures-heading">
+      <div class="wrap block__grid">
+        <div class="block__head">
+          <h2 id="lectures-heading">Lectures</h2>
+          <a class="more" href="{{ '/lectures/' | relative_url }}" aria-label="More lectures">More</a>
+        </div>
+        <div id="lecture-terms" class="terms">
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="contact" aria-labelledby="contact-heading">
+      <div class="wrap block__grid">
+        <div class="block__head">
+          <h2 id="contact-heading">Contact</h2>
+        </div>
+        <div class="contact__cols">
+          <div>
+            <h3 id="contact-office-title">Office</h3>
+            <p id="contact-office-lines">Room 205, Bldg. 86,<br>Changwon National University<br>Changwon-si, Republic of Korea</p>
+          </div>
+          <div>
+            <h3 id="contact-info-title">Contact Information</h3>
+            <dl id="contact-info-details"><dt>Email</dt><dd><a href="mailto:sanggeun.lee@changwon.ac.kr">sanggeun.lee@changwon.ac.kr</a></dd><dt>Tel</dt><dd><a href="tel:+82552133963">+82-55-213-3963</a></dd></dl>
+          </div>
+        </div>
+      </div>
+    </section>

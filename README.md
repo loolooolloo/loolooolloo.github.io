@@ -117,19 +117,32 @@ Example:
 ]
 ```
 
-## Shared sidebar
+## Page frame and scripts
 
-Edit only:
+Every page uses `_layouts/wio.html`, which adds the shared parts:
 
-```text
-_includes/sidebar.html
+- `_includes/head-meta.html`: meta tags, fonts and the stylesheet.
+- `_includes/site-header.html`: the top menu. Edit menu items here.
+- `_includes/site-footer.html`: the footer.
+
+Each page's front matter tells the layout what it is:
+
+```yaml
+layout: wio
+title: Publications
+kind: publications   # home, news, research, research-detail, publications, lectures, person
+nav: publications    # menu item marked as current
+data_id: "student-1" # person or research topic id, on detail pages only
 ```
 
-All pages reuse it through:
+Page content is drawn in the browser from `data/*.json`:
 
-```liquid
-{% include sidebar.html %}
-```
+- `assets/js/render.js`: the home page, plus the helpers every page shares (publication entries, sorting, news formatting).
+- `assets/js/pages.js`: News, Research Areas, research topic pages, Publications, Lectures and people pages.
+- `assets/js/app.js`: the phone menu, the current-section mark and the home page's beam pattern.
+- `assets/css/wio.css`: all styles.
+
+The scripts are ES modules. The test scripts below import them, so they need Node.js 22 or later.
 
 
 ## Data validation

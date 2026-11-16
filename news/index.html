@@ -1,53 +1,13 @@
 ---
-layout: null
+layout: wio
 title: News
 permalink: /news/
+kind: news
+nav: news
 ---
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  {% include head-meta.html %}
-
-  <title>News · {{ site.title }}</title>
-
-</head>
-
-<body>
-  <div class="site-layout">
-    {% include sidebar.html %}
-
-    <main class="main-content">
-      <div class="content-wrapper">
-        <header class="news-page-header">
-          <h2>News</h2>
-        </header>
-
-        <section id="all-news">
-          <div
-            id="news-list-page"
-            class="news-list-page"
-            aria-live="polite"
-          ></div>
-        </section>
+    <header class="page-head">
+      <div class="wrap page-head__inner">
+        <h1 class="page-head__title" id="page-title">News</h1>
       </div>
-    </main>
-  </div>
-
-  <script>
-    window.NEWS_DATA_PATH =
-      "{{ '/data/news.json' | relative_url }}";
-
-    window.SITE_BASE_URL =
-      "{{ '/' | relative_url }}";
-  </script>
-
-  <script
-    src="{{ '/assets/js/news-page.js' | relative_url }}?v={{ site.time | date: '%s' }}"
-  ></script>
-
-  {% include mobile-nav-script.html %}
-</body>
-</html>
+    </header>
+    <div id="page-body" aria-live="polite"></div>

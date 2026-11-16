@@ -1,38 +1,26 @@
 ---
-layout: null
+layout: wio
 title: Research Areas
 permalink: /research/
+kind: research
+nav: research
 ---
-
-<!DOCTYPE html>
-<html lang="ko">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  {% include head-meta.html %}
-  <title>Research Areas · {{ site.title }}</title>
-</head>
-
-<body>
-  <div class="site-layout">
-    {% include sidebar.html %}
-
-    <main class="main-content">
-      <div class="content-wrapper">
-        <header class="research-page-header">
-          <h2>Research Areas</h2>
-        </header>
-
-        <section class="research-overview" aria-labelledby="research-overview-title">
-          <div class="research-visual research-visual-image research-overview-image">
-            <img
-              src="{{ '/assets/images/research/research-overview-260722.png' | relative_url }}"
-              alt="Overview of AI for wireless communications, MIMO signal processing and beamforming, and next-generation wireless system operation"
-            />
+    <header class="page-head">
+      <div class="wrap page-head__inner">
+        <h1 class="page-head__title" id="page-title">Research Areas</h1>
+        <div class="overview">
+          <div class="overview__text">
+            <h2 class="overview__title">연구 개요</h2>
+            <p>Wireless Intelligence and Optimization Lab.은 MIMO 신호처리, 표준 구조를 고려한 시스템 설계, 그리고 AI 기반 적응 기술을 바탕으로 지능형 무선통신 시스템을 연구합니다. 채널 추정 및 예측, 수신기 선택, 빔포밍 설계, 기준신호·피드백·스케줄링·자원 오버헤드와 같은 실제 셀룰러 시스템 제약을 함께 고려하여 신뢰성 있고 효율적인 차세대 무선통신 기술을 개발합니다.</p>
           </div>
-
-          <!-- Text version of the overview image, shown on small screens where the image text is too small to read. -->
-          <div class="research-overview-summary">
+          <figure class="overview__figure">
+            <img src="{{ '/assets/images/research/research-overview-1600.jpg' | relative_url }}"
+                 srcset="{{ '/assets/images/research/research-overview-1600.jpg' | relative_url }} 1600w, {{ '/assets/images/research/research-overview-2400.jpg' | relative_url }} 2400w"
+                 sizes="(min-width: 1320px) 1224px, calc(100vw - 32px)" width="1600" height="878"
+                 alt="Overview of AI for wireless communications, MIMO signal processing and beamforming, and next-generation wireless system operation" />
+          </figure>
+          <!-- Text version of the overview image, shown below desktop width where the image text is too small to read. -->
+          <div class="overview__summary">
             <div>
               <h3>AI for Wireless Communications</h3>
               <ul>
@@ -61,30 +49,8 @@ permalink: /research/
               </ul>
             </div>
           </div>
-
-          <h2 id="research-overview-title">연구 개요</h2>
-          <p>
-            Wireless Intelligence and Optimization Lab.은 MIMO 신호처리, 표준 구조를 고려한 시스템 설계, 그리고 AI 기반 적응 기술을 바탕으로 지능형 무선통신 시스템을 연구합니다. 채널 추정 및 예측, 수신기 선택, 빔포밍 설계, 기준신호·피드백·스케줄링·자원 오버헤드와 같은 실제 셀룰러 시스템 제약을 함께 고려하여 신뢰성 있고 효율적인 차세대 무선통신 기술을 개발합니다.
-          </p>
-        </section>
-
-        <section id="research-items" class="research-area-sections" aria-label="Research area details">
-          <div id="research-area-list"></div>
-        </section>
+        </div>
+        <nav class="page-jump" aria-label="Research areas"><ul id="page-jump"></ul></nav>
       </div>
-    </main>
-  </div>
-
-  <script>
-    window.RESEARCH_DATA_PATH =
-      "{{ '/data/research.json' | relative_url }}";
-    window.PUBLICATIONS_DATA_PATH =
-      "{{ '/data/publications.json' | relative_url }}";
-    window.SITE_BASE_URL =
-      "{{ '/' | relative_url }}";
-  </script>
-
-  <script src="{{ '/assets/js/research-page.js' | relative_url }}?v={{ site.time | date: '%s' }}"></script>
-  {% include mobile-nav-script.html %}
-</body>
-</html>
+    </header>
+    <div id="page-body" aria-live="polite"></div>

@@ -1,65 +1,15 @@
 ---
-layout: null
+layout: wio
 title: Publications
 permalink: /publications/
+kind: publications
+nav: publications
 ---
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  {% include head-meta.html %}
-  <title>Publications · {{ site.title }}</title>
-</head>
-<body>
-  <div class="site-layout">
-    {% include sidebar.html %}
-    <main class="main-content">
-      <div class="content-wrapper">
-        <header class="publications-page-header">
-          <h2>Publications</h2>
-          <p>Journal papers, conference papers, and patents.</p>
-        </header>
-
-        <section id="journals">
-          <div class="section-heading">
-            <h2>Journal Papers</h2>
-          </div>
-          <div class="publication-subsection">
-            <h3>International Journals</h3>
-            <ul id="international-journal-list" class="publication-list"></ul>
-          </div>
-          <div class="publication-subsection">
-            <h3>Domestic Journals</h3>
-            <ul id="domestic-journal-list" class="publication-list"></ul>
-          </div>
-        </section>
-
-        <section id="conference-papers">
-          <div class="section-heading"><h2>Conference Papers</h2></div>
-          <div class="publication-subsection">
-            <h3>International Conferences</h3>
-            <ul id="international-conference-list" class="publication-list"></ul>
-          </div>
-          <div class="publication-subsection">
-            <h3>Domestic Conferences</h3>
-            <ul id="domestic-conference-list" class="publication-list"></ul>
-          </div>
-        </section>
-
-        <section id="patents">
-          <div class="section-heading"><h2>Patents</h2></div>
-          <div class="publication-subsection">
-            <ul id="patent-list" class="publication-list"></ul>
-          </div>
-        </section>
+    <header class="page-head">
+      <div class="wrap page-head__inner">
+        <h1 class="page-head__title" id="page-title">Publications</h1>
+        <p class="page-head__note" id="page-note">Journal papers, conference papers, and patents.</p>
+        <nav class="page-jump" aria-label="Publication groups"><ul id="page-jump"></ul></nav>
       </div>
-    </main>
-  </div>
-
-  <script src="{{ '/assets/js/publications-page.js' | relative_url }}?v={{ site.time | date: '%s' }}" data-publications-url="{{ '/data/publications.json' | relative_url }}?v={{ site.time | date: '%s' }}"></script>
-  {% include mobile-nav-script.html %}
-  
-</body>
-</html>
+    </header>
+    <div id="page-body" aria-live="polite"></div>
