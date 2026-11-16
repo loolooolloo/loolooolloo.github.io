@@ -7,7 +7,7 @@
 import {
   esc, byPublicationDate, researchItems, dateLabel, sortedNews, newsParagraphs,
   publicationItem, publicationLegend, siteFile, loadData
-} from "./render.js";
+} from "./render.js?v=corresponding-authors-1";
 
 const peopleNames = people => (people || []).map(person => person.name).filter(Boolean);
 export const studentsShown = people => (people || []).some(person => person.category === "student" && person.showOnHome !== false);
