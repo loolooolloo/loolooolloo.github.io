@@ -176,8 +176,9 @@ export function research(areas) {
 }
 
 // Lab members stand out in an author list, as the reference lab sites do.
-export function authors(text, names) {
+export function authors(text, names, corresponding = []) {
   let html = esc(text || "");
+  for (const name of corresponding) html = html.replaceAll(esc(name), `${esc(name)}<sup aria-label="Corresponding author">*</sup>`);
   for (const name of names) html = html.replaceAll(esc(name), `<b>${esc(name)}</b>`);
   return html;
 }
@@ -209,11 +210,16 @@ export function publicationItem(item, names = [], { full = false } = {}) {
                 <div class="pub__body">
                   <p class="pub__title">${esc(item.title)}</p>
                   ${venue ? `<p class="pub__venue">${venue}</p>` : ""}
-                  <p class="pub__authors">${authors(item.authors, names)}</p>
+                  <p class="pub__authors">${authors(item.authors, names, item.correspondingAuthors || [])}</p>
                   ${item.status && !accepted ? `<p class="pub__status">${esc(item.status)}</p>` : ""}
                   ${links ? `<p class="pub__links">${links}</p>` : ""}
                 </div>
               </li>`;
+}
+
+export function publicationLegend(items) {
+  return items.some(item => item.correspondingAuthors?.length)
+    ? '<p class="block__note">* Corresponding author</p>' : '';
 }
 
 export function publications(items, names = []) {
@@ -237,7 +243,7 @@ export function publications(items, names = []) {
   const description = selected.length
     ? "Selected journal papers, conference papers, and patents."
     : `The ${Math.min(HOME_RECENT_PUBLICATION_LIMIT, items.length)} most recent publications.`;
-  return { html, description };
+  return { html: publicationLegend(home) + html, description };
 }
 
 // Lectures are grouped under their semester, in the order the JSON lists them.

@@ -6,7 +6,7 @@
 
 import {
   esc, byPublicationDate, researchItems, dateLabel, sortedNews, newsParagraphs,
-  publicationItem, siteFile, loadData
+  publicationItem, publicationLegend, siteFile, loadData
 } from "./render.js";
 
 const peopleNames = people => (people || []).map(person => person.name).filter(Boolean);
@@ -101,7 +101,7 @@ export function researchAreas(areas, publications, names) {
             <details class="related">
               <summary>Selected Publications (${related.length})</summary>
               ${related.length
-                ? `<ol class="pubs">${related.map(item => publicationItem(item, names)).join("")}</ol>`
+                ? `${publicationLegend(related)}<ol class="pubs">${related.map(item => publicationItem(item, names)).join("")}</ol>`
                 : `<p class="empty">Selected publications will be added here.</p>`}
             </details>
           </div>
@@ -128,7 +128,7 @@ export function researchTopicPage(topic, publications, names) {
       ${related.length ? `
       <section class="block block--page" aria-labelledby="related-title">
         <div class="wrap block__grid">
-          <div class="block__head"><h2 id="related-title">Related Publications</h2></div>
+          <div class="block__head"><h2 id="related-title">Related Publications</h2>${publicationLegend(related)}</div>
           <ol class="pubs">${related.map(item => publicationItem(item, names)).join("")}</ol>
         </div>
       </section>` : ""}`;
@@ -162,7 +162,7 @@ export function publicationGroups(publications, names) {
       <section class="block block--page" id="${group.id}" aria-labelledby="${group.id}-title">
         <div class="wrap block__grid">
           <div class="block__head"><h2 id="${group.id}-title">${group.title}</h2></div>
-          <div>${group.parts.map(([id, title, test, empty]) => {
+          <div>${publicationLegend(publications.filter(item => group.parts.some(([, , test]) => test(item))))}${group.parts.map(([id, title, test, empty]) => {
             const list = publications.filter(test).sort(byPublicationDate);
             return `
             <div class="pub-group" id="${id}">
@@ -268,7 +268,7 @@ export function personPage(person, publications, names) {
       </section>
       ${experience.length ? section("experience-title", "Experience", `<ol class="timeline">${timeline(experience)}</ol>`) : ""}
       ${education.length ? section("education-title", "Education", `<ol class="timeline">${timeline(education)}</ol>`) : ""}
-      ${selected.length ? section("publications-title", "Selected Publications", `<ol class="pubs">${selected.map(item => publicationItem(item, names)).join("")}</ol>`) : ""}`;
+      ${selected.length ? section("publications-title", "Selected Publications", `${publicationLegend(selected)}<ol class="pubs">${selected.map(item => publicationItem(item, names)).join("")}</ol>`) : ""}`;
 }
 
 /* ---------- the slots on each page ---------- */

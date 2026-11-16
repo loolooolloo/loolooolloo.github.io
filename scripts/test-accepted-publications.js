@@ -38,6 +38,17 @@ assert.ok(!publishedHtml.includes("11797728"));
 assert.ok(!publishedHtml.includes("Publisher"));
 assert.ok(publishedHtml.includes('href="' + published.doi + '"'));
 assert.equal(validationErrors(livePublications), "");
+// Corresponding-author markers are data-driven and preserve the author order.
+for (const paper of livePublications) {
+  const marked = paper.correspondingAuthors || [];
+  const html = publicationItem(paper, ['Sanggeun Lee']);
+  assert.equal((html.match(/<sup aria-label="Corresponding author">/g) || []).length, marked.length);
+  for (const name of marked) assert.ok(paper.authors.includes(name));
+}
+assert.equal((publishedHtml.match(/<sup /g) || []).length, 2);
+assert.ok(render.publications(livePublications).html.includes('* Corresponding author'));
+assert.ok(pages.publicationGroups(livePublications, []).includes('* Corresponding author'));
+assert.equal(render.publicationLegend(livePublications.filter(p => p.type === 'patent')), '');
 
 assert.equal([...publications].sort(byPublicationDate)[0].id, accepted.id);
 const samples = [

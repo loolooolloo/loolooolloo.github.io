@@ -17,7 +17,11 @@
     "doi": "https://doi.org/10.1109/TWC.2026.3754016",
     "pdf": "",
     "code": "",
-    "showOnHome": true
+    "showOnHome": true,
+    "correspondingAuthors": [
+      "Sanggeun Lee",
+      "Dongkyu Sim"
+    ]
   },
   {
     "id": "journal-int-2025-02",
@@ -35,7 +39,10 @@
     "doi": "https://doi.org/10.1109/TVT.2024.3520949",
     "pdf": "",
     "code": "",
-    "showOnHome": true
+    "showOnHome": true,
+    "correspondingAuthors": [
+      "Dongkyu Sim"
+    ]
   },
   {
     "id": "journal-int-2025-01",
@@ -53,7 +60,10 @@
     "doi": "https://doi.org/10.3390/electronics14020335",
     "pdf": "",
     "code": "",
-    "showOnHome": true
+    "showOnHome": true,
+    "correspondingAuthors": [
+      "Dongkyu Sim"
+    ]
   },
   {
     "id": "journal-int-2024-01",
@@ -71,7 +81,10 @@
     "doi": "https://doi.org/10.1109/ACCESS.2024.3408894",
     "pdf": "",
     "code": "",
-    "showOnHome": true
+    "showOnHome": true,
+    "correspondingAuthors": [
+      "Dongkyu Sim"
+    ]
   },
   {
     "id": "journal-int-2019-02",
@@ -89,7 +102,10 @@
     "doi": "https://doi.org/10.1109/LWC.2019.2918515",
     "pdf": "",
     "code": "",
-    "showOnHome": false
+    "showOnHome": false,
+    "correspondingAuthors": [
+      "Chungyong Lee"
+    ]
   },
   {
     "id": "journal-int-2019-01",
@@ -107,7 +123,10 @@
     "doi": "https://doi.org/10.1109/TVT.2019.2909527",
     "pdf": "",
     "code": "",
-    "showOnHome": false
+    "showOnHome": false,
+    "correspondingAuthors": [
+      "Chungyong Lee"
+    ]
   },
   {
     "id": "journal-dom-2026-01",
@@ -143,7 +162,10 @@
     "doi": "https://doi.org/10.5573/ieie.2024.61.2.25",
     "pdf": "",
     "code": "",
-    "showOnHome": false
+    "showOnHome": false,
+    "correspondingAuthors": [
+      "심동규"
+    ]
   },
   {
     "id": "journal-dom-2014-01",
@@ -161,7 +183,10 @@
     "doi": "https://doi.org/10.5573/ieie.2014.51.11.047",
     "pdf": "",
     "code": "",
-    "showOnHome": false
+    "showOnHome": false,
+    "correspondingAuthors": [
+      "이충용"
+    ]
   },
   {
     "id": "conference-int-2026-01",
@@ -182,7 +207,10 @@
     "doi": "https://doi.org/10.1109/ICEIC69189.2026.11386214",
     "pdf": "",
     "code": "",
-    "showOnHome": false
+    "showOnHome": false,
+    "correspondingAuthors": [
+      "Sanggeun Lee"
+    ]
   },
   {
     "id": "conference-int-2024-01",
@@ -203,7 +231,10 @@
     "doi": "https://doi.org/10.1109/ICCE-Asia63397.2024.10773727",
     "pdf": "",
     "code": "",
-    "showOnHome": false
+    "showOnHome": false,
+    "correspondingAuthors": [
+      "Dongkyu Sim"
+    ]
   },
   {
     "id": "patent-us-2025-01",
@@ -618,7 +649,10 @@
     "pages": "355-356",
     "doi": "",
     "code": "",
-    "showOnHome": false
+    "showOnHome": false,
+    "correspondingAuthors": [
+      "심동규"
+    ]
   },
   {
     "id": "conference-dom-2024-01",
@@ -635,7 +669,10 @@
     "pages": "432-433",
     "doi": "",
     "code": "",
-    "showOnHome": false
+    "showOnHome": false,
+    "correspondingAuthors": [
+      "심동규"
+    ]
   },
   {
     "id": "conference-dom-2024-02",
@@ -652,6 +689,9 @@
     "pages": "434-435",
     "doi": "",
     "code": "",
-    "showOnHome": false
+    "showOnHome": false,
+    "correspondingAuthors": [
+      "심동규"
+    ]
   }
 ]
