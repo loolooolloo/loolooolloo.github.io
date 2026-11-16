@@ -133,8 +133,10 @@ if (svg) {
     if (intro || (!still && Math.abs(target - angle) > 0.05)) requestAnimationFrame(frame);
     else running = false;
   }
+  // With reduced motion the beam still answers the visitor, but jumps to the new angle
+  // instead of easing there.
   const wake = () => {
-    if (still) { draw(angle, N); return; }
+    if (still) { angle = target; draw(angle, N); return; }
     if (!running) { running = true; requestAnimationFrame(frame); }
   };
   // Any visitor input ends the opening sequence and takes over.
@@ -145,9 +147,12 @@ if (svg) {
 
   slider?.addEventListener("input", () => setN(Number(slider.value)));
 
+  // The beam follows a mouse or pen over the hero. The check is per event, not a media query:
+  // laptops with a touch screen can report a coarse primary pointer while a mouse is in use.
   const hero = document.querySelector(".hero");
-  if (!still && hero && matchMedia("(pointer: fine)").matches) {
+  if (hero) {
     hero.addEventListener("pointermove", event => {
+      if (event.pointerType === "touch") return;
       if (event.target.closest(".beam__control")) return;
       const box = svg.getBoundingClientRect();
       // The array sits at the bottom-centre of the plot (y = 0 in a viewBox running from -310 to 20).
