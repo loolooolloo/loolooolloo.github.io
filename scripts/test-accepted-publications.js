@@ -5,9 +5,18 @@ const path = require("node:path");
 const vm = require("node:vm");
 const { pathToFileURL } = require("node:url");
 const root = path.resolve(__dirname, "..");
-const publications = JSON.parse(fs.readFileSync(path.join(root, "data/publications.json"), "utf8"));
+const livePublications = JSON.parse(fs.readFileSync(path.join(root, "data/publications.json"), "utf8"));
 const people = JSON.parse(fs.readFileSync(path.join(root, "data/people.json"), "utf8"));
 const research = JSON.parse(fs.readFileSync(path.join(root, "data/research.json"), "utf8"));
+const published = livePublications.find(p => p.id === "journal-int-2026-01");
+assert.equal(published.year, "2026");
+assert.equal(published.month, "11");
+assert.equal(published.day, "16");
+assert.equal(published.status, "Early Access");
+assert.equal(published.url, "https://ieeexplore.ieee.org/document/11797728");
+assert.equal(published.doi, "https://doi.org/10.1109/TWC.2026.3754016");
+// Retain accepted-state regression coverage after the real paper is published.
+const publications = livePublications.map(p => p.id === published.id ? { ...p, year: "", month: "", day: "", status: "Accepted" } : p);
 const accepted = publications.find(p => p.id === "journal-int-2026-01");
 assert.ok(accepted);
 assert.equal(accepted.year, "");
@@ -22,6 +31,13 @@ const load = file => import(pathToFileURL(path.join(root, file)).href);
 const render = await load("assets/js/render.js");
 const pages = await load("assets/js/pages.js");
 const { byPublicationDate, publicationItem } = render;
+const publishedHtml = publicationItem(published, [], { full: true });
+assert.ok(publishedHtml.includes('>2026</span>'));
+assert.ok(publishedHtml.includes('>Early Access</p>'));
+assert.ok(publishedHtml.includes('href="' + published.url + '"'));
+assert.ok(publishedHtml.includes('>Publisher<span'));
+assert.ok(publishedHtml.includes('href="' + published.doi + '"'));
+assert.equal(validationErrors(livePublications), "");
 
 assert.equal([...publications].sort(byPublicationDate)[0].id, accepted.id);
 const samples = [
