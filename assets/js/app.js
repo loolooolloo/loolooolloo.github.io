@@ -110,8 +110,11 @@ if (svg) {
     steer.setAttribute("y2", (-R * Math.cos(theta0 * deg)).toFixed(1));
   }
 
+  // The opening sequence (antennas 1 -> 32) plays for everyone, reduced motion included: it changes
+  // the plot in place, once, for under three seconds, and it is the point of the picture.
+  // Reduced motion still turns off the easing when the beam follows the pointer.
   const still = matchMedia("(prefers-reduced-motion: reduce)").matches;
-  let angle = REST, target = REST, N = still ? N_START : N_LO, running = false, intro = !still;
+  let angle = REST, target = REST, N = N_LO, running = false, intro = true;
   const start = performance.now(), duration = 2400, hold = 400;
   const ease = x => x * x * (3 - 2 * x);
 
@@ -136,14 +139,17 @@ if (svg) {
   // With reduced motion the beam still answers the visitor, but jumps to the new angle
   // instead of easing there.
   const wake = () => {
-    if (still) { angle = target; draw(angle, N); return; }
+    if (still) {
+      angle = target;
+      if (!intro) { draw(angle, N); return; }
+    }
     if (!running) { running = true; requestAnimationFrame(frame); }
   };
   // Any visitor input ends the opening sequence and takes over.
   const setN = n => { intro = false; show(Math.max(N_LO, Math.min(N_HI, n))); wake(); };
 
   show(N);
-  if (still) draw(angle, N); else wake();
+  wake();
 
   slider?.addEventListener("input", () => setN(Number(slider.value)));
 
