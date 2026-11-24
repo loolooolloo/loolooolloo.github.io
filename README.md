@@ -171,3 +171,25 @@ Check rendering, ordering, and year validation with:
 node scripts/test-accepted-publications.js
 node scripts/validate-data.js
 ```
+
+## Private website analytics
+
+Production pages load the Google-provided container `GTM-WTTJX9MX`, linked to
+GA4 measurement ID `G-SZ597JLC7H` (property `565677993`). Local Jekyll development
+builds do not load it. Dashboard access and email recipients are managed in GA4;
+no dashboard, visitor counter, credentials, or report data is published here.
+
+Enhanced measurement is enabled for page views, scrolls, outbound clicks, site
+search, form interactions, supported embedded videos, and file-link clicks.
+`assets/js/analytics.js` additionally records publication clicks, contact method
+(email/phone, without the address), internal navigation paths, scroll depth,
+and antenna-count changes in the beam-pattern demo. Events do not prove that a
+file download, email delivery, or phone call completed. Features absent from the
+site (such as a search form or embedded video) produce no corresponding events.
+Google signals and user-provided data collection are not enabled.
+
+The private weekly overview is scheduled in GA4 for Mondays starting 2026-11-30,
+in Korean PDF format, for the sole administrator. The GA4 schedule expires on
+2027-11-30 and must be renewed there. Search Console and custom reporting
+configuration must be checked in GA4; source deployment alone does not verify
+live collection or email delivery.

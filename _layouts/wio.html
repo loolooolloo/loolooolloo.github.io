@@ -5,6 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="theme-color" content="#172235" />
   {% include head-meta.html %}
+  {% if jekyll.environment == "production" %}
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+  </script>
+  <script async src="https://www.googletagmanager.com/gtm.js?id=GTM-WTTJX9MX"></script>
+  <script defer src="{{ '/assets/js/analytics.js' | relative_url }}?v={{ site.time | date: '%s' }}"></script>
+  {% endif %}
   <title>{% if page.kind == "home" %}{{ site.title }}{% else %}{{ page.title }} · {{ site.title }}{% endif %}</title>
 </head>
 {%- comment -%}
