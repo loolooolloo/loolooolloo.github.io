@@ -188,8 +188,21 @@ file download, email delivery, or phone call completed. Features absent from the
 site (such as a search form or embedded video) produce no corresponding events.
 Google signals and user-provided data collection are not enabled.
 
-The private weekly overview is scheduled in GA4 for Mondays starting 2026-11-30,
-in Korean PDF format, for the sole administrator. The GA4 schedule expires on
-2027-11-30 and must be renewed there. Search Console and custom reporting
-configuration must be checked in GA4; source deployment alone does not verify
-live collection or email delivery.
+Search Console ownership for `https://wiolab.kr/` is verified through the public
+verification meta tag in `_includes/head-meta.html`, and linked to the GA4 web
+stream. The search-query report includes impressions, clicks, click-through
+rate, and average position.
+
+The private visitor-behavior overview includes event counts and tables by paper
+title, contact method, link type, navigation path, scroll depth, antenna count,
+and page type. These seven event-scoped custom dimensions and the supporting
+detail report are configured in GA4 under the internal WIO Lab collection.
+
+Three private weekly reports (traffic overview, Google search queries, and
+visitor behavior) are scheduled in GA4 for Mondays starting 2026-11-30, covering
+the previous seven days in Korean PDF format, for the sole administrator.
+All three schedules were verified as scheduled with one recipient on 2026-11-24.
+They expire on 2027-11-30 and must be renewed in GA4. Collection publication
+only adds navigation for authorized GA4 users; it does not publish a public
+dashboard. Report data was still empty during setup, and actual event receipt
+and email delivery have not yet been verified.
