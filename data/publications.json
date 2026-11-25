@@ -517,7 +517,7 @@
     "authors": "이형주, 김진우, 양민호, 이상근, 이주현, 정의창, 임채만",
     "title": "기지국에 대한 정보를 획득하기 위한 전자 장치, 방법, 및 컴퓨터 판독가능 저장 매체",
     "venue": "대한민국 특허 (출원번호: 10-2021-0137594)",
-    "status": "출원·공개",
+    "status": "출원·공개 (동일 특허 패밀리: US12641671B2)",
     "doi": "https://doi.org/10.8080/1020210137594",
     "pdf": "",
     "code": "",
@@ -693,5 +693,27 @@
     "correspondingAuthors": [
       "심동규"
     ]
+  },
+  {
+    "id": "patent-us-2026-01",
+    "type": "patent",
+    "country": "US",
+    "year": "2026",
+    "month": "05",
+    "day": "26",
+    "authors": "Euichang Jung, Hyoungjoo Lee, Jinwoo Kim, Minho Yang, Sanggeun Lee, Juhyun Lee, Chaiman Lim",
+    "title": "Electronic device, method, and computer-readable storage medium for obtaining information about base station",
+    "venue": "U.S. Patent 12,641,671 B2",
+    "status": "Granted (Same patent family: KR20230037416A)",
+    "applicationNumber": "US18/421,166",
+    "filingDate": "2024-01-24",
+    "publicationNumber": "US12641671B2",
+    "publicationDate": "2026-05-26",
+    "grantDate": "2026-05-26",
+    "doi": "",
+    "pdf": "",
+    "code": "",
+    "showOnHome": false,
+    "url": "https://patents.google.com/patent/US12641671B2/en"
   }
 ]
